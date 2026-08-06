@@ -1,0 +1,100 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"Cormorant Garamond",serif;
+    background:#F8F5F1;
+    color:#5A4637;
+}
+
+.background{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(180deg,#F8F5F1,#EFE6DC);
+    z-index:-1;
+}
+
+.container{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.moon{
+    font-size:40px;
+    color:#8B6A55;
+    margin-bottom:20px;
+}
+
+.title{
+    font-size:68px;
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+.quote{
+    font-size:20px;
+    color:#8E7A6A;
+    line-height:1.8;
+    margin-bottom:40px;
+}
+
+.password-box{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    width:320px;
+}
+
+input{
+    padding:16px;
+    border:none;
+    border-radius:15px;
+    outline:none;
+    font-size:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+button{
+    padding:16px;
+    border:none;
+    border-radius:15px;
+    background:#8B6A55;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#755644;
+}
+
+.welcome-screen{
+    position:fixed;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#F8F5F1;
+    opacity:0;
+    visibility:hidden;
+    transition:.8s;
+}
+
+.welcome-screen.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.welcome-screen h2{
+    font-size:56px;
+    text-align:center;
+}
