@@ -7,7 +7,9 @@ const homePage = document.getElementById("homePage");
 
 const correctPassword = "081929";
 
+
 unlockButton.addEventListener("click", unlock);
+
 
 passwordInput.addEventListener("keydown", function(e){
     if(e.key === "Enter"){
@@ -15,40 +17,45 @@ passwordInput.addEventListener("keydown", function(e){
     }
 });
 
+
 function unlock(){
 
     if(passwordInput.value === correctPassword){
 
-        // Hide password page
+        // hide password page
         container.style.display = "none";
 
-        // Show welcome screen
+
+        // show welcome screen
         welcomeScreen.classList.add("show");
 
-        // After 2.5 seconds
+
+        // move to home page after welcome
         setTimeout(function(){
 
-            // Hide welcome screen
             welcomeScreen.classList.remove("show");
 
-            // Show home page
             homePage.classList.add("show");
 
         },2500);
+
 
     }
 
     else{
 
-        passwordInput.animate([
+        passwordInput.animate(
+        [
             {transform:"translateX(-8px)"},
             {transform:"translateX(8px)"},
             {transform:"translateX(-8px)"},
             {transform:"translateX(8px)"},
             {transform:"translateX(0px)"}
-        ],{
+        ],
+        {
             duration:350
         });
+
 
         passwordInput.value="";
         passwordInput.placeholder="Wrong password ♡";
