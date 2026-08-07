@@ -114,6 +114,7 @@ button:hover {
 }
 
 @keyframes fadeText {
+
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -123,10 +124,11 @@ button:hover {
         opacity: 1;
         transform: translateY(0);
     }
+
 }
 
 
-/* HOME PAGE AFTER PASSWORD */
+/* HOME PAGE */
 
 .home-page {
     display: none;
@@ -168,6 +170,7 @@ button:hover {
 }
 
 @keyframes float {
+
     0% {
         transform: translateY(0);
     }
@@ -179,6 +182,7 @@ button:hover {
     100% {
         transform: translateY(0);
     }
+
 }
 
 
@@ -258,6 +262,7 @@ button:hover {
 }
 
 .little-intro {
+    max-width: 700px;
     font-size: 23px;
     color: #8E7A6A;
     line-height: 1.8;
@@ -316,6 +321,7 @@ button:hover {
 }
 
 @keyframes shake {
+
     0%,
     100% {
         transform: translateX(0);
@@ -328,6 +334,7 @@ button:hover {
     75% {
         transform: translateX(8px);
     }
+
 }
 
 
@@ -386,4 +393,5 @@ button:hover {
     .little-things {
         padding: 80px 20px;
     }
+
 }
