@@ -4,10 +4,18 @@
     box-sizing: border-box;
 }
 
+html {
+    width: 100%;
+    overflow-x: hidden;
+}
+
 body {
+    width: 100%;
+    min-height: 100vh;
     font-family: "Cormorant Garamond", serif;
     background: #F8F5F1;
     color: #5A4637;
+    overflow-x: hidden;
 }
 
 .background {
@@ -18,10 +26,13 @@ body {
 }
 
 
-/* PASSWORD PAGE */
+/* =========================
+   PASSWORD PAGE
+========================= */
 
 .container {
-    height: 100vh;
+    min-height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -83,7 +94,9 @@ button:hover {
 }
 
 
-/* WELCOME SCREEN */
+/* =========================
+   WELCOME SCREEN
+========================= */
 
 .welcome-screen {
     position: fixed;
@@ -114,7 +127,6 @@ button:hover {
 }
 
 @keyframes fadeText {
-
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -127,10 +139,13 @@ button:hover {
 }
 
 
-/* HOME PAGE */
+/* =========================
+   HOME PAGE
+========================= */
 
 .home-page {
     display: none;
+    width: 100%;
     min-height: 100vh;
 }
 
@@ -139,7 +154,9 @@ button:hover {
 }
 
 
-/* HERO / COVER */
+/* =========================
+   HERO
+========================= */
 
 .hero {
     min-height: 100vh;
@@ -156,13 +173,9 @@ button:hover {
     width: 300px;
     height: 380px;
     object-fit: cover;
-
     border-radius: 150px 150px 30px 30px;
-
     margin-bottom: 35px;
-
     box-shadow: 0 15px 40px rgba(90, 70, 55, 0.18);
-
     border: 6px solid rgba(255, 255, 255, 0.65);
 }
 
@@ -184,7 +197,6 @@ button:hover {
 }
 
 @keyframes float {
-
     0% {
         transform: translateY(0);
     }
@@ -199,7 +211,9 @@ button:hover {
 }
 
 
-/* OUR STORY */
+/* =========================
+   OUR STORY
+========================= */
 
 .story {
     min-height: 100vh;
@@ -219,6 +233,7 @@ button:hover {
 }
 
 .story p {
+    width: 100%;
     max-width: 700px;
     font-size: 25px;
     color: #8E7A6A;
@@ -226,7 +241,9 @@ button:hover {
 }
 
 
-/* A LITTLE NOTE */
+/* =========================
+   A LITTLE NOTE
+========================= */
 
 .message {
     min-height: 100vh;
@@ -246,6 +263,7 @@ button:hover {
 }
 
 .message p {
+    width: 100%;
     max-width: 700px;
     font-size: 25px;
     color: #8E7A6A;
@@ -253,7 +271,9 @@ button:hover {
 }
 
 
-/* THE LITTLE THINGS */
+/* =========================
+   THE LITTLE THINGS
+========================= */
 
 .little-things {
     min-height: 100vh;
@@ -275,6 +295,7 @@ button:hover {
 }
 
 .little-intro {
+    width: 100%;
     max-width: 700px;
     font-size: 23px;
     color: #8E7A6A;
@@ -290,27 +311,21 @@ button:hover {
     max-width: 1000px;
 
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 30px;
 }
 
 .thing {
+    width: 100%;
     padding: 35px 30px;
-
     background: rgba(255, 255, 255, 0.45);
-
     border-radius: 25px;
-
     box-shadow: 0 10px 30px rgba(90, 70, 55, 0.08);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .thing:hover {
     transform: translateY(-5px);
-
     box-shadow: 0 15px 35px rgba(90, 70, 55, 0.12);
 }
 
@@ -327,12 +342,13 @@ button:hover {
 }
 
 
-/* OUR MEMORIES */
+/* =========================
+   OUR MEMORIES
+========================= */
 
 .memories {
     min-height: 100vh;
     width: 100%;
-    max-width: 100%;
     padding: 120px 30px;
 
     display: flex;
@@ -350,8 +366,8 @@ button:hover {
 }
 
 .memories-intro {
-    max-width: 700px;
     width: 100%;
+    max-width: 700px;
     font-size: 23px;
     color: #8E7A6A;
     line-height: 1.8;
@@ -450,13 +466,14 @@ button:hover {
 }
 
 
-/* =========================================
-   THINGS I LOVE ABOUT YOU
-   ========================================= */
+/* ================================================= */
+/* THINGS I LOVE ABOUT YOU */
+/* ================================================= */
 
 .love-section {
     min-height: 100vh;
     width: 100%;
+
     padding: 120px 30px;
 
     display: flex;
@@ -465,35 +482,53 @@ button:hover {
     align-items: center;
 
     text-align: center;
+
+    overflow: hidden;
 }
 
-.love-section h2 {
+.love-section > h2 {
+    width: 100%;
+    max-width: 1000px;
+
     font-size: 58px;
     font-weight: 600;
+
     margin-bottom: 20px;
 }
 
 .love-intro {
+    width: 100%;
     max-width: 700px;
+
     font-size: 23px;
     color: #8E7A6A;
     line-height: 1.8;
+
     margin-bottom: 70px;
 }
 
 
-/* LOVE CARDS */
+/* LOVE GRID */
 
 .love-grid {
     width: 100%;
     max-width: 1050px;
 
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
     gap: 30px;
+
+    margin: 0 auto;
 }
 
+
+/* LOVE CARD */
+
 .love-card {
+    width: 100%;
+    min-width: 0;
+
     padding: 35px 30px;
 
     background: rgba(255, 255, 255, 0.45);
@@ -502,9 +537,9 @@ button:hover {
 
     box-shadow: 0 10px 30px rgba(90, 70, 55, 0.08);
 
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+    text-align: center;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .love-card:hover {
@@ -548,7 +583,6 @@ button:hover {
     max-width: 750px;
 
     margin-top: 100px;
-
     padding: 50px 35px;
 
     border-top: 1px solid rgba(139, 106, 85, 0.25);
@@ -569,14 +603,15 @@ button:hover {
 }
 
 
-/* WRONG PASSWORD SHAKE */
+/* =========================
+   WRONG PASSWORD SHAKE
+========================= */
 
 .shake {
     animation: shake 0.3s;
 }
 
 @keyframes shake {
-
     0%,
     100% {
         transform: translateX(0);
@@ -592,9 +627,11 @@ button:hover {
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
     .title {
         font-size: 48px;
@@ -612,7 +649,7 @@ button:hover {
     .message h2,
     .little-things h2,
     .memories > h2,
-    .love-section h2 {
+    .love-section > h2 {
         font-size: 44px;
     }
 
@@ -630,6 +667,9 @@ button:hover {
     .password-box {
         width: 280px;
     }
+
+
+    /* LITTLE THINGS */
 
     .things-grid {
         grid-template-columns: 1fr;
@@ -652,6 +692,9 @@ button:hover {
         padding: 80px 20px;
     }
 
+
+    /* HERO */
+
     .cover-photo {
         width: 240px;
         height: 310px;
@@ -660,7 +703,7 @@ button:hover {
     }
 
 
-    /* MEMORIES MOBILE */
+    /* MEMORIES */
 
     .memories {
         padding: 80px 20px;
@@ -708,27 +751,32 @@ button:hover {
     }
 
 
-    /* LOVE SECTION MOBILE */
+    /* THINGS I LOVE */
 
     .love-section {
+        width: 100%;
         padding: 80px 20px;
     }
 
-    .love-section h2 {
+    .love-section > h2 {
+        width: 100%;
         font-size: 44px;
     }
 
     .love-intro {
+        width: 100%;
         font-size: 20px;
         margin-bottom: 50px;
     }
 
     .love-grid {
+        width: 100%;
         grid-template-columns: 1fr;
         gap: 20px;
     }
 
     .love-card {
+        width: 100%;
         padding: 28px 22px;
     }
 
@@ -741,6 +789,7 @@ button:hover {
     }
 
     .love-ending {
+        width: 100%;
         margin-top: 60px;
         padding: 40px 20px;
     }
