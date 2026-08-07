@@ -114,6 +114,7 @@ button:hover {
 }
 
 @keyframes fadeText {
+
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -142,6 +143,7 @@ button:hover {
 
 .hero {
     min-height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -182,6 +184,7 @@ button:hover {
 }
 
 @keyframes float {
+
     0% {
         transform: translateY(0);
     }
@@ -324,6 +327,129 @@ button:hover {
 }
 
 
+/* OUR MEMORIES */
+
+.memories {
+    min-height: 100vh;
+    width: 100%;
+    max-width: 100%;
+    padding: 120px 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.memories > h2 {
+    font-size: 58px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.memories-intro {
+    max-width: 700px;
+    width: 100%;
+    font-size: 23px;
+    color: #8E7A6A;
+    line-height: 1.8;
+    margin-bottom: 70px;
+}
+
+
+/* MEMORY LIST */
+
+.memory-list {
+    width: 100%;
+    max-width: 1050px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+
+/* MEMORY CARD */
+
+.memory-card {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 60px;
+
+    text-align: left;
+}
+
+.memory-card.reverse {
+    flex-direction: row-reverse;
+}
+
+
+/* MEMORY PHOTO */
+
+.memory-photo {
+    width: 430px;
+    height: 480px;
+
+    flex-shrink: 0;
+
+    object-fit: cover;
+
+    border-radius: 30px;
+
+    border: 6px solid rgba(255, 255, 255, 0.65);
+
+    box-shadow: 0 15px 40px rgba(90, 70, 55, 0.15);
+}
+
+
+/* MEMORY TEXT */
+
+.memory-text {
+    flex: 1;
+    max-width: 450px;
+}
+
+.memory-number {
+    font-family: "Caveat", cursive;
+    font-size: 28px;
+    color: #A08A77;
+}
+
+.memory-text h3 {
+    font-size: 36px;
+    font-weight: 600;
+    margin: 12px 0 20px;
+}
+
+.memory-text p {
+    font-size: 21px;
+    color: #8E7A6A;
+    line-height: 1.8;
+}
+
+
+/* MEMORY ENDING */
+
+.memories-ending {
+    width: 100%;
+    max-width: 750px;
+
+    margin-top: 110px;
+
+    font-size: 25px;
+    color: #8E7A6A;
+    line-height: 1.8;
+
+    font-style: italic;
+}
+
+
 /* WRONG PASSWORD SHAKE */
 
 .shake {
@@ -331,6 +457,7 @@ button:hover {
 }
 
 @keyframes shake {
+
     0%,
     100% {
         transform: translateX(0);
@@ -364,7 +491,8 @@ button:hover {
 
     .story h2,
     .message h2,
-    .little-things h2 {
+    .little-things h2,
+    .memories > h2 {
         font-size: 44px;
     }
 
@@ -373,7 +501,8 @@ button:hover {
         font-size: 21px;
     }
 
-    .little-intro {
+    .little-intro,
+    .memories-intro {
         font-size: 20px;
     }
 
@@ -407,5 +536,52 @@ button:hover {
         height: 310px;
         border-radius: 120px 120px 25px 25px;
         margin-bottom: 30px;
+    }
+
+    /* MEMORIES MOBILE */
+
+    .memories {
+        padding: 80px 20px;
+    }
+
+    .memory-list {
+        width: 100%;
+        gap: 65px;
+    }
+
+    .memory-card,
+    .memory-card.reverse {
+        width: 100%;
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .memory-photo {
+        width: 100%;
+        max-width: 330px;
+        height: 390px;
+    }
+
+    .memory-text {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .memory-number {
+        font-size: 25px;
+    }
+
+    .memory-text h3 {
+        font-size: 30px;
+    }
+
+    .memory-text p {
+        font-size: 19px;
+    }
+
+    .memories-ending {
+        font-size: 21px;
+        margin-top: 80px;
     }
 }
