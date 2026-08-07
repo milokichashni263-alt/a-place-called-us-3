@@ -62,7 +62,7 @@ input {
     border-radius: 15px;
     outline: none;
     font-size: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     text-align: center;
 }
 
@@ -74,12 +74,12 @@ button {
     color: white;
     font-size: 16px;
     cursor: pointer;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 button:hover {
     transform: translateY(-2px);
-    opacity: .9;
+    opacity: 0.9;
 }
 
 
@@ -95,7 +95,7 @@ button:hover {
     opacity: 0;
     visibility: hidden;
     transform: scale(1.05);
-    transition: .8s ease;
+    transition: 0.8s ease;
     z-index: 10;
 }
 
@@ -236,14 +236,88 @@ button:hover {
 }
 
 
+/* THE LITTLE THINGS */
+
+.little-things {
+    min-height: 100vh;
+    width: 100%;
+    padding: 100px 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.little-things h2 {
+    font-size: 58px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.little-intro {
+    font-size: 23px;
+    color: #8E7A6A;
+    line-height: 1.8;
+    margin-bottom: 60px;
+}
+
+
+/* LITTLE THINGS CARDS */
+
+.things-grid {
+    width: 100%;
+    max-width: 1000px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.thing {
+    padding: 35px 30px;
+
+    background: rgba(255, 255, 255, 0.45);
+
+    border-radius: 25px;
+
+    box-shadow: 0 10px 30px rgba(90, 70, 55, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.thing:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 15px 35px rgba(90, 70, 55, 0.12);
+}
+
+.thing h3 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.thing p {
+    font-size: 19px;
+    color: #8E7A6A;
+    line-height: 1.7;
+}
+
+
 /* WRONG PASSWORD SHAKE */
 
 .shake {
-    animation: shake .3s;
+    animation: shake 0.3s;
 }
 
 @keyframes shake {
-    0%, 100% {
+    0%,
+    100% {
         transform: translateX(0);
     }
 
@@ -274,7 +348,8 @@ button:hover {
     }
 
     .story h2,
-    .message h2 {
+    .message h2,
+    .little-things h2 {
         font-size: 44px;
     }
 
@@ -283,7 +358,32 @@ button:hover {
         font-size: 21px;
     }
 
+    .little-intro {
+        font-size: 20px;
+    }
+
     .password-box {
         width: 280px;
+    }
+
+    .things-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .thing {
+        padding: 28px 22px;
+    }
+
+    .thing h3 {
+        font-size: 25px;
+    }
+
+    .thing p {
+        font-size: 18px;
+    }
+
+    .little-things {
+        padding: 80px 20px;
     }
 }
