@@ -487,24 +487,18 @@ button:hover {
 }
 
 .love-section > h2 {
-    width: 100%;
-    max-width: 1000px;
-
-    font-size: 58px;
-    font-weight: 600;
-
-    margin-bottom: 20px;
+     width: 100%;
+    max-width: 700px;
+    text-align: center;
+    font-size: 44px;
 }
 
 .love-intro {
     width: 100%;
     max-width: 700px;
-
-    font-size: 23px;
-    color: #8E7A6A;
-    line-height: 1.8;
-
-    margin-bottom: 70px;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 50px;
 }
 
 
@@ -582,7 +576,7 @@ button:hover {
     width: 100%;
     max-width: 750px;
 
-    margin-top: 100px;
+    margin: 100px auto 0;
     padding: 50px 35px;
 
     border-top: 1px solid rgba(139, 106, 85, 0.25);
