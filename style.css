@@ -747,26 +747,30 @@ button:hover {
 
     /* THINGS I LOVE */
 
-    .love-section {
-        width: 100%;
-        padding: 80px 20px;
-    }
+.love-section {
+    width: 100%;
+    padding: 80px 20px;
+}
 
-    .love-section > h2 {
-        width: auto;
-    max-width: 1000px;
+.love-section > h2 {
+    width: 100%;
+    max-width: 700px;
 
-    font-size: 58px;
+    font-size: 44px;
     font-weight: 600;
 
     margin: 0 auto 20px;
     text-align: center;
-    }
+}
 
-    .love-intro {
-        width: 100%;
-        font-size: 20px;
-        margin-bottom: 50px;
+.love-intro {
+    width: 100%;
+    max-width: 700px;
+
+    font-size: 20px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
     }
 
     .love-grid {
