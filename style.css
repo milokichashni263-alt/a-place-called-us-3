@@ -114,7 +114,6 @@ button:hover {
 }
 
 @keyframes fadeText {
-
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -124,7 +123,6 @@ button:hover {
         opacity: 1;
         transform: translateY(0);
     }
-
 }
 
 
@@ -140,7 +138,7 @@ button:hover {
 }
 
 
-/* HERO */
+/* HERO / COVER */
 
 .hero {
     min-height: 100vh;
@@ -149,7 +147,21 @@ button:hover {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 20px;
+    padding: 40px 20px;
+}
+
+.cover-photo {
+    width: 300px;
+    height: 380px;
+    object-fit: cover;
+
+    border-radius: 150px 150px 30px 30px;
+
+    margin-bottom: 35px;
+
+    box-shadow: 0 15px 40px rgba(90, 70, 55, 0.18);
+
+    border: 6px solid rgba(255, 255, 255, 0.65);
 }
 
 .hero h1 {
@@ -170,7 +182,6 @@ button:hover {
 }
 
 @keyframes float {
-
     0% {
         transform: translateY(0);
     }
@@ -182,7 +193,6 @@ button:hover {
     100% {
         transform: translateY(0);
     }
-
 }
 
 
@@ -321,7 +331,6 @@ button:hover {
 }
 
 @keyframes shake {
-
     0%,
     100% {
         transform: translateX(0);
@@ -334,7 +343,6 @@ button:hover {
     75% {
         transform: translateX(8px);
     }
-
 }
 
 
@@ -394,4 +402,10 @@ button:hover {
         padding: 80px 20px;
     }
 
+    .cover-photo {
+        width: 240px;
+        height: 310px;
+        border-radius: 120px 120px 25px 25px;
+        margin-bottom: 30px;
+    }
 }
