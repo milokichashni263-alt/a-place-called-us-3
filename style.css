@@ -1,231 +1,289 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    font-family:"Cormorant Garamond",serif;
-    background:#F8F5F1;
-    color:#5A4637;
+body {
+    font-family: "Cormorant Garamond", serif;
+    background: #F8F5F1;
+    color: #5A4637;
 }
 
-.background{
-    position:fixed;
-    inset:0;
-    background:linear-gradient(180deg,#F8F5F1,#EFE6DC);
-    z-index:-1;
+.background {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(180deg, #F8F5F1, #EFE6DC);
+    z-index: -1;
 }
 
 
 /* PASSWORD PAGE */
 
-.container{
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:20px;
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
 }
 
-
-.moon{
-    font-size:40px;
-    color:#8B6A55;
-    margin-bottom:20px;
+.moon {
+    font-size: 40px;
+    color: #8B6A55;
+    margin-bottom: 20px;
 }
 
-
-.title{
-    font-size:68px;
-    font-weight:600;
-    margin-bottom:15px;
+.title {
+    font-size: 68px;
+    font-weight: 600;
+    margin-bottom: 15px;
 }
 
-
-.quote{
-    font-size:20px;
-    color:#8E7A6A;
-    line-height:1.8;
-    margin-bottom:40px;
+.quote {
+    font-size: 20px;
+    color: #8E7A6A;
+    line-height: 1.8;
+    margin-bottom: 40px;
 }
 
-
-.password-box{
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-    width:320px;
+.password-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 320px;
 }
 
-
-input{
-    padding:16px;
-    border:none;
-    border-radius:15px;
-    outline:none;
-    font-size:16px;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-    text-align:center;
+input {
+    padding: 16px;
+    border: none;
+    border-radius: 15px;
+    outline: none;
+    font-size: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+    text-align: center;
 }
 
-
-button{
-    padding:16px;
-    border:none;
-    border-radius:15px;
-    background:#8B6A55;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
-    transition:.3s;
+button {
+    padding: 16px;
+    border: none;
+    border-radius: 15px;
+    background: #8B6A55;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s;
 }
 
-
-button:hover{
-    background:#755644;
+button:hover {
+    transform: translateY(-2px);
+    opacity: .9;
 }
-
 
 
 /* WELCOME SCREEN */
 
-.welcome-screen{
-    position:fixed;
-    inset:0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#F8F5F1;
-    opacity:0;
-    visibility:hidden;
-    transform:scale(1.05);
-    transition:.8s ease;
+.welcome-screen {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #F8F5F1;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.05);
+    transition: .8s ease;
+    z-index: 10;
 }
 
-
-.welcome-screen.show{
-    opacity:1;
-    visibility:visible;
-    transform:scale(1);
+.welcome-screen.show {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
 }
 
-
-.welcome-screen h2{
-    font-size:56px;
-    text-align:center;
-    color:#5A4637;
-    font-weight:600;
-    animation:fadeText 1.2s ease;
+.welcome-screen h2 {
+    font-size: 56px;
+    text-align: center;
+    color: #5A4637;
+    font-weight: 600;
+    animation: fadeText 1.2s ease;
 }
 
-
-@keyframes fadeText{
-
-    from{
-        opacity:0;
-        transform:translateY(20px);
+@keyframes fadeText {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
 
-    to{
-        opacity:1;
-        transform:translateY(0);
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-
 }
-
 
 
 /* HOME PAGE AFTER PASSWORD */
 
-.home-page{
-    display:none;
-    min-height:100vh;
+.home-page {
+    display: none;
+    min-height: 100vh;
+}
+
+.home-page.show {
+    display: block;
 }
 
 
-.home-page.show{
-    display:block;
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
 }
 
-
-
-.hero{
-    height:100vh;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-
-    text-align:center;
-    padding:20px;
+.hero h1 {
+    font-size: 70px;
+    margin-bottom: 25px;
 }
 
-
-
-.hero h1{
-    font-size:70px;
-    margin-bottom:25px;
+.hero-text {
+    font-size: 22px;
+    color: #8E7A6A;
+    line-height: 1.8;
 }
 
-
-
-.hero-text{
-    font-size:22px;
-    color:#8E7A6A;
-    line-height:1.8;
+.scroll-down {
+    margin-top: 90px;
+    color: #A08A77;
+    animation: float 2s infinite;
 }
 
-
-
-.scroll-down{
-    margin-top:90px;
-    color:#A08A77;
-    animation:float 2s infinite;
-}
-
-
-
-@keyframes float{
-
-    0%{
-        transform:translateY(0);
+@keyframes float {
+    0% {
+        transform: translateY(0);
     }
 
-    50%{
-        transform:translateY(10px);
+    50% {
+        transform: translateY(10px);
     }
 
-    100%{
-        transform:translateY(0);
+    100% {
+        transform: translateY(0);
     }
-
 }
 
+
+/* OUR STORY */
+
+.story {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 30px;
+}
+
+.story h2 {
+    font-size: 58px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.story p {
+    max-width: 700px;
+    font-size: 25px;
+    color: #8E7A6A;
+    line-height: 1.8;
+}
+
+
+/* A LITTLE NOTE */
+
+.message {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 30px;
+}
+
+.message h2 {
+    font-size: 58px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.message p {
+    max-width: 700px;
+    font-size: 25px;
+    color: #8E7A6A;
+    line-height: 1.8;
+}
 
 
 /* WRONG PASSWORD SHAKE */
 
-.shake{
-    animation:shake .3s;
+.shake {
+    animation: shake .3s;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-8px);
+    }
+
+    75% {
+        transform: translateX(8px);
+    }
 }
 
 
-@keyframes shake{
+/* MOBILE */
 
-    0%,100%{
-        transform:translateX(0);
+@media (max-width: 600px) {
+
+    .title {
+        font-size: 48px;
     }
 
-    25%{
-        transform:translateX(-8px);
+    .hero h1 {
+        font-size: 48px;
     }
 
-    75%{
-        transform:translateX(8px);
+    .welcome-screen h2 {
+        font-size: 42px;
     }
 
+    .story h2,
+    .message h2 {
+        font-size: 44px;
+    }
+
+    .story p,
+    .message p {
+        font-size: 21px;
+    }
+
+    .password-box {
+        width: 280px;
+    }
 }
