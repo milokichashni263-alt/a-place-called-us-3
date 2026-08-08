@@ -871,3 +871,15 @@ button:hover {
         font-size: 19px;
     }
 }
+/* =========================
+   PROPOSAL PHOTO - RECTANGLE
+========================= */
+
+.thing:last-child img {
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    border-radius: 20px;
+}
