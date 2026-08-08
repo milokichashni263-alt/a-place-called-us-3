@@ -1,3 +1,7 @@
+/* =========================
+   GLOBAL
+========================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -466,11 +470,13 @@ button:hover {
 }
 
 
-/* ================================================= */
-/* THINGS I LOVE ABOUT YOU */
-/* ================================================= */
+/* =================================================
+   THINGS I LOVE ABOUT YOU
+   IMPORTANT: SUPPORTS BOTH CLASS NAMES
+================================================= */
 
-.love-section {
+.love-section,
+.love-things {
     min-height: 100vh;
     width: 100%;
     padding: 120px 30px;
@@ -481,46 +487,59 @@ button:hover {
     align-items: center;
 
     text-align: center;
+
     overflow: hidden;
 }
 
-/* THINGS I LOVE HEADING */
 
-.love-section h2 {
+/* HEADING */
+
+.love-section > h2,
+.love-things > h2 {
     display: block;
+
     width: 100%;
     max-width: 1000px;
 
     margin: 0 auto 20px auto;
     padding: 0;
 
-    text-align: center;
+    text-align: center !important;
+
     font-size: 58px;
     font-weight: 600;
 
-    position: relative;
-    left: 0;
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
 }
+
 
 /* INTRO */
 
-.love-intro {
+.love-section .love-intro,
+.love-things .love-intro {
     display: block;
+
     width: 100%;
     max-width: 700px;
 
     margin: 0 auto 70px auto;
     padding: 0;
 
-    text-align: center;
+    text-align: center !important;
+
     font-size: 23px;
     color: #8E7A6A;
     line-height: 1.8;
 }
 
+
 /* LOVE GRID */
 
-.love-grid {
+.love-section .love-grid,
+.love-things .love-grid {
     width: 100%;
     max-width: 1050px;
 
@@ -531,6 +550,7 @@ button:hover {
 
     margin: 0 auto;
 }
+
 
 /* LOVE CARD */
 
@@ -553,7 +573,6 @@ button:hover {
 
 .love-card:hover {
     transform: translateY(-6px);
-
     box-shadow: 0 15px 35px rgba(90, 70, 55, 0.13);
 }
 
@@ -658,7 +677,8 @@ button:hover {
     .message h2,
     .little-things h2,
     .memories > h2,
-    .love-section h2 {
+    .love-section > h2,
+    .love-things > h2 {
         font-size: 44px;
     }
 
@@ -678,7 +698,9 @@ button:hover {
     }
 
 
-    /* LITTLE THINGS */
+    /* =========================
+       LITTLE THINGS
+    ========================= */
 
     .things-grid {
         grid-template-columns: 1fr;
@@ -702,7 +724,9 @@ button:hover {
     }
 
 
-    /* HERO */
+    /* =========================
+       HERO
+    ========================= */
 
     .cover-photo {
         width: 240px;
@@ -712,7 +736,9 @@ button:hover {
     }
 
 
-    /* MEMORIES */
+    /* =========================
+       MEMORIES
+    ========================= */
 
     .memories {
         padding: 80px 20px;
@@ -760,38 +786,61 @@ button:hover {
     }
 
 
-    /* THINGS I LOVE */
+    /* =========================
+       THINGS I LOVE
+    ========================= */
 
-.love-section {
-    width: 100%;
-    padding: 80px 20px;
-}
+    .love-section,
+    .love-things {
+        width: 100%;
+        min-height: 100vh;
+        padding: 80px 20px;
 
-.love-section > h2 {
-    width: 100%;
-    max-width: 1050px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
-    font-size: 58px;
-    font-weight: 600;
-
-    margin: 0 auto 20px;
-    text-align: center;
-}
-}
-
-.love-intro {
-    width: 100%;
-    max-width: 700px;
-
-    font-size: 20px;
-    margin: 0 auto 50px;
-    text-align: center;
-}
+        text-align: center;
     }
 
-    .love-grid {
+    .love-section > h2,
+    .love-things > h2 {
         width: 100%;
+        max-width: 100%;
+
+        font-size: 44px;
+        font-weight: 600;
+
+        margin: 0 auto 20px auto;
+        padding: 0;
+
+        text-align: center !important;
+
+        position: static !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+    }
+
+    .love-section .love-intro,
+    .love-things .love-intro {
+        width: 100%;
+        max-width: 700px;
+
+        font-size: 20px;
+
+        margin: 0 auto 50px auto;
+
+        text-align: center !important;
+    }
+
+    .love-section .love-grid,
+    .love-things .love-grid {
+        width: 100%;
+
         grid-template-columns: 1fr;
+
         gap: 20px;
     }
 
