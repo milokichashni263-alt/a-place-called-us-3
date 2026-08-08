@@ -484,27 +484,38 @@ button:hover {
     overflow: hidden;
 }
 
-.love-section > h2 {
-    width: fit-content;
-    max-width: 100%;
+/* THINGS I LOVE HEADING */
 
+.love-section h2 {
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto 20px auto;
+    padding: 0;
+
+    text-align: center;
     font-size: 58px;
     font-weight: 600;
 
-    margin: 0 auto 20px;
-    text-align: center;
+    position: relative;
+    left: 0;
 }
 
+/* INTRO */
+
 .love-intro {
+    display: block;
     width: 100%;
     max-width: 700px;
 
+    margin: 0 auto 70px auto;
+    padding: 0;
+
+    text-align: center;
     font-size: 23px;
     color: #8E7A6A;
     line-height: 1.8;
-
-    margin: 0 auto 70px;
-    text-align: center;
 }
 
 /* LOVE GRID */
@@ -647,7 +658,7 @@ button:hover {
     .message h2,
     .little-things h2,
     .memories > h2,
-    .love-section > h2 {
+    .love-section h2 {
         font-size: 44px;
     }
 
