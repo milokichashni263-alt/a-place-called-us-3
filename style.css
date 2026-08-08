@@ -758,13 +758,14 @@ button:hover {
 
 .love-section > h2 {
     width: 100%;
-    max-width: 700px;
+    max-width: 1050px;
 
-    font-size: 44px;
+    font-size: 58px;
     font-weight: 600;
 
     margin: 0 auto 20px;
     text-align: center;
+}
 }
 
 .love-intro {
@@ -809,18 +810,4 @@ button:hover {
     .love-ending p {
         font-size: 19px;
     }
-}
-.love-section > h2 {
-    position: relative !important;
-    left: 0 !important;
-    right: auto !important;
-    transform: none !important;
-
-    width: 100% !important;
-    max-width: 1050px !important;
-
-    margin-left: auto !important;
-    margin-right: auto !important;
-
-    text-align: center !important;
 }
