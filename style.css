@@ -699,6 +699,27 @@ button:hover {
 
 
     /* =========================
+       MEMORY PHOTOS - MOBILE
+    ========================= */
+
+    .memory-photo {
+        width: 100%;
+        max-width: 330px;
+        height: 390px;
+        object-fit: cover;
+    }
+
+    .memory-photo.proposal-photo {
+        width: 100% !important;
+        max-width: 330px;
+        height: 300px !important;
+        object-fit: contain !important;
+        object-position: center;
+        border-radius: 20px !important;
+        padding: 8px;
+    }
+
+    /* =========================
        LITTLE THINGS
     ========================= */
 
@@ -871,15 +892,21 @@ button:hover {
         font-size: 19px;
     }
 }
+
 /* =========================
    PROPOSAL PHOTO - RECTANGLE
 ========================= */
 
-.thing:last-child img {
-    width: 100%;
-    height: 400px;
-    object-fit: contain;
+.memory-photo.proposal-photo {
+    width: 430px !important;
+    height: 360px !important;
+
+    object-fit: contain !important;
     object-position: center;
-    display: block;
-    border-radius: 20px;
+
+    border-radius: 20px !important;
+
+    background: rgba(255, 255, 255, 0.45);
+
+    padding: 8px;
 }
