@@ -1,9 +1,4 @@
-
 ```javascript
-// =========================
-// PASSWORD
-// =========================
-
 const passwordInput = document.getElementById("password");
 const unlockButton = document.getElementById("unlockButton");
 
@@ -15,7 +10,6 @@ const backgroundMusic = document.getElementById("backgroundMusic");
 
 const correctPassword = "081929";
 
-
 unlockButton.addEventListener("click", unlock);
 
 passwordInput.addEventListener("keydown", function (e) {
@@ -24,21 +18,24 @@ passwordInput.addEventListener("keydown", function (e) {
     }
 });
 
-
 function unlock() {
 
     if (passwordInput.value === correctPassword) {
 
+        // Hide password page
         container.style.display = "none";
 
+        // Show welcome screen
         welcomeScreen.classList.add("show");
 
+        // Start background music
         if (backgroundMusic) {
             backgroundMusic.play().catch(function () {
                 console.log("Music could not autoplay.");
             });
         }
 
+        // Move to home page after welcome screen
         setTimeout(function () {
 
             welcomeScreen.classList.remove("show");
@@ -54,13 +51,14 @@ function unlock() {
 
     } else {
 
+        // Shake input
         passwordInput.animate(
             [
                 { transform: "translateX(-8px)" },
                 { transform: "translateX(8px)" },
                 { transform: "translateX(-8px)" },
                 { transform: "translateX(8px)" },
-                { transform: "translateX(0)" }
+                { transform: "translateX(0px)" }
             ],
             {
                 duration: 350
@@ -74,81 +72,76 @@ function unlock() {
             passwordInput.placeholder = "Our little secret...";
         }, 2000);
     }
+
 }
 
 
-// =========================
-// QUIZ
-// HOW WELL DO YOU KNOW MALAI
-// =========================
+/* =========================
+QUIZ
+HOW WELL DO YOU KNOW MALAI
+========================= */
 
-const quizQuestions =
-    document.querySelectorAll(".quiz-question");
+const quizQuestions = document.querySelectorAll(".quiz-question");
 
-const nextButtons =
-    document.querySelectorAll(".next-question");
+const nextButtons = document.querySelectorAll(".next-question");
 
-const finishButton =
-    document.querySelector(".finish-quiz");
+const finishButton = document.querySelector(".finish-quiz");
 
 let currentQuestion = 0;
 
 
-// =========================
-// QUIZ OPTIONS
-// =========================
+/* =========================
+OPTION QUESTIONS
+========================= */
 
 document.querySelectorAll(".quiz-option").forEach(function (option) {
 
     option.addEventListener("click", function () {
 
-        const question =
-            option.closest(".quiz-question");
+        const question = option.closest(".quiz-question");
 
         if (!question) return;
 
-
-        // Remove old selection
+        // Remove previous selection
         question.querySelectorAll(".quiz-option").forEach(function (item) {
             item.classList.remove("selected");
         });
 
-
-        // Select clicked option
+        // Select clicked answer
         option.classList.add("selected");
 
 
-        // Feedback
-        const feedback =
-            question.querySelector(".quiz-feedback");
+        const feedback = question.querySelector(".quiz-feedback");
 
-        if (!feedback) return;
+        if (feedback) {
 
+            const isQuestionFive =
+                question.dataset.question === "5";
 
-        const questionNumber =
-            question.dataset.question;
+            if (isQuestionFive) {
 
+                feedback.textContent =
+                    "Interesting choice... 👀";
 
-        // Question 5 has no correct answer
-        if (questionNumber === "5") {
+            } else {
 
-            feedback.textContent =
-                "Interesting choice... 👀";
+                const correct =
+                    option.dataset.correct === "true";
 
-            return;
-        }
+                if (correct) {
 
+                    feedback.textContent =
+                        "Okayyy, you actually know me. 🤍";
 
-        // Other questions
-        if (option.dataset.correct === "true") {
+                } else {
 
-            feedback.textContent =
-                "Okayyy, you actually know me. 🤍";
+                    feedback.textContent =
+                        "Hmm... we might have to discuss this one. 😭";
 
-        } else {
+                }
 
-            feedback.textContent =
-                "Hmm... we might have to discuss this one. 😭";
+            }
+
         }
 
     });
@@ -156,9 +149,9 @@ document.querySelectorAll(".quiz-option").forEach(function (option) {
 });
 
 
-// =========================
-// NEXT BUTTONS
-// =========================
+/* =========================
+NEXT BUTTONS
+========================= */
 
 nextButtons.forEach(function (button) {
 
@@ -167,21 +160,20 @@ nextButtons.forEach(function (button) {
         const current =
             quizQuestions[currentQuestion];
 
-        if (!current) return;
+        const selected =
+            current.querySelector(".quiz-option");
+
+        const input =
+            current.querySelector(".quiz-answer");
 
 
-        // Check MCQ
-        const options =
-            current.querySelectorAll(".quiz-option");
+        // For multiple choice questions
+        if (selected) {
 
-
-        if (options.length > 0) {
-
-            const selected =
+            const hasSelected =
                 current.querySelector(".quiz-option.selected");
 
-
-            if (!selected) {
+            if (!hasSelected) {
 
                 const feedback =
                     current.querySelector(".quiz-feedback");
@@ -190,42 +182,43 @@ nextButtons.forEach(function (button) {
 
                     feedback.textContent =
                         "You have to choose one first, Humpty. 😭";
+
                 }
 
                 return;
+
             }
+
         }
 
 
-        // Check written answer
-        const answer =
-            current.querySelector(".quiz-answer");
+        // For written answer questions
+        if (input) {
 
+            if (input.value.trim() === "") {
 
-        if (answer && answer.value.trim() === "") {
+                const feedback =
+                    current.querySelector(".quiz-feedback");
 
-            const feedback =
-                current.querySelector(".quiz-feedback");
+                if (feedback) {
 
-            if (feedback) {
+                    feedback.textContent =
+                        "Excuse me... answer the question. 👀";
 
-                feedback.textContent =
-                    "Excuse me... answer the question. 👀";
+                }
+
+                return;
+
             }
 
-            return;
         }
 
 
-        // Hide current
+        // Move to next question
         current.classList.remove("active");
 
-
-        // Next question
         currentQuestion++;
 
-
-        // Show next question
         if (quizQuestions[currentQuestion]) {
 
             quizQuestions[currentQuestion]
@@ -238,9 +231,9 @@ nextButtons.forEach(function (button) {
 });
 
 
-// =========================
-// FINISH QUIZ
-// =========================
+/* =========================
+FINISH QUIZ
+========================= */
 
 if (finishButton) {
 
@@ -249,15 +242,11 @@ if (finishButton) {
         const current =
             quizQuestions[currentQuestion];
 
-        if (!current) return;
-
-
-        const answer =
+        const input =
             current.querySelector(".quiz-answer");
 
 
-        // Make sure final answer isn't empty
-        if (answer && answer.value.trim() === "") {
+        if (input && input.value.trim() === "") {
 
             const feedback =
                 current.querySelector(".quiz-feedback");
@@ -266,20 +255,19 @@ if (finishButton) {
 
                 feedback.textContent =
                     "You can't escape this one. Answer it. 😭";
+
             }
 
             return;
+
         }
 
 
-        // Hide final question
         current.classList.remove("active");
 
 
-        // Show result
         const result =
             document.querySelector(".quiz-result");
-
 
         if (result) {
 
@@ -290,3 +278,4 @@ if (finishButton) {
     });
 
 }
+```
