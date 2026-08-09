@@ -697,7 +697,421 @@ button:hover {
         width: 280px;
     }
 
+/* =========================
+   HOME MUSIC
+========================= */
 
+.home-music {
+    margin-top: 45px;
+    text-align: center;
+}
+
+.music-note {
+    font-size: 28px;
+    color: #8B6A55;
+}
+
+.home-music p {
+    margin-top: 8px;
+    font-size: 15px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #A08A77;
+}
+
+.home-music h3 {
+    margin-top: 8px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.music-line {
+    width: 100px;
+    height: 1px;
+    background: rgba(139, 106, 85, 0.3);
+    margin: 12px auto;
+}
+
+.music-hint {
+    font-size: 14px;
+    color: #A08A77;
+    font-style: italic;
+}
+
+
+/* =========================
+   JOURNAL STICKERS
+========================= */
+
+.sticker {
+    position: absolute;
+    z-index: 2;
+    font-size: 45px;
+    text-align: center;
+    transform: rotate(-8deg);
+    pointer-events: none;
+}
+
+.sticker span {
+    display: block;
+    font-family: "Caveat", cursive;
+    font-size: 17px;
+    color: #8B6A55;
+    white-space: nowrap;
+    margin-top: -5px;
+}
+
+.cat-sticker {
+    transform: rotate(7deg);
+}
+
+.panda-sticker {
+    transform: rotate(-7deg);
+}
+
+
+/* STICKER POSITIONS */
+
+.hero,
+.story,
+.message,
+.little-things,
+.memories,
+.love-section,
+.playlist-section,
+.final-section {
+    position: relative;
+}
+
+.sticker-hero {
+    right: 8%;
+    bottom: 15%;
+}
+
+.sticker-story {
+    left: 8%;
+    top: 18%;
+}
+
+.sticker-note {
+    right: 9%;
+    top: 20%;
+}
+
+.sticker-things {
+    left: 7%;
+    top: 12%;
+}
+
+.sticker-memory {
+    right: 7%;
+    top: 10%;
+}
+
+.sticker-love {
+    left: 7%;
+    top: 9%;
+}
+
+
+/* =========================
+   PLAYLIST SECTION
+========================= */
+
+.playlist-section {
+    min-height: 100vh;
+    width: 100%;
+    padding: 120px 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.playlist-small-title {
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: #A08A77;
+    margin-bottom: 15px;
+}
+
+.playlist-section > h2 {
+    font-size: 58px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.playlist-intro {
+    font-size: 23px;
+    color: #8E7A6A;
+    line-height: 1.8;
+    margin-bottom: 55px;
+}
+
+.playlist-card {
+    width: 100%;
+    max-width: 600px;
+
+    padding: 55px 40px;
+
+    background: rgba(255, 255, 255, 0.48);
+
+    border-radius: 30px;
+
+    box-shadow: 0 15px 40px rgba(90, 70, 55, 0.1);
+
+    text-align: center;
+}
+
+.playlist-icon {
+    font-family: "Caveat", cursive;
+    font-size: 45px;
+    color: #8B6A55;
+    margin-bottom: 10px;
+}
+
+.playlist-label {
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #A08A77;
+}
+
+.playlist-card h3 {
+    font-size: 38px;
+    font-weight: 600;
+    margin: 15px 0;
+}
+
+.playlist-text {
+    font-size: 20px;
+    color: #8E7A6A;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.spotify-button {
+    display: inline-block;
+
+    padding: 15px 30px;
+
+    border-radius: 30px;
+
+    background: #8B6A55;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 18px;
+
+    transition: 0.3s ease;
+}
+
+.spotify-button:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
+
+.playlist-note {
+    margin-top: 25px;
+    font-family: "Caveat", cursive;
+    font-size: 20px;
+    color: #A08A77;
+}
+
+.playlist-ending {
+    margin-top: 70px;
+    font-size: 22px;
+    color: #8E7A6A;
+    line-height: 1.8;
+    font-style: italic;
+}
+
+
+/* =========================
+   FINAL SECTION
+========================= */
+
+.final-section {
+    min-height: 100vh;
+    width: 100%;
+    padding: 100px 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.final-small {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: #A08A77;
+    margin-bottom: 20px;
+}
+
+.final-section h2 {
+    font-size: 65px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.final-text {
+    max-width: 650px;
+    font-size: 25px;
+    color: #8E7A6A;
+    line-height: 1.8;
+}
+
+.final-heart {
+    font-size: 55px;
+    color: #8B6A55;
+    margin-top: 35px;
+}
+
+.final-signoff {
+    font-family: "Caveat", cursive;
+    font-size: 28px;
+    color: #8B6A55;
+    margin-top: 15px;
+}
+
+.sticker-final {
+    right: 9%;
+    top: 15%;
+}
+
+.sticker-playlist {
+    left: 8%;
+    top: 12%;
+}
+
+.sticker-playlist-bottom {
+    right: 8%;
+    bottom: 12%;
+}
+
+
+/* =========================
+   MOBILE - NEW SECTIONS
+========================= */
+
+@media (max-width: 700px) {
+
+    .home-music {
+        margin-top: 35px;
+    }
+
+    .home-music h3 {
+        font-size: 22px;
+    }
+
+    .sticker {
+        font-size: 32px;
+    }
+
+    .sticker span {
+        font-size: 14px;
+    }
+
+    .sticker-hero {
+        right: 4%;
+        bottom: 8%;
+    }
+
+    .sticker-story {
+        left: 3%;
+        top: 10%;
+    }
+
+    .sticker-note {
+        right: 3%;
+        top: 12%;
+    }
+
+    .sticker-things {
+        left: 3%;
+        top: 7%;
+    }
+
+    .sticker-memory {
+        right: 3%;
+        top: 6%;
+    }
+
+    .sticker-love {
+        left: 3%;
+        top: 5%;
+    }
+
+    .playlist-section {
+        padding: 80px 20px;
+    }
+
+    .playlist-section > h2 {
+        font-size: 44px;
+    }
+
+    .playlist-intro {
+        font-size: 20px;
+    }
+
+    .playlist-card {
+        padding: 40px 25px;
+    }
+
+    .playlist-card h3 {
+        font-size: 31px;
+    }
+
+    .playlist-text {
+        font-size: 18px;
+    }
+
+    .spotify-button {
+        font-size: 17px;
+        padding: 14px 24px;
+    }
+
+    .playlist-ending {
+        font-size: 19px;
+        margin-top: 55px;
+    }
+
+    .sticker-playlist {
+        left: 3%;
+        top: 5%;
+    }
+
+    .sticker-playlist-bottom {
+        right: 3%;
+        bottom: 6%;
+    }
+
+    .final-section {
+        padding: 80px 20px;
+    }
+
+    .final-section h2 {
+        font-size: 46px;
+    }
+
+    .final-text {
+        font-size: 21px;
+    }
+
+    .sticker-final {
+        right: 4%;
+        top: 8%;
+    }
+
+}
     /* =========================
        MEMORY PHOTOS - MOBILE
     ========================= */
