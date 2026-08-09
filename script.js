@@ -270,4 +270,3 @@ if (finishButton) {
 
     });
 }
-ye wala js mita doon?
