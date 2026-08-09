@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -17,20 +15,15 @@
     >
 
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 
 <body>
 
-    <div class="background"></div>
-
-
     <!-- =========================
          PASSWORD PAGE
-    ========================= -->
+    ========================== -->
 
-    <div class="container">
+    <main class="container">
 
         <p class="moon">☾</p>
 
@@ -44,30 +37,31 @@
             ours began in a little college group chat.
         </p>
 
-
         <div class="password-box">
 
             <input
                 type="password"
                 id="password"
                 placeholder="Our little secret..."
+                autocomplete="off"
             >
 
             <button id="unlockButton">
                 ♡ Unlock ♡
             </button>
 
+            <p id="passwordMessage" class="password-message"></p>
+
         </div>
 
-    </div>
-
+    </main>
 
 
     <!-- =========================
          WELCOME SCREEN
-    ========================= -->
+    ========================== -->
 
-    <div class="welcome-screen" id="welcomeScreen">
+    <div id="welcomeScreen" class="welcome-screen">
 
         <h2>
             Welcome home,
@@ -78,25 +72,21 @@
     </div>
 
 
-
     <!-- =========================
          HOME PAGE
-    ========================= -->
+    ========================== -->
 
-    <main class="home-page" id="homePage">
-
+    <div id="homePage" class="home-page">
 
         <!-- BACKGROUND MUSIC -->
-
         <audio id="backgroundMusic" loop preload="auto">
             <source src="the-night-we-met.mp3.mp3" type="audio/mpeg">
         </audio>
 
 
-
         <!-- =========================
              HERO
-        ========================= -->
+        ========================== -->
 
         <section class="hero">
 
@@ -121,34 +111,25 @@
             </div>
 
 
-            <div class="sticker sticker-hero panda-sticker">
+            <!-- STICKER -->
 
-                🐼
-
-                <span>
-                    mwahhh :p
-                </span>
-
+            <div class="sticker sticker-hero">
+                <img src="duck-sticker.png" alt="cute duck love sticker">
+                <span>mwahhh :p</span>
             </div>
 
         </section>
 
 
-
         <!-- =========================
              OUR STORY
-        ========================= -->
+        ========================== -->
 
         <section class="story">
 
-            <div class="sticker sticker-story cat-sticker">
-
-                🐱
-
-                <span>
-                    hehe
-                </span>
-
+            <div class="sticker sticker-story">
+                <img src="cat-sticker.png" alt="cute cat love sticker">
+                <span>hehe</span>
             </div>
 
             <h2>
@@ -156,7 +137,6 @@
             </h2>
 
             <p>
-
                 It started in a college group chat,
                 <br>
                 with no idea that it would lead us here.
@@ -172,27 +152,20 @@
                 And if there's one thing I'd choose again,
                 <br>
                 it would be finding you.
-
             </p>
 
         </section>
 
 
-
         <!-- =========================
              A LITTLE NOTE
-        ========================= -->
+        ========================== -->
 
         <section class="message">
 
-            <div class="sticker sticker-note panda-sticker">
-
-                🐼
-
-                <span>
-                    hope you love it ♡
-                </span>
-
+            <div class="sticker sticker-note">
+                <img src="duck-sticker.png" alt="cute duck love sticker">
+                <span>hope you love it ♡</span>
             </div>
 
             <h2>
@@ -200,31 +173,23 @@
             </h2>
 
             <p>
-
                 Every memory with you is a little piece of happiness.
                 <br>
                 This is our little place called us.
-
             </p>
 
         </section>
 
 
-
         <!-- =========================
              THE LITTLE THINGS
-        ========================= -->
+        ========================== -->
 
         <section class="little-things">
 
-            <div class="sticker sticker-things cat-sticker">
-
-                🐱
-
-                <span>
-                    literally us
-                </span>
-
+            <div class="sticker sticker-things">
+                <img src="cat-sticker.png" alt="cute cat love sticker">
+                <span>literally us</span>
             </div>
 
             <h2>
@@ -232,70 +197,43 @@
             </h2>
 
             <p class="little-intro">
-
                 It's never really the big moments that make us.
                 <br>
                 It's the little things.
-
             </p>
-
 
             <div class="things-grid">
 
-
                 <div class="thing">
-
-                    <h3>
-                        Our Random Conversations
-                    </h3>
-
+                    <h3>Our Random Conversations</h3>
                     <p>
                         The conversations that start with nothing
                         and somehow turn into everything.
                     </p>
-
                 </div>
 
-
                 <div class="thing">
-
-                    <h3>
-                        Our Weird Side
-                    </h3>
-
+                    <h3>Our Weird Side</h3>
                     <p>
                         The fact that we can be completely ourselves,
                         even when we're being ridiculously weird.
                     </p>
-
                 </div>
 
-
                 <div class="thing">
-
-                    <h3>
-                        Our Little World
-                    </h3>
-
+                    <h3>Our Little World</h3>
                     <p>
                         The jokes, the nicknames, the memories,
                         and all the tiny things only we understand.
                     </p>
-
                 </div>
 
-
                 <div class="thing">
-
-                    <h3>
-                        Just You
-                    </h3>
-
+                    <h3>Just You</h3>
                     <p>
                         Somehow, out of all the people in the world,
                         you're the person who became home to me.
                     </p>
-
                 </div>
 
             </div>
@@ -303,40 +241,30 @@
         </section>
 
 
-
         <!-- =========================
              OUR MEMORIES
-        ========================= -->
+        ========================== -->
 
         <section class="memories">
 
-            <div class="sticker sticker-memory panda-sticker">
-
-                🐼
-
-                <span>
-                    yaadeinn hayeee!!
-                </span>
-
+            <div class="sticker sticker-memory">
+                <img src="duck-sticker.png" alt="cute duck love sticker">
+                <span>yaadeinn hayeee!!</span>
             </div>
-
 
             <h2>
                 Our Memories
             </h2>
 
-
             <p class="memories-intro">
-
                 Kuch moments bas pictures nahi hote,
                 <br>
                 they become little pieces of us.
-
             </p>
-
 
             <div class="memory-list">
 
+                <!-- MEMORY 1 -->
 
                 <div class="memory-card">
 
@@ -348,22 +276,18 @@
 
                     <div class="memory-text">
 
-                        <span class="memory-number">
-                            01
-                        </span>
+                        <span class="memory-number">01</span>
 
                         <h3>
                             The Beginning
                         </h3>
 
                         <p>
-
                             College ki woh random si picture...
                             <br><br>
 
                             Little did we know ke iske baad
                             itne saare memories banne wale thay.
-
                         </p>
 
                     </div>
@@ -371,6 +295,7 @@
                 </div>
 
 
+                <!-- MEMORY 2 -->
 
                 <div class="memory-card reverse">
 
@@ -382,23 +307,19 @@
 
                     <div class="memory-text">
 
-                        <span class="memory-number">
-                            02
-                        </span>
+                        <span class="memory-number">02</span>
 
                         <h3>
                             Your Hand, My Favourite Detail
                         </h3>
 
                         <p>
-
                             Tumhara mera haath pakarna,
                             meri ungli mein tumhari ring...
                             <br><br>
 
                             It was such a small moment,
                             but somehow I remember how it felt.
-
                         </p>
 
                     </div>
@@ -406,6 +327,7 @@
                 </div>
 
 
+                <!-- MEMORY 3 -->
 
                 <div class="memory-card">
 
@@ -417,16 +339,13 @@
 
                     <div class="memory-text">
 
-                        <span class="memory-number">
-                            03
-                        </span>
+                        <span class="memory-number">03</span>
 
                         <h3>
                             One Biscuit Was Clearly Not Enough 😭
                         </h3>
 
                         <p>
-
                             Maine sirf ONE biscuit maanga tha.
                             <br>
 
@@ -435,7 +354,6 @@
 
                             Tumhare saath even the stupidest moments
                             become my favourite memories.
-
                         </p>
 
                     </div>
@@ -443,6 +361,7 @@
                 </div>
 
 
+                <!-- MEMORY 4 -->
 
                 <div class="memory-card reverse">
 
@@ -454,16 +373,13 @@
 
                     <div class="memory-text">
 
-                        <span class="memory-number">
-                            04
-                        </span>
+                        <span class="memory-number">04</span>
 
                         <h3>
                             The Proposal
                         </h3>
 
                         <p>
-
                             Tum call pe knee par,
                             haath mein bouquet lekar mujhe propose
                             kar rahe thay...
@@ -471,7 +387,6 @@
 
                             And somehow, even through a screen,
                             you made that moment feel so real.
-
                         </p>
 
                     </div>
@@ -480,328 +395,181 @@
 
             </div>
 
-
             <p class="memories-ending">
-
                 Maybe one day we'll forget the exact dates,
                 places and little details...
                 <br><br>
 
                 but I hope we never forget
                 how these moments made us feel.
-
             </p>
 
         </section>
 
 
-
         <!-- =========================
              THINGS I LOVE ABOUT YOU
-        ========================= -->
+        ========================== -->
 
         <section class="love-section">
 
-            <div class="sticker sticker-love cat-sticker">
-
-                🐱
-
-                <span>
-                    remember these wen u get confused bout yourself &lt;3
-                </span>
-
+            <div class="sticker sticker-love">
+                <img src="cat-sticker.png" alt="cute cat love sticker">
+                <span>remember these wen u get confused bout yourself &lt;3</span>
             </div>
-
 
             <h2>
                 Things I Love About You
             </h2>
 
-
             <p class="love-intro">
-
                 Not the big things.
                 <br>
                 Just the little pieces of you that I somehow fell in love with.
-
             </p>
-
 
             <div class="love-grid">
 
-
                 <div class="love-card">
-
                     <span>01</span>
-
-                    <h3>
-                        The Way You Get Excited
-                    </h3>
-
+                    <h3>The Way You Get Excited</h3>
                     <p>
-
                         Jab tum kisi cheez ke liye genuinely excited hote ho na,
                         your whole energy changes.
                         <br><br>
-
                         I could listen to you talk about things you love for hours.
-
                     </p>
-
                 </div>
 
-
-
                 <div class="love-card">
-
                     <span>02</span>
-
-                    <h3>
-                        Your Random Stories
-                    </h3>
-
+                    <h3>Your Random Stories</h3>
                     <p>
-
                         Tumhare paas har cheez ki ek story hoti hai 😭
                         aur somehow I actually want to hear all of them.
                         <br><br>
-
                         Even the completely unnecessary ones.
-
                     </p>
-
                 </div>
 
-
-
                 <div class="love-card">
-
                     <span>03</span>
-
-                    <h3>
-                        The Way You Tease Me
-                    </h3>
-
+                    <h3>The Way You Tease Me</h3>
                     <p>
-
                         Tumhara mujhe tang karna is honestly
                         one of your favourite hobbies.
                         <br><br>
-
                         And unfortunately... meri bhi favourite cheezon mein se ek hai. 🙄🤍
-
                     </p>
-
                 </div>
 
-
-
                 <div class="love-card">
-
                     <span>04</span>
-
-                    <h3>
-                        Your Little Reactions
-                    </h3>
-
+                    <h3>Your Little Reactions</h3>
                     <p>
-
                         The tiny faces, the random expressions,
                         the way your mood shows without you even saying anything.
                         <br><br>
-
                         I notice more than you think.
-
                     </p>
-
                 </div>
 
-
-
                 <div class="love-card">
-
                     <span>05</span>
-
-                    <h3>
-                        How You Make Ordinary Days Memorable
-                    </h3>
-
+                    <h3>How You Make Ordinary Days Memorable</h3>
                     <p>
-
                         Kuch extraordinary hona zaroori nahi.
                         <br><br>
-
                         Kabhi ek random call, ek stupid joke,
                         ya bas thodi der baat karna is enough to make my day better.
-
                     </p>
-
                 </div>
 
-
-
                 <div class="love-card">
-
                     <span>06</span>
-
-                    <h3>
-                        The Way You Remember "Us"
-                    </h3>
-
+                    <h3>The Way You Remember "Us"</h3>
                     <p>
-
                         Tum sirf moments remember nahi karte,
                         you remember our moments.
                         <br><br>
-
                         And there's something so special about knowing
                         that the little things matter to you too.
-
                     </p>
-
                 </div>
 
-
-
                 <div class="love-card">
-
                     <span>07</span>
-
-                    <h3>
-                        Your Stubborn Little Self
-                    </h3>
-
+                    <h3>Your Stubborn Little Self</h3>
                     <p>
-
                         Sometimes I could genuinely shake you 😭
                         <br><br>
-
                         But even then, you're still you.
                         And somehow that's part of the person
                         I've grown so attached to.
-
                     </p>
-
                 </div>
 
-
-
                 <div class="love-card">
-
                     <span>08</span>
-
-                    <h3>
-                        Your Voice
-                    </h3>
-
+                    <h3>Your Voice</h3>
                     <p>
-
                         There are days when I don't even need a conversation.
                         <br><br>
-
                         Bas tumhari voice sun loon
                         and somehow everything feels a little less heavy.
-
                     </p>
-
                 </div>
 
-
-
                 <div class="love-card">
-
                     <span>09</span>
-
-                    <h3>
-                        The Way You Make Me Laugh
-                    </h3>
-
+                    <h3>The Way You Make Me Laugh</h3>
                     <p>
-
                         Not the polite little laughs.
                         The actual embarrassing ones
                         where I can't even explain why I'm laughing anymore. 😭
                         <br><br>
-
                         Those are my favourite.
-
                     </p>
-
                 </div>
 
-
-
                 <div class="love-card">
-
                     <span>10</span>
-
-                    <h3>
-                        Your Presence
-                    </h3>
-
+                    <h3>Your Presence</h3>
                     <p>
-
                         Even when you're not doing anything special,
                         your presence has this way of making things feel familiar.
                         <br><br>
-
                         Like... haan, this is where I'm supposed to be.
-
                     </p>
-
                 </div>
 
-
-
                 <div class="love-card">
-
                     <span>11</span>
-
-                    <h3>
-                        The Person You Are When Nobody Is Watching
-                    </h3>
-
+                    <h3>The Person You Are When Nobody Is Watching</h3>
                     <p>
-
                         The little version of you that comes out
                         when you're comfortable —
                         <br><br>
-
                         that's one of the versions I love most.
-
                     </p>
-
                 </div>
 
-
-
                 <div class="love-card final-love">
-
                     <span>12</span>
-
-                    <h3>
-                        All The Little Versions Of You
-                    </h3>
-
+                    <h3>All The Little Versions Of You</h3>
                     <p>
-
                         The serious you.
                         The sleepy you.
                         The annoying you.
                         The dramatic you.
                         The soft you.
-                        The completely pagal you.
-                        😭
+                        The completely pagal you. 😭
                         <br><br>
-
                         Somehow, I ended up loving all of them.
-
                     </p>
-
                 </div>
 
             </div>
-
 
             <div class="love-ending">
 
@@ -810,142 +578,44 @@
                 </h3>
 
                 <p>
-
                     Somewhere between all the random conversations,
                     stupid jokes, little arguments and ordinary days...
                     <br><br>
 
                     you became someone I can't imagine
                     my story without. 🤍
-
                 </p>
 
             </div>
 
         </section>
-
-
-
-        <!-- =========================
-             A SONG FOR US
-        ========================= -->
-
-        <section class="playlist-section">
-
-            <div class="sticker sticker-playlist panda-sticker">
-
-                🐼
-
-                <span>
-                    press play ♡
-                </span>
-
-            </div>
-
-
-            <p class="playlist-small-title">
-                A LITTLE SONG FOR US
-            </p>
-
-
-            <h2>
-                The Song That Feels Like Us
-            </h2>
-
-
-            <p class="playlist-intro">
-
-                Some songs are just songs.
-                <br>
-                And then there are the ones that somehow
-                hold a feeling you can't explain.
-
-            </p>
-
-
-            <div class="playlist-card">
-
-                <div class="playlist-icon">
-                    ♫
-                </div>
-
-                <p class="playlist-label">
-                    our song
-                </p>
-
-                <h3>
-                    The Night We Met
-                </h3>
-
-                <p class="playlist-text">
-
-                    Maybe it's the melody,
-                    maybe it's the feeling...
-                    <br><br>
-
-                    but every time this plays,
-                    it reminds me of us.
-
-                </p>
-
-
-                <button
-                    class="music-button"
-                    id="musicButton"
-                    type="button"
-                >
-                    ♫ Play our song
-                </button>
-
-
-                <p class="playlist-note">
-                    headphones recommended ♡
-                </p>
-
-            </div>
-
-
-            <p class="playlist-ending">
-
-                For the nights we talked too long,
-                the moments we wish we could replay,
-                and all the memories still waiting to happen.
-
-            </p>
-
-        </section>
-
 
 
         <!-- =========================
              FINAL SECTION
-        ========================= -->
+        ========================== -->
 
         <section class="final-section">
 
-            <div class="sticker sticker-final panda-sticker">
-
-                🐼
-
-                <span>
-                    bye baba ♡
-                </span>
-
+            <div class="sticker sticker-final">
+                <img src="duck-sticker.png" alt="cute duck love sticker">
+                <span>bye baba ♡</span>
             </div>
 
+            <div class="sticker sticker-final-love">
+                <img src="duck-heart-sticker.png" alt="cute duck with hearts sticker">
+                <span>hehehe ♡</span>
+            </div>
 
             <p class="final-small">
                 THIS LITTLE PLACE WILL ALWAYS BE OURS
             </p>
 
-
             <h2>
                 A Place Called Us.
             </h2>
 
-
             <p class="final-text">
-
                 Out of all the places,
                 all the people,
                 all the stories...
@@ -953,14 +623,11 @@
 
                 somehow,
                 I found my favourite place in you.
-
             </p>
-
 
             <div class="final-heart">
                 ♡
             </div>
-
 
             <p class="final-signoff">
                 — your gudda 🤍
@@ -968,12 +635,9 @@
 
         </section>
 
-
-    </main>
-
+    </div>
 
     <script src="script.js"></script>
 
 </body>
-
 </html>
