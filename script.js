@@ -17,10 +17,13 @@ const correctPassword = "081929";
 function unlock() {
 
     if (!passwordInput || !container || !welcomeScreen || !homePage) {
+        console.error("Password elements not found.");
         return;
     }
 
-    if (passwordInput.value.trim() === correctPassword) {
+    const enteredPassword = passwordInput.value.trim();
+
+    if (enteredPassword === correctPassword) {
 
         // Hide password page
         container.style.display = "none";
@@ -30,12 +33,14 @@ function unlock() {
 
         // Start music
         if (backgroundMusic) {
-            backgroundMusic.play().catch(function () {
-                console.log("Music could not autoplay.");
+            backgroundMusic.currentTime = 0;
+
+            backgroundMusic.play().catch(function (error) {
+                console.log("Music autoplay blocked:", error);
             });
         }
 
-        // Open home page
+        // Open home page after welcome message
         setTimeout(function () {
 
             welcomeScreen.classList.remove("show");
@@ -56,7 +61,7 @@ function unlock() {
                 { transform: "translateX(8px)" },
                 { transform: "translateX(-8px)" },
                 { transform: "translateX(8px)" },
-                { transform: "translateX(0px)" }
+                { transform: "translateX(0)" }
             ],
             {
                 duration: 350
@@ -113,7 +118,9 @@ document.querySelectorAll(".quiz-option").forEach(function (option) {
 
         const question = option.closest(".quiz-question");
 
-        if (!question) return;
+        if (!question) {
+            return;
+        }
 
         question.querySelectorAll(".quiz-option").forEach(function (item) {
             item.classList.remove("selected");
@@ -151,11 +158,12 @@ document.querySelectorAll(".quiz-option").forEach(function (option) {
             }
         }
     });
+
 });
 
 
 // =========================
-// NEXT BUTTONS
+// NEXT QUESTION
 // =========================
 
 nextButtons.forEach(function (button) {
@@ -165,19 +173,20 @@ nextButtons.forEach(function (button) {
         const current =
             quizQuestions[currentQuestion];
 
-        if (!current) return;
+        if (!current) {
+            return;
+        }
 
-
-        // Multiple choice
+        // Check multiple choice question
         const hasOptions =
             current.querySelectorAll(".quiz-option").length > 0;
 
         if (hasOptions) {
 
-            const hasSelected =
+            const selected =
                 current.querySelector(".quiz-option.selected");
 
-            if (!hasSelected) {
+            if (!selected) {
 
                 const feedback =
                     current.querySelector(".quiz-feedback");
@@ -191,37 +200,33 @@ nextButtons.forEach(function (button) {
             }
         }
 
-
-        // Written answer
+        // Check written answer
         const answer =
             current.querySelector(".quiz-answer");
 
-        if (answer) {
+        if (answer && answer.value.trim() === "") {
 
-            if (answer.value.trim() === "") {
+            const feedback =
+                current.querySelector(".quiz-feedback");
 
-                const feedback =
-                    current.querySelector(".quiz-feedback");
-
-                if (feedback) {
-                    feedback.textContent =
-                        "Excuse me... answer the question. 👀";
-                }
-
-                return;
+            if (feedback) {
+                feedback.textContent =
+                    "Excuse me... answer the question. 👀";
             }
+
+            return;
         }
 
-
-        // Move to next question
+        // Hide current question
         current.classList.remove("active");
 
+        // Move forward
         currentQuestion++;
 
+        // Show next question
         if (quizQuestions[currentQuestion]) {
 
-            quizQuestions[currentQuestion]
-                .classList.add("active");
+            quizQuestions[currentQuestion].classList.add("active");
 
         }
 
@@ -241,7 +246,9 @@ if (finishButton) {
         const current =
             quizQuestions[currentQuestion];
 
-        if (!current) return;
+        if (!current) {
+            return;
+        }
 
         const answer =
             current.querySelector(".quiz-answer");
@@ -274,7 +281,7 @@ if (finishButton) {
 
 
 // =====================================================
-// SCRAPBOOK PAGE FLIP
+// SCRAPBOOK
 // =====================================================
 
 const scrapbookPages =
@@ -295,6 +302,10 @@ const scrapbookDots =
 let currentScrapPage = 0;
 
 
+// =========================
+// SHOW SCRAPBOOK PAGE
+// =========================
+
 function showScrapPage(index) {
 
     if (scrapbookPages.length === 0) {
@@ -309,7 +320,6 @@ function showScrapPage(index) {
         index = scrapbookPages.length - 1;
     }
 
-
     scrapbookPages.forEach(function (page, i) {
 
         page.classList.toggle(
@@ -318,7 +328,6 @@ function showScrapPage(index) {
         );
 
     });
-
 
     scrapbookDots.forEach(function (dot, i) {
 
@@ -329,7 +338,6 @@ function showScrapPage(index) {
 
     });
 
-
     if (scrapbookCounter) {
 
         scrapbookCounter.textContent =
@@ -339,9 +347,7 @@ function showScrapPage(index) {
 
     }
 
-
     currentScrapPage = index;
-
 
     if (prevPageButton) {
         prevPageButton.disabled = index === 0;
@@ -351,11 +357,12 @@ function showScrapPage(index) {
         nextPageButton.disabled =
             index === scrapbookPages.length - 1;
     }
-
 }
 
 
+// =========================
 // NEXT PAGE
+// =========================
 
 if (nextPageButton) {
 
@@ -366,9 +373,7 @@ if (nextPageButton) {
             scrapbookPages.length - 1
         ) {
 
-            showScrapPage(
-                currentScrapPage + 1
-            );
+            showScrapPage(currentScrapPage + 1);
 
         }
 
@@ -377,7 +382,9 @@ if (nextPageButton) {
 }
 
 
+// =========================
 // PREVIOUS PAGE
+// =========================
 
 if (prevPageButton) {
 
@@ -385,9 +392,7 @@ if (prevPageButton) {
 
         if (currentScrapPage > 0) {
 
-            showScrapPage(
-                currentScrapPage - 1
-            );
+            showScrapPage(currentScrapPage - 1);
 
         }
 
@@ -396,7 +401,9 @@ if (prevPageButton) {
 }
 
 
-// DOTS
+// =========================
+// SCRAPBOOK DOTS
+// =========================
 
 scrapbookDots.forEach(function (dot, index) {
 
@@ -409,7 +416,9 @@ scrapbookDots.forEach(function (dot, index) {
 });
 
 
-// KEYBOARD
+// =========================
+// KEYBOARD CONTROLS
+// =========================
 
 document.addEventListener("keydown", function (event) {
 
@@ -420,22 +429,17 @@ document.addEventListener("keydown", function (event) {
             scrapbookPages.length - 1
         ) {
 
-            showScrapPage(
-                currentScrapPage + 1
-            );
+            showScrapPage(currentScrapPage + 1);
 
         }
 
     }
 
-
     if (event.key === "ArrowLeft") {
 
         if (currentScrapPage > 0) {
 
-            showScrapPage(
-                currentScrapPage - 1
-            );
+            showScrapPage(currentScrapPage - 1);
 
         }
 
@@ -444,6 +448,8 @@ document.addEventListener("keydown", function (event) {
 });
 
 
+// =========================
 // START SCRAPBOOK
+// =========================
 
 showScrapPage(0);
