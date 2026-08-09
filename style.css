@@ -3262,3 +3262,228 @@ input {
         font-size: 18px;
     }
 }
+
+/* =========================================
+   CALL SCREEN SCRAPBOOK PHOTOS
+   ========================================= */
+
+.call-photo {
+    overflow: hidden;
+    background: #f5eee4;
+}
+
+/* Keeps the actual image inside a scrapbook frame */
+.call-photo .photo-window {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.call-photo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+
+/* =========================================
+   HUMPTY / MALAI POSITIONING
+   ========================================= */
+
+/*
+   These use the SAME original screenshot,
+   but show different areas of it.
+*/
+
+.humpty-photo img {
+    object-position: 50% 35%;
+}
+
+.malai-photo img {
+    object-position: 92% 78%;
+}
+
+
+/* =========================================
+   PAGE 01
+   ========================================= */
+
+.call-scrap-page .polaroid-main.call-photo {
+    width: 250px;
+    height: 290px;
+}
+
+.call-scrap-page .mini-photo.call-photo {
+    width: 145px;
+    height: 165px;
+}
+
+
+/* =========================================
+   PAGE 02
+   ========================================= */
+
+.call-scrap-page .polaroid-small.call-photo {
+    width: 170px;
+    height: 190px;
+}
+
+.call-scrap-page .lower-photo.call-photo {
+    width: 245px;
+    height: 275px;
+}
+
+
+/* =========================================
+   PAGE 03
+   ========================================= */
+
+.call-photo-stack {
+    width: 360px;
+    height: 400px;
+    position: absolute;
+    left: 55px;
+    top: 85px;
+}
+
+.call-photo-stack .stack-photo {
+    overflow: hidden;
+    background: #f5eee4;
+}
+
+.call-photo-stack .stack-photo .photo-window {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+/* =========================================
+   PAGE 04
+   ========================================= */
+
+.spotify-photo.call-photo {
+    overflow: hidden;
+}
+
+.spotify-side-photo {
+    position: absolute;
+    right: 65px;
+    bottom: 75px;
+    width: 145px;
+    height: 165px;
+}
+
+
+/* =========================================
+   PAGE 05
+   ========================================= */
+
+.brain-photo.call-photo {
+    width: 260px;
+    height: 300px;
+}
+
+.brain-side-photo {
+    position: absolute;
+    right: 85px;
+    bottom: 75px;
+    width: 145px;
+    height: 165px;
+}
+
+
+/* =========================================
+   PAGE 06
+   ========================================= */
+
+.argument-collage .call-photo {
+    overflow: hidden;
+}
+
+.argument-collage .call-photo .photo-window {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.argument-collage .call-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* =========================================
+   PAGE 07
+   ========================================= */
+
+.big-memory-frame.call-photo {
+    overflow: hidden;
+}
+
+.big-memory-frame.call-photo .photo-window {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.floating-photo.call-photo {
+    overflow: hidden;
+}
+
+.floating-photo.call-photo .photo-window {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+/* =========================================
+   POLAROID FINISH
+   ========================================= */
+
+.call-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+
+/* Prevent weird image distortion */
+.call-photo img {
+    max-width: none;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    .call-scrap-page .polaroid-main.call-photo {
+        width: 190px;
+        height: 225px;
+    }
+
+    .call-scrap-page .mini-photo.call-photo {
+        width: 110px;
+        height: 130px;
+    }
+
+    .spotify-side-photo,
+    .brain-side-photo {
+        width: 105px;
+        height: 125px;
+    }
+
+    .call-photo-stack {
+        transform: scale(.8);
+        transform-origin: top left;
+    }
+
+}
