@@ -11,6 +11,7 @@
 html {
     width: 100%;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -90,6 +91,7 @@ button {
     font-size: 16px;
     cursor: pointer;
     transition: 0.3s;
+    font-family: inherit;
 }
 
 button:hover {
@@ -131,6 +133,7 @@ button:hover {
 }
 
 @keyframes fadeText {
+
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -171,6 +174,7 @@ button:hover {
     align-items: center;
     text-align: center;
     padding: 40px 20px;
+    position: relative;
 }
 
 .cover-photo {
@@ -195,12 +199,13 @@ button:hover {
 }
 
 .scroll-down {
-    margin-top: 90px;
+    margin-top: 55px;
     color: #A08A77;
     animation: float 2s infinite;
 }
 
 @keyframes float {
+
     0% {
         transform: translateY(0);
     }
@@ -212,6 +217,124 @@ button:hover {
     100% {
         transform: translateY(0);
     }
+}
+
+
+/* =========================
+   HOME MUSIC
+========================= */
+
+.home-music {
+    margin-top: 35px;
+    text-align: center;
+}
+
+.music-note {
+    font-size: 28px;
+    color: #8B6A55;
+}
+
+.home-music p {
+    margin-top: 8px;
+    font-size: 15px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #A08A77;
+}
+
+.home-music h3 {
+    margin-top: 8px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.music-line {
+    width: 100px;
+    height: 1px;
+    background: rgba(139, 106, 85, 0.3);
+    margin: 12px auto;
+}
+
+.music-hint {
+    font-size: 14px !important;
+    color: #A08A77;
+    font-style: italic;
+}
+
+
+/* =========================
+   JOURNAL STICKERS
+========================= */
+
+.sticker {
+    position: absolute;
+    z-index: 2;
+    font-size: 45px;
+    text-align: center;
+    transform: rotate(-8deg);
+    pointer-events: none;
+}
+
+.sticker span {
+    display: block;
+    font-family: "Caveat", cursive;
+    font-size: 17px;
+    color: #8B6A55;
+    white-space: nowrap;
+    margin-top: -5px;
+}
+
+.cat-sticker {
+    transform: rotate(7deg);
+}
+
+.panda-sticker {
+    transform: rotate(-7deg);
+}
+
+.sticker-hero {
+    right: 8%;
+    bottom: 15%;
+}
+
+.sticker-story {
+    left: 8%;
+    top: 18%;
+}
+
+.sticker-note {
+    right: 9%;
+    top: 20%;
+}
+
+.sticker-things {
+    left: 7%;
+    top: 12%;
+}
+
+.sticker-memory {
+    right: 7%;
+    top: 10%;
+}
+
+.sticker-love {
+    left: 7%;
+    top: 9%;
+}
+
+.sticker-final {
+    right: 9%;
+    top: 15%;
+}
+
+.sticker-playlist {
+    left: 8%;
+    top: 12%;
+}
+
+.sticker-playlist-bottom {
+    right: 8%;
+    bottom: 12%;
 }
 
 
@@ -228,6 +351,7 @@ button:hover {
     align-items: center;
     text-align: center;
     padding: 80px 30px;
+    position: relative;
 }
 
 .story h2 {
@@ -258,6 +382,7 @@ button:hover {
     align-items: center;
     text-align: center;
     padding: 80px 30px;
+    position: relative;
 }
 
 .message h2 {
@@ -283,13 +408,12 @@ button:hover {
     min-height: 100vh;
     width: 100%;
     padding: 100px 30px;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     text-align: center;
+    position: relative;
 }
 
 .little-things h2 {
@@ -307,13 +431,9 @@ button:hover {
     margin-bottom: 60px;
 }
 
-
-/* LITTLE THINGS CARDS */
-
 .things-grid {
     width: 100%;
     max-width: 1000px;
-
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 30px;
@@ -354,13 +474,12 @@ button:hover {
     min-height: 100vh;
     width: 100%;
     padding: 120px 30px;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     text-align: center;
+    position: relative;
 }
 
 .memories > h2 {
@@ -378,30 +497,20 @@ button:hover {
     margin-bottom: 70px;
 }
 
-
-/* MEMORY LIST */
-
 .memory-list {
     width: 100%;
     max-width: 1050px;
-
     display: flex;
     flex-direction: column;
     gap: 80px;
 }
 
-
-/* MEMORY CARD */
-
 .memory-card {
     width: 100%;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     gap: 60px;
-
     text-align: left;
 }
 
@@ -409,26 +518,25 @@ button:hover {
     flex-direction: row-reverse;
 }
 
-
-/* MEMORY PHOTO */
-
 .memory-photo {
     width: 430px;
     height: 480px;
-
     flex-shrink: 0;
-
     object-fit: cover;
-
     border-radius: 30px;
-
     border: 6px solid rgba(255, 255, 255, 0.65);
-
     box-shadow: 0 15px 40px rgba(90, 70, 55, 0.15);
 }
 
-
-/* MEMORY TEXT */
+.memory-photo.proposal-photo {
+    width: 430px !important;
+    height: 360px !important;
+    object-fit: contain !important;
+    object-position: center;
+    border-radius: 20px !important;
+    background: rgba(255, 255, 255, 0.45);
+    padding: 8px;
+}
 
 .memory-text {
     flex: 1;
@@ -453,121 +561,78 @@ button:hover {
     line-height: 1.8;
 }
 
-
-/* MEMORY ENDING */
-
 .memories-ending {
     width: 100%;
     max-width: 750px;
-
     margin-top: 110px;
-
     font-size: 25px;
     color: #8E7A6A;
     line-height: 1.8;
-
     font-style: italic;
 }
 
 
-/* =================================================
+/* =========================
    THINGS I LOVE ABOUT YOU
-   IMPORTANT: SUPPORTS BOTH CLASS NAMES
-================================================= */
+========================= */
 
 .love-section,
 .love-things {
     min-height: 100vh;
     width: 100%;
     padding: 120px 30px;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     text-align: center;
-
     overflow: hidden;
+    position: relative;
 }
-
-
-/* HEADING */
 
 .love-section > h2,
 .love-things > h2 {
     display: block;
-
     width: 100%;
     max-width: 1000px;
-
-    margin: 0 auto 20px auto;
+    margin: 0 auto 20px;
     padding: 0;
-
     text-align: center !important;
-
     font-size: 58px;
     font-weight: 600;
-
-    position: static !important;
-    left: auto !important;
-    right: auto !important;
-    transform: none !important;
 }
-
-
-/* INTRO */
 
 .love-section .love-intro,
 .love-things .love-intro {
     display: block;
-
     width: 100%;
     max-width: 700px;
-
-    margin: 0 auto 70px auto;
+    margin: 0 auto 70px;
     padding: 0;
-
     text-align: center !important;
-
     font-size: 23px;
     color: #8E7A6A;
     line-height: 1.8;
 }
 
-
-/* LOVE GRID */
-
 .love-section .love-grid,
 .love-things .love-grid {
     width: 100%;
     max-width: 1050px;
-
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-
     gap: 30px;
-
     margin: 0 auto;
 }
-
-
-/* LOVE CARD */
 
 .love-card {
     width: 100%;
     min-width: 0;
-
     padding: 35px 30px;
-
     background: rgba(255, 255, 255, 0.45);
-
     border-radius: 25px;
-
     box-shadow: 0 10px 30px rgba(90, 70, 55, 0.08);
-
     text-align: center;
-
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -578,12 +643,9 @@ button:hover {
 
 .love-card span {
     display: block;
-
     font-family: "Caveat", cursive;
     font-size: 25px;
-
     color: #A08A77;
-
     margin-bottom: 10px;
 }
 
@@ -603,18 +665,12 @@ button:hover {
     background: rgba(255, 255, 255, 0.6);
 }
 
-
-/* LOVE ENDING */
-
 .love-ending {
     width: 100%;
     max-width: 750px;
-
     margin: 100px auto 0;
     padding: 50px 35px;
-
     border-top: 1px solid rgba(139, 106, 85, 0.25);
-
     text-align: center;
 }
 
@@ -632,6 +688,162 @@ button:hover {
 
 
 /* =========================
+   PLAYLIST SECTION
+========================= */
+
+.playlist-section {
+    min-height: 100vh;
+    width: 100%;
+    padding: 120px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.playlist-small-title {
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: #A08A77;
+    margin-bottom: 15px;
+}
+
+.playlist-section > h2 {
+    font-size: 58px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.playlist-intro {
+    font-size: 23px;
+    color: #8E7A6A;
+    line-height: 1.8;
+    margin-bottom: 55px;
+}
+
+.playlist-card {
+    width: 100%;
+    max-width: 600px;
+    padding: 55px 40px;
+    background: rgba(255, 255, 255, 0.48);
+    border-radius: 30px;
+    box-shadow: 0 15px 40px rgba(90, 70, 55, 0.1);
+    text-align: center;
+}
+
+.playlist-icon {
+    font-family: "Caveat", cursive;
+    font-size: 45px;
+    color: #8B6A55;
+    margin-bottom: 10px;
+}
+
+.playlist-label {
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #A08A77;
+}
+
+.playlist-card h3 {
+    font-size: 38px;
+    font-weight: 600;
+    margin: 15px 0;
+}
+
+.playlist-text {
+    font-size: 20px;
+    color: #8E7A6A;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.spotify-button {
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 30px;
+    background: #8B6A55;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.3s ease;
+    border: none;
+}
+
+.spotify-button:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
+
+.playlist-note {
+    margin-top: 25px;
+    font-family: "Caveat", cursive;
+    font-size: 20px;
+    color: #A08A77;
+}
+
+.playlist-ending {
+    margin-top: 70px;
+    font-size: 22px;
+    color: #8E7A6A;
+    line-height: 1.8;
+    font-style: italic;
+}
+
+
+/* =========================
+   FINAL SECTION
+========================= */
+
+.final-section {
+    min-height: 100vh;
+    width: 100%;
+    padding: 100px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.final-small {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: #A08A77;
+    margin-bottom: 20px;
+}
+
+.final-section h2 {
+    font-size: 65px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.final-text {
+    max-width: 650px;
+    font-size: 25px;
+    color: #8E7A6A;
+    line-height: 1.8;
+}
+
+.final-heart {
+    font-size: 55px;
+    color: #8B6A55;
+    margin-top: 35px;
+}
+
+.final-signoff {
+    font-family: "Caveat", cursive;
+    font-size: 28px;
+    color: #8B6A55;
+    margin-top: 15px;
+}
+
+
+/* =========================
    WRONG PASSWORD SHAKE
 ========================= */
 
@@ -640,6 +852,7 @@ button:hover {
 }
 
 @keyframes shake {
+
     0%,
     100% {
         transform: translateX(0);
@@ -697,320 +910,26 @@ button:hover {
         width: 280px;
     }
 
-/* =========================
-   HOME MUSIC
-========================= */
 
-.home-music {
-    margin-top: 45px;
-    text-align: center;
-}
-
-.music-note {
-    font-size: 28px;
-    color: #8B6A55;
-}
-
-.home-music p {
-    margin-top: 8px;
-    font-size: 15px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #A08A77;
-}
-
-.home-music h3 {
-    margin-top: 8px;
-    font-size: 25px;
-    font-weight: 600;
-}
-
-.music-line {
-    width: 100px;
-    height: 1px;
-    background: rgba(139, 106, 85, 0.3);
-    margin: 12px auto;
-}
-
-.music-hint {
-    font-size: 14px;
-    color: #A08A77;
-    font-style: italic;
-}
-
-
-/* =========================
-   JOURNAL STICKERS
-========================= */
-
-.sticker {
-    position: absolute;
-    z-index: 2;
-    font-size: 45px;
-    text-align: center;
-    transform: rotate(-8deg);
-    pointer-events: none;
-}
-
-.sticker span {
-    display: block;
-    font-family: "Caveat", cursive;
-    font-size: 17px;
-    color: #8B6A55;
-    white-space: nowrap;
-    margin-top: -5px;
-}
-
-.cat-sticker {
-    transform: rotate(7deg);
-}
-
-.panda-sticker {
-    transform: rotate(-7deg);
-}
-
-
-/* STICKER POSITIONS */
-
-.hero,
-.story,
-.message,
-.little-things,
-.memories,
-.love-section,
-.playlist-section,
-.final-section {
-    position: relative;
-}
-
-.sticker-hero {
-    right: 8%;
-    bottom: 15%;
-}
-
-.sticker-story {
-    left: 8%;
-    top: 18%;
-}
-
-.sticker-note {
-    right: 9%;
-    top: 20%;
-}
-
-.sticker-things {
-    left: 7%;
-    top: 12%;
-}
-
-.sticker-memory {
-    right: 7%;
-    top: 10%;
-}
-
-.sticker-love {
-    left: 7%;
-    top: 9%;
-}
-
-
-/* =========================
-   PLAYLIST SECTION
-========================= */
-
-.playlist-section {
-    min-height: 100vh;
-    width: 100%;
-    padding: 120px 30px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-}
-
-.playlist-small-title {
-    font-size: 14px;
-    letter-spacing: 4px;
-    color: #A08A77;
-    margin-bottom: 15px;
-}
-
-.playlist-section > h2 {
-    font-size: 58px;
-    font-weight: 600;
-    margin-bottom: 20px;
-}
-
-.playlist-intro {
-    font-size: 23px;
-    color: #8E7A6A;
-    line-height: 1.8;
-    margin-bottom: 55px;
-}
-
-.playlist-card {
-    width: 100%;
-    max-width: 600px;
-
-    padding: 55px 40px;
-
-    background: rgba(255, 255, 255, 0.48);
-
-    border-radius: 30px;
-
-    box-shadow: 0 15px 40px rgba(90, 70, 55, 0.1);
-
-    text-align: center;
-}
-
-.playlist-icon {
-    font-family: "Caveat", cursive;
-    font-size: 45px;
-    color: #8B6A55;
-    margin-bottom: 10px;
-}
-
-.playlist-label {
-    font-size: 15px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #A08A77;
-}
-
-.playlist-card h3 {
-    font-size: 38px;
-    font-weight: 600;
-    margin: 15px 0;
-}
-
-.playlist-text {
-    font-size: 20px;
-    color: #8E7A6A;
-    line-height: 1.7;
-    margin-bottom: 30px;
-}
-
-.spotify-button {
-    display: inline-block;
-
-    padding: 15px 30px;
-
-    border-radius: 30px;
-
-    background: #8B6A55;
-
-    color: white;
-
-    text-decoration: none;
-
-    font-size: 18px;
-
-    transition: 0.3s ease;
-}
-
-.spotify-button:hover {
-    transform: translateY(-3px);
-    opacity: 0.9;
-}
-
-.playlist-note {
-    margin-top: 25px;
-    font-family: "Caveat", cursive;
-    font-size: 20px;
-    color: #A08A77;
-}
-
-.playlist-ending {
-    margin-top: 70px;
-    font-size: 22px;
-    color: #8E7A6A;
-    line-height: 1.8;
-    font-style: italic;
-}
-
-
-/* =========================
-   FINAL SECTION
-========================= */
-
-.final-section {
-    min-height: 100vh;
-    width: 100%;
-    padding: 100px 30px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-}
-
-.final-small {
-    font-size: 13px;
-    letter-spacing: 4px;
-    color: #A08A77;
-    margin-bottom: 20px;
-}
-
-.final-section h2 {
-    font-size: 65px;
-    font-weight: 600;
-    margin-bottom: 30px;
-}
-
-.final-text {
-    max-width: 650px;
-    font-size: 25px;
-    color: #8E7A6A;
-    line-height: 1.8;
-}
-
-.final-heart {
-    font-size: 55px;
-    color: #8B6A55;
-    margin-top: 35px;
-}
-
-.final-signoff {
-    font-family: "Caveat", cursive;
-    font-size: 28px;
-    color: #8B6A55;
-    margin-top: 15px;
-}
-
-.sticker-final {
-    right: 9%;
-    top: 15%;
-}
-
-.sticker-playlist {
-    left: 8%;
-    top: 12%;
-}
-
-.sticker-playlist-bottom {
-    right: 8%;
-    bottom: 12%;
-}
-
-
-/* =========================
-   MOBILE - NEW SECTIONS
-========================= */
-
-@media (max-width: 700px) {
+    /* HERO */
+
+    .cover-photo {
+        width: 240px;
+        height: 310px;
+        border-radius: 120px 120px 25px 25px;
+        margin-bottom: 30px;
+    }
 
     .home-music {
-        margin-top: 35px;
+        margin-top: 30px;
     }
 
     .home-music h3 {
         font-size: 22px;
     }
+
+
+    /* STICKERS */
 
     .sticker {
         font-size: 32px;
@@ -1050,6 +969,166 @@ button:hover {
         top: 5%;
     }
 
+    .sticker-final {
+        right: 4%;
+        top: 8%;
+    }
+
+    .sticker-playlist {
+        left: 3%;
+        top: 5%;
+    }
+
+    .sticker-playlist-bottom {
+        right: 3%;
+        bottom: 6%;
+    }
+
+
+    /* LITTLE THINGS */
+
+    .little-things {
+        padding: 80px 20px;
+    }
+
+    .things-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .thing {
+        padding: 28px 22px;
+    }
+
+    .thing h3 {
+        font-size: 25px;
+    }
+
+    .thing p {
+        font-size: 18px;
+    }
+
+
+    /* MEMORIES */
+
+    .memories {
+        padding: 80px 20px;
+    }
+
+    .memory-list {
+        width: 100%;
+        gap: 65px;
+    }
+
+    .memory-card,
+    .memory-card.reverse {
+        width: 100%;
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .memory-photo {
+        width: 100%;
+        max-width: 330px;
+        height: 390px;
+    }
+
+    .memory-photo.proposal-photo {
+        width: 100% !important;
+        max-width: 330px;
+        height: 300px !important;
+        object-fit: contain !important;
+        object-position: center;
+        border-radius: 20px !important;
+        padding: 8px;
+    }
+
+    .memory-text {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .memory-number {
+        font-size: 25px;
+    }
+
+    .memory-text h3 {
+        font-size: 30px;
+    }
+
+    .memory-text p {
+        font-size: 19px;
+    }
+
+    .memories-ending {
+        font-size: 21px;
+        margin-top: 80px;
+    }
+
+
+    /* LOVE */
+
+    .love-section,
+    .love-things {
+        width: 100%;
+        min-height: 100vh;
+        padding: 80px 20px;
+    }
+
+    .love-section > h2,
+    .love-things > h2 {
+        width: 100%;
+        max-width: 100%;
+        font-size: 44px;
+        margin: 0 auto 20px;
+    }
+
+    .love-section .love-intro,
+    .love-things .love-intro {
+        width: 100%;
+        max-width: 700px;
+        font-size: 20px;
+        margin: 0 auto 50px;
+    }
+
+    .love-section .love-grid,
+    .love-things .love-grid {
+        width: 100%;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .love-card {
+        width: 100%;
+        padding: 28px 22px;
+    }
+
+    .love-card h3 {
+        font-size: 25px;
+    }
+
+    .love-card p {
+        font-size: 18px;
+    }
+
+    .love-ending {
+        width: 100%;
+        margin-top: 60px;
+        padding: 40px 20px;
+    }
+
+    .love-ending h3 {
+        font-size: 28px;
+    }
+
+    .love-ending p {
+        font-size: 19px;
+    }
+
+
+    /* PLAYLIST */
+
     .playlist-section {
         padding: 80px 20px;
     }
@@ -1084,15 +1163,8 @@ button:hover {
         margin-top: 55px;
     }
 
-    .sticker-playlist {
-        left: 3%;
-        top: 5%;
-    }
 
-    .sticker-playlist-bottom {
-        right: 3%;
-        bottom: 6%;
-    }
+    /* FINAL */
 
     .final-section {
         padding: 80px 20px;
@@ -1106,221 +1178,4 @@ button:hover {
         font-size: 21px;
     }
 
-    .sticker-final {
-        right: 4%;
-        top: 8%;
-    }
-
-}
-    /* =========================
-       MEMORY PHOTOS - MOBILE
-    ========================= */
-
-    .memory-photo {
-        width: 100%;
-        max-width: 330px;
-        height: 390px;
-        object-fit: cover;
-    }
-
-    .memory-photo.proposal-photo {
-        width: 100% !important;
-        max-width: 330px;
-        height: 300px !important;
-        object-fit: contain !important;
-        object-position: center;
-        border-radius: 20px !important;
-        padding: 8px;
-    }
-
-    /* =========================
-       LITTLE THINGS
-    ========================= */
-
-    .things-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .thing {
-        padding: 28px 22px;
-    }
-
-    .thing h3 {
-        font-size: 25px;
-    }
-
-    .thing p {
-        font-size: 18px;
-    }
-
-    .little-things {
-        padding: 80px 20px;
-    }
-
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .cover-photo {
-        width: 240px;
-        height: 310px;
-        border-radius: 120px 120px 25px 25px;
-        margin-bottom: 30px;
-    }
-
-
-    /* =========================
-       MEMORIES
-    ========================= */
-
-    .memories {
-        padding: 80px 20px;
-    }
-
-    .memory-list {
-        width: 100%;
-        gap: 65px;
-    }
-
-    .memory-card,
-    .memory-card.reverse {
-        width: 100%;
-        flex-direction: column;
-        gap: 30px;
-        text-align: center;
-    }
-
-    .memory-photo {
-        width: 100%;
-        max-width: 330px;
-        height: 390px;
-    }
-
-    .memory-text {
-        width: 100%;
-        max-width: 500px;
-    }
-
-    .memory-number {
-        font-size: 25px;
-    }
-
-    .memory-text h3 {
-        font-size: 30px;
-    }
-
-    .memory-text p {
-        font-size: 19px;
-    }
-
-    .memories-ending {
-        font-size: 21px;
-        margin-top: 80px;
-    }
-
-
-    /* =========================
-       THINGS I LOVE
-    ========================= */
-
-    .love-section,
-    .love-things {
-        width: 100%;
-        min-height: 100vh;
-        padding: 80px 20px;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        text-align: center;
-    }
-
-    .love-section > h2,
-    .love-things > h2 {
-        width: 100%;
-        max-width: 100%;
-
-        font-size: 44px;
-        font-weight: 600;
-
-        margin: 0 auto 20px auto;
-        padding: 0;
-
-        text-align: center !important;
-
-        position: static !important;
-        left: auto !important;
-        right: auto !important;
-        transform: none !important;
-    }
-
-    .love-section .love-intro,
-    .love-things .love-intro {
-        width: 100%;
-        max-width: 700px;
-
-        font-size: 20px;
-
-        margin: 0 auto 50px auto;
-
-        text-align: center !important;
-    }
-
-    .love-section .love-grid,
-    .love-things .love-grid {
-        width: 100%;
-
-        grid-template-columns: 1fr;
-
-        gap: 20px;
-    }
-
-    .love-card {
-        width: 100%;
-        padding: 28px 22px;
-    }
-
-    .love-card h3 {
-        font-size: 25px;
-    }
-
-    .love-card p {
-        font-size: 18px;
-    }
-
-    .love-ending {
-        width: 100%;
-        margin-top: 60px;
-        padding: 40px 20px;
-    }
-
-    .love-ending h3 {
-        font-size: 28px;
-    }
-
-    .love-ending p {
-        font-size: 19px;
-    }
-}
-
-/* =========================
-   PROPOSAL PHOTO - RECTANGLE
-========================= */
-
-.memory-photo.proposal-photo {
-    width: 430px !important;
-    height: 360px !important;
-
-    object-fit: contain !important;
-    object-position: center;
-
-    border-radius: 20px !important;
-
-    background: rgba(255, 255, 255, 0.45);
-
-    padding: 8px;
 }
