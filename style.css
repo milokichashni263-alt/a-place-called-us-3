@@ -1874,3 +1874,1645 @@ input {
     }
 
 }
+/* =====================================================
+   SCRAPBOOK — 12 REASONS
+===================================================== */
+
+.scrapbook-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 130px 25px 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.scrapbook-label {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: #A08A77;
+    margin-bottom: 18px;
+}
+
+.scrapbook-section > h2 {
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 22px;
+}
+
+.scrapbook-intro {
+    max-width: 650px;
+    font-size: 22px;
+    color: #8E7A6A;
+    line-height: 1.8;
+    margin-bottom: 55px;
+}
+
+
+/* =========================
+   SCRAPBOOK STICKER
+========================= */
+
+.scrapbook-sticker {
+    position: absolute;
+    left: 7%;
+    top: 7%;
+    z-index: 5;
+    transform: rotate(-7deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scrapbook-sticker img {
+    width: 100px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 7px 10px rgba(90, 70, 55, 0.12));
+}
+
+.scrapbook-sticker span {
+    font-family: "Caveat", cursive;
+    font-size: 17px;
+    color: #8B6A55;
+    margin-top: -2px;
+}
+
+
+/* =========================
+   BOOK
+========================= */
+
+.scrapbook-book {
+    width: 100%;
+    max-width: 1050px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+.book-page-container {
+    position: relative;
+    width: 100%;
+    max-width: 850px;
+    height: 570px;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,0.82),
+            rgba(255,255,255,0.82)
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 28px,
+            rgba(139,106,85,0.035) 29px
+        );
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 25px 60px rgba(90,70,55,0.16),
+        0 5px 15px rgba(90,70,55,0.08);
+
+    border: 1px solid rgba(139,106,85,0.12);
+}
+
+
+/* =========================
+   INDIVIDUAL PAGE
+========================= */
+
+.scrap-page {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: none;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255,255,255,0.9),
+            transparent 35%
+        ),
+        #F8F3EA;
+
+    animation: scrapbookPageIn 0.45s ease;
+}
+
+.scrap-page.active-page {
+    display: block;
+}
+
+@keyframes scrapbookPageIn {
+    from {
+        opacity: 0;
+        transform: translateX(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* =========================
+   PAGE NUMBER
+========================= */
+
+.page-number {
+    position: absolute;
+    top: 22px;
+    right: 28px;
+    z-index: 20;
+
+    font-family: "Caveat", cursive;
+    font-size: 20px;
+    color: #A08A77;
+}
+
+
+/* =========================
+   ARROWS
+========================= */
+
+.book-arrow {
+    flex-shrink: 0;
+
+    width: 52px;
+    height: 52px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.8);
+    color: #8B6A55;
+
+    font-size: 38px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(90,70,55,0.12);
+
+    transition: 0.3s ease;
+}
+
+.book-arrow:hover {
+    transform: translateY(-3px) scale(1.05);
+    background: white;
+}
+
+.book-arrow:disabled {
+    opacity: 0.25;
+    cursor: default;
+    transform: none;
+}
+
+
+/* =========================
+   POLAROIDS
+========================= */
+
+.polaroid {
+    position: absolute;
+
+    background: white;
+
+    padding: 12px 12px 38px;
+
+    box-shadow:
+        0 15px 30px rgba(90,70,55,0.16);
+
+    z-index: 4;
+}
+
+.polaroid img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    background: #F3EEE7;
+}
+
+.polaroid span {
+    position: absolute;
+
+    bottom: 9px;
+    left: 0;
+    right: 0;
+
+    font-family: "Caveat", cursive;
+    font-size: 18px;
+    color: #6F594A;
+}
+
+.polaroid-main {
+    width: 290px;
+    height: 360px;
+}
+
+.polaroid-small {
+    width: 190px;
+    height: 235px;
+}
+
+.rotate-left {
+    transform: rotate(-5deg);
+}
+
+.rotate-right {
+    transform: rotate(5deg);
+}
+
+.lower-photo {
+    left: 18%;
+    top: 26%;
+}
+
+
+/* =========================
+   SCRAP NOTES
+========================= */
+
+.scrap-note {
+    position: absolute;
+
+    width: 280px;
+
+    padding: 25px 28px;
+
+    background: #FFFDF8;
+
+    box-shadow:
+        0 12px 28px rgba(90,70,55,0.10);
+
+    text-align: left;
+
+    z-index: 6;
+}
+
+.scrap-note::before {
+    content: "";
+
+    position: absolute;
+
+    width: 80px;
+    height: 22px;
+
+    top: -10px;
+    left: 50%;
+
+    transform: translateX(-50%) rotate(-2deg);
+
+    background: rgba(218,202,177,0.65);
+}
+
+.scrap-note h3 {
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 14px;
+}
+
+.scrap-note p {
+    font-size: 18px;
+    color: #8E7A6A;
+    line-height: 1.7;
+}
+
+.scrap-note > span {
+    display: block;
+
+    margin-top: 15px;
+
+    font-family: "Caveat", cursive;
+    font-size: 19px;
+    color: #8B6A55;
+}
+
+
+/* NOTE POSITIONS */
+
+.note-right {
+    right: 9%;
+    top: 28%;
+    transform: rotate(3deg);
+}
+
+.note-top {
+    right: 10%;
+    top: 18%;
+    transform: rotate(-3deg);
+}
+
+.note-left {
+    left: 8%;
+    top: 28%;
+    transform: rotate(-3deg);
+}
+
+.note-right-bottom {
+    right: 9%;
+    bottom: 15%;
+    transform: rotate(3deg);
+}
+
+.center-note {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-2deg);
+    text-align: center;
+}
+
+.center-note::before {
+    left: 50%;
+}
+
+
+/* =========================
+   MINI PHOTOS
+========================= */
+
+.mini-photo {
+    position: absolute;
+
+    width: 170px;
+    height: 205px;
+
+    padding: 8px;
+
+    background: white;
+
+    box-shadow:
+        0 12px 25px rgba(90,70,55,0.14);
+
+    z-index: 3;
+}
+
+.mini-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #F3EEE7;
+}
+
+
+/* =========================
+   PHOTO STACK
+========================= */
+
+.photo-stack {
+    position: absolute;
+
+    left: 10%;
+    top: 15%;
+
+    width: 390px;
+    height: 410px;
+}
+
+.stack-photo {
+    position: absolute;
+
+    width: 280px;
+    height: 330px;
+
+    padding: 10px;
+
+    background: white;
+
+    box-shadow:
+        0 15px 30px rgba(90,70,55,0.14);
+}
+
+.stack-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #F3EEE7;
+}
+
+.stack-back {
+    left: 30px;
+    top: 20px;
+    transform: rotate(-8deg);
+}
+
+.stack-middle {
+    left: 60px;
+    top: 40px;
+    transform: rotate(4deg);
+}
+
+.stack-front {
+    left: 45px;
+    top: 25px;
+    transform: rotate(-2deg);
+    z-index: 5;
+}
+
+
+/* =========================
+   TAPED NOTE
+========================= */
+
+.taped-note {
+    position: absolute;
+
+    right: 10%;
+    bottom: 18%;
+
+    padding: 15px 22px;
+
+    background: #FFF8D9;
+
+    font-family: "Caveat", cursive;
+    font-size: 20px;
+
+    transform: rotate(4deg);
+
+    box-shadow:
+        0 8px 18px rgba(90,70,55,0.08);
+}
+
+.taped-note::before {
+    content: "";
+
+    position: absolute;
+
+    width: 70px;
+    height: 18px;
+
+    top: -9px;
+    left: 50%;
+
+    transform: translateX(-50%) rotate(-3deg);
+
+    background: rgba(218,202,177,0.7);
+}
+
+
+/* =========================
+   SPOTIFY MEMORY
+========================= */
+
+.spotify-memory {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 650px;
+
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    padding: 30px;
+
+    background: rgba(255,255,255,0.82);
+
+    box-shadow:
+        0 18px 40px rgba(90,70,55,0.12);
+}
+
+.spotify-photo {
+    width: 250px;
+    height: 250px;
+    flex-shrink: 0;
+}
+
+.spotify-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #F3EEE7;
+}
+
+.spotify-info {
+    flex: 1;
+    text-align: left;
+}
+
+.spotify-mini {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #A08A77;
+}
+
+.spotify-info h3 {
+    font-size: 32px;
+    margin: 12px 0 8px;
+}
+
+.spotify-info p {
+    color: #8E7A6A;
+    font-size: 18px;
+}
+
+.fake-progress {
+    width: 100%;
+    height: 3px;
+
+    background: rgba(139,106,85,0.18);
+
+    margin-top: 28px;
+}
+
+.fake-progress span {
+    display: block;
+
+    width: 42%;
+    height: 100%;
+
+    background: #8B6A55;
+}
+
+.fake-player {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+
+    margin-top: 20px;
+
+    font-size: 20px;
+    color: #8B6A55;
+}
+
+.fake-player strong {
+    font-size: 25px;
+}
+
+
+/* =========================
+   CAPTION
+========================= */
+
+.scrap-caption {
+    position: absolute;
+
+    bottom: 45px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 80%;
+
+    font-family: "Caveat", cursive;
+    font-size: 22px;
+    color: #8B6A55;
+}
+
+
+/* =========================
+   ARGUMENT COLLAGE
+========================= */
+
+.argument-collage {
+    position: absolute;
+
+    left: 50%;
+    top: 48%;
+
+    transform: translate(-50%, -50%);
+
+    width: 520px;
+    height: 360px;
+}
+
+.mini-polaroid {
+    position: absolute;
+
+    width: 190px;
+    height: 225px;
+
+    padding: 9px;
+
+    background: white;
+
+    box-shadow:
+        0 12px 25px rgba(90,70,55,0.15);
+}
+
+.mini-polaroid img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #F3EEE7;
+}
+
+.mini-one {
+    left: 30px;
+    top: 40px;
+    transform: rotate(-8deg);
+}
+
+.mini-two {
+    left: 165px;
+    top: 15px;
+    transform: rotate(4deg);
+    z-index: 2;
+}
+
+.mini-three {
+    right: 25px;
+    top: 50px;
+    transform: rotate(9deg);
+    z-index: 3;
+}
+
+
+/* =========================
+   BIG MEMORY FRAME
+========================= */
+
+.big-memory-frame {
+    position: absolute;
+
+    left: 10%;
+    top: 12%;
+
+    width: 410px;
+    height: 450px;
+
+    padding: 18px;
+
+    background: white;
+
+    box-shadow:
+        0 18px 38px rgba(90,70,55,0.15);
+
+    transform: rotate(-3deg);
+}
+
+.big-memory-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #F3EEE7;
+}
+
+.frame-tape {
+    position: absolute;
+
+    width: 90px;
+    height: 25px;
+
+    top: -12px;
+    left: 50%;
+
+    transform: translateX(-50%) rotate(-2deg);
+
+    background: rgba(218,202,177,0.7);
+
+    z-index: 4;
+}
+
+.side-note {
+    position: absolute;
+
+    right: 9%;
+    top: 25%;
+
+    width: 280px;
+
+    padding: 25px;
+
+    background: #FFFDF8;
+
+    text-align: left;
+
+    transform: rotate(3deg);
+
+    box-shadow:
+        0 12px 25px rgba(90,70,55,0.10);
+}
+
+.side-note h3 {
+    font-size: 29px;
+    margin-bottom: 15px;
+}
+
+.side-note p {
+    font-size: 18px;
+    color: #8E7A6A;
+    line-height: 1.7;
+}
+
+.side-note span {
+    display: block;
+
+    margin-top: 15px;
+
+    font-family: "Caveat", cursive;
+    font-size: 20px;
+    color: #8B6A55;
+}
+
+
+/* =========================
+   MEMORY STRIP
+========================= */
+
+.memory-strip {
+    position: absolute;
+
+    left: 50%;
+    top: 18%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    gap: 15px;
+}
+
+.memory-strip div {
+    width: 190px;
+    height: 270px;
+
+    padding: 9px;
+
+    background: white;
+
+    box-shadow:
+        0 12px 25px rgba(90,70,55,0.12);
+}
+
+.memory-strip div:nth-child(1) {
+    transform: rotate(-5deg);
+}
+
+.memory-strip div:nth-child(2) {
+    transform: translateY(-15px) rotate(1deg);
+}
+
+.memory-strip div:nth-child(3) {
+    transform: rotate(5deg);
+}
+
+.memory-strip img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #F3EEE7;
+}
+
+.remember-note {
+    position: absolute;
+
+    left: 50%;
+    bottom: 13%;
+
+    transform: translateX(-50%) rotate(-2deg);
+
+    width: 330px;
+
+    padding: 25px;
+
+    background: #FFF8D9;
+
+    box-shadow:
+        0 12px 25px rgba(90,70,55,0.10);
+
+    text-align: center;
+}
+
+.remember-note h3 {
+    font-size: 31px;
+    margin: 10px 0 12px;
+}
+
+.remember-note p {
+    font-size: 18px;
+    color: #8E7A6A;
+    line-height: 1.7;
+}
+
+.remember-note strong {
+    display: block;
+
+    margin-top: 12px;
+
+    font-family: "Caveat", cursive;
+    font-size: 22px;
+    color: #8B6A55;
+}
+
+
+/* =========================
+   GUDDA PAGE
+========================= */
+
+.gudda-photo {
+    left: 12%;
+    top: 18%;
+}
+
+.floating-photo {
+    position: absolute;
+
+    right: 16%;
+    top: 13%;
+
+    width: 170px;
+    height: 210px;
+
+    padding: 9px;
+
+    background: white;
+
+    box-shadow:
+        0 12px 25px rgba(90,70,55,0.12);
+
+    transform: rotate(7deg);
+}
+
+.floating-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #F3EEE7;
+}
+
+.gudda-note {
+    position: absolute;
+
+    right: 8%;
+    bottom: 17%;
+
+    width: 300px;
+
+    padding: 28px;
+
+    background: #FFFDF8;
+
+    text-align: left;
+
+    transform: rotate(-3deg);
+
+    box-shadow:
+        0 12px 25px rgba(90,70,55,0.10);
+}
+
+.gudda-note h3 {
+    font-size: 29px;
+    margin-bottom: 15px;
+}
+
+.gudda-note p {
+    font-size: 18px;
+    color: #8E7A6A;
+    line-height: 1.7;
+}
+
+.gudda-note span {
+    display: block;
+
+    margin-top: 15px;
+
+    font-family: "Caveat", cursive;
+    color: #8B6A55;
+    font-size: 20px;
+}
+
+
+/* =========================
+   PROTECTIVE PAGE
+========================= */
+
+.protective-layout {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 60px;
+}
+
+.protective-photo {
+    width: 350px;
+    height: 420px;
+
+    padding: 12px;
+
+    background: white;
+
+    box-shadow:
+        0 18px 35px rgba(90,70,55,0.15);
+
+    transform: rotate(-4deg);
+}
+
+.protective-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #F3EEE7;
+}
+
+.protective-card {
+    width: 300px;
+
+    padding: 30px;
+
+    background: #FFFDF8;
+
+    text-align: left;
+
+    transform: rotate(3deg);
+
+    box-shadow:
+        0 12px 25px rgba(90,70,55,0.10);
+}
+
+.tiny-title {
+    display: block;
+
+    font-size: 11px;
+    letter-spacing: 3px;
+
+    color: #A08A77;
+
+    margin-bottom: 12px;
+}
+
+.protective-card h3 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.protective-card p {
+    font-size: 18px;
+    color: #8E7A6A;
+    line-height: 1.7;
+}
+
+.protective-card > span:last-child {
+    display: block;
+
+    margin-top: 15px;
+
+    font-family: "Caveat", cursive;
+    font-size: 21px;
+    color: #8B6A55;
+}
+
+
+/* =========================
+   DUA PAGE
+========================= */
+
+.dua-page {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 65px;
+}
+
+.dua-photo {
+    width: 350px;
+    height: 420px;
+
+    padding: 12px;
+
+    background: white;
+
+    box-shadow:
+        0 18px 35px rgba(90,70,55,0.15);
+
+    transform: rotate(-3deg);
+}
+
+.dua-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #F3EEE7;
+}
+
+.dua-text {
+    width: 330px;
+
+    text-align: left;
+}
+
+.dua-text h3 {
+    font-size: 35px;
+    line-height: 1.25;
+    margin-bottom: 20px;
+}
+
+.little-line {
+    width: 55px;
+    height: 1px;
+
+    background: rgba(139,106,85,0.35);
+
+    margin-bottom: 20px;
+}
+
+.dua-text p {
+    font-size: 19px;
+    color: #8E7A6A;
+    line-height: 1.8;
+}
+
+.dua-text .handwritten {
+    display: block;
+    margin-top: 18px;
+}
+
+
+/* =========================
+   FINAL SCRAPBOOK PAGE
+========================= */
+
+.final-scrap-page {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,0.95),
+            #F5EEE4
+        );
+}
+
+.final-photo-polaroid {
+    position: absolute;
+
+    left: 15%;
+    top: 17%;
+
+    width: 300px;
+    height: 390px;
+
+    padding: 12px 12px 42px;
+
+    background: white;
+
+    box-shadow:
+        0 18px 35px rgba(90,70,55,0.16);
+
+    transform: rotate(-4deg);
+}
+
+.final-photo-polaroid img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #F3EEE7;
+}
+
+.final-photo-polaroid span {
+    position: absolute;
+
+    bottom: 10px;
+    left: 0;
+    right: 0;
+
+    font-family: "Caveat", cursive;
+    font-size: 20px;
+    color: #8B6A55;
+}
+
+.final-scrap-text {
+    position: absolute;
+
+    right: 12%;
+    top: 22%;
+
+    width: 330px;
+
+    text-align: left;
+}
+
+.final-scrap-text h3 {
+    font-size: 52px;
+    font-weight: 600;
+    margin: 10px 0 20px;
+}
+
+.final-scrap-text p {
+    font-size: 20px;
+    color: #8E7A6A;
+    line-height: 1.8;
+}
+
+.final-scrap-text .handwritten {
+    display: block;
+    margin-top: 18px;
+}
+
+.final-hearts {
+    position: absolute;
+
+    bottom: 12%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: 25px;
+    color: #8B6A55;
+}
+
+
+/* =========================
+   SMALL DETAILS
+========================= */
+
+.scribble {
+    position: absolute;
+
+    right: 12%;
+    bottom: 12%;
+
+    font-family: "Caveat", cursive;
+    font-size: 28px;
+    color: #A08A77;
+
+    transform: rotate(-8deg);
+}
+
+.little-star {
+    position: absolute;
+
+    right: 15%;
+    top: 15%;
+
+    font-size: 30px;
+    color: #A08A77;
+}
+
+.star-two {
+    right: 8%;
+    top: 24%;
+    font-size: 20px;
+}
+
+.sticker-word {
+    position: absolute;
+
+    right: 10%;
+    top: 12%;
+
+    font-family: "Caveat", cursive;
+    font-size: 27px;
+    color: #A06F6F;
+
+    transform: rotate(8deg);
+}
+
+
+/* =========================
+   BOOK CONTROLS
+========================= */
+
+.book-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 30px;
+}
+
+#scrapbookCounter {
+    font-family: "Caveat", cursive;
+    font-size: 22px;
+    color: #8B6A55;
+}
+
+.book-dots {
+    display: flex;
+    gap: 8px;
+    margin: 15px 0;
+}
+
+.book-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: rgba(139,106,85,0.22);
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.book-dot.active {
+    width: 22px;
+    border-radius: 10px;
+    background: #8B6A55;
+}
+
+.flip-hint {
+    font-size: 15px;
+    color: #A08A77;
+}
+
+
+/* =========================
+   SCRAPBOOK ENDING
+========================= */
+
+.scrapbook-ending {
+    width: 100%;
+    max-width: 700px;
+
+    margin-top: 90px;
+
+    padding-top: 60px;
+
+    border-top: 1px solid rgba(139,106,85,0.2);
+
+    text-align: center;
+}
+
+.scrapbook-ending > span {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #A08A77;
+}
+
+.scrapbook-ending h3 {
+    font-size: 43px;
+    line-height: 1.3;
+    margin: 20px 0;
+}
+
+.scrapbook-ending p {
+    font-size: 21px;
+    color: #8E7A6A;
+    line-height: 1.8;
+}
+
+.scrapbook-ending strong {
+    display: block;
+
+    margin-top: 18px;
+
+    font-family: "Caveat", cursive;
+    font-size: 26px;
+    color: #8B6A55;
+}
+
+
+/* =====================================================
+   SCRAPBOOK MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .scrapbook-section {
+        padding: 90px 15px 90px;
+    }
+
+    .scrapbook-section > h2 {
+        font-size: 45px;
+    }
+
+    .scrapbook-intro {
+        font-size: 19px;
+        margin-bottom: 35px;
+    }
+
+    .scrapbook-sticker {
+        left: 2%;
+        top: 3%;
+    }
+
+    .scrapbook-sticker img {
+        width: 65px;
+    }
+
+    .scrapbook-sticker span {
+        font-size: 13px;
+    }
+
+    .scrapbook-book {
+        gap: 7px;
+    }
+
+    .book-page-container {
+        height: 650px;
+        border-radius: 6px;
+    }
+
+    .book-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 28px;
+    }
+
+    .page-number {
+        top: 15px;
+        right: 15px;
+        font-size: 17px;
+    }
+
+    .polaroid-main {
+        width: 220px;
+        height: 285px;
+    }
+
+    .polaroid-small {
+        width: 125px;
+        height: 160px;
+    }
+
+    .mini-photo {
+        width: 115px;
+        height: 145px;
+    }
+
+    .scrap-note,
+    .side-note,
+    .gudda-note,
+    .protective-card {
+        width: 78%;
+        max-width: 290px;
+        padding: 20px;
+    }
+
+    .scrap-note h3,
+    .side-note h3,
+    .gudda-note h3 {
+        font-size: 25px;
+    }
+
+    .scrap-note p,
+    .side-note p,
+    .gudda-note p,
+    .protective-card p {
+        font-size: 16px;
+    }
+
+    .note-right {
+        right: 5%;
+        top: 53%;
+    }
+
+    .note-top {
+        right: 5%;
+        top: 52%;
+    }
+
+    .note-left {
+        left: 5%;
+        top: 52%;
+    }
+
+    .note-right-bottom {
+        right: 5%;
+        bottom: 7%;
+    }
+
+    .lower-photo {
+        left: 8%;
+        top: 15%;
+    }
+
+    .photo-stack {
+        left: 50%;
+        top: 9%;
+        transform: translateX(-50%);
+        width: 280px;
+        height: 330px;
+    }
+
+    .stack-photo {
+        width: 220px;
+        height: 270px;
+    }
+
+    .stack-back {
+        left: 20px;
+    }
+
+    .stack-middle {
+        left: 45px;
+    }
+
+    .stack-front {
+        left: 35px;
+    }
+
+    .taped-note {
+        right: 8%;
+        bottom: 8%;
+        font-size: 17px;
+    }
+
+    .spotify-memory {
+        width: 88%;
+        flex-direction: column;
+        gap: 18px;
+        padding: 20px;
+        top: 45%;
+    }
+
+    .spotify-photo {
+        width: 190px;
+        height: 190px;
+    }
+
+    .spotify-info {
+        width: 100%;
+        text-align: center;
+    }
+
+    .spotify-info h3 {
+        font-size: 27px;
+    }
+
+    .fake-player {
+        margin-top: 14px;
+    }
+
+    .scrap-caption {
+        bottom: 5%;
+        width: 88%;
+        font-size: 18px;
+    }
+
+    .argument-collage {
+        width: 310px;
+        height: 280px;
+        top: 28%;
+    }
+
+    .mini-polaroid {
+        width: 125px;
+        height: 160px;
+    }
+
+    .mini-one {
+        left: 10px;
+    }
+
+    .mini-two {
+        left: 95px;
+    }
+
+    .mini-three {
+        right: 5px;
+    }
+
+    .center-note {
+        top: 67%;
+        width: 80%;
+    }
+
+    .big-memory-frame {
+        left: 50%;
+        top: 9%;
+        transform: translateX(-50%) rotate(-3deg);
+        width: 260px;
+        height: 300px;
+    }
+
+    .side-note {
+        right: 50%;
+        top: 58%;
+        transform: translateX(50%) rotate(2deg);
+    }
+
+    .memory-strip {
+        top: 10%;
+        gap: 7px;
+    }
+
+    .memory-strip div {
+        width: 100px;
+        height: 160px;
+        padding: 6px;
+    }
+
+    .remember-note {
+        bottom: 8%;
+        width: 80%;
+        padding: 18px;
+    }
+
+    .remember-note h3 {
+        font-size: 27px;
+    }
+
+    .remember-note p {
+        font-size: 16px;
+    }
+
+    .gudda-photo {
+        left: 8%;
+        top: 15%;
+    }
+
+    .floating-photo {
+        right: 7%;
+        top: 10%;
+        width: 110px;
+        height: 140px;
+    }
+
+    .gudda-note {
+        right: 50%;
+        bottom: 7%;
+        transform: translateX(50%) rotate(-2deg);
+    }
+
+    .protective-layout,
+    .dua-page {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .protective-photo,
+    .dua-photo {
+        width: 230px;
+        height: 270px;
+    }
+
+    .protective-card,
+    .dua-text {
+        width: 80%;
+        max-width: 290px;
+    }
+
+    .dua-text h3 {
+        font-size: 29px;
+    }
+
+    .dua-text p {
+        font-size: 17px;
+    }
+
+    .final-photo-polaroid {
+        left: 50%;
+        top: 8%;
+        transform: translateX(-50%) rotate(-3deg);
+        width: 220px;
+        height: 280px;
+    }
+
+    .final-scrap-text {
+        right: 50%;
+        top: 55%;
+        transform: translateX(50%);
+        width: 80%;
+        max-width: 290px;
+        text-align: center;
+    }
+
+    .final-scrap-text h3 {
+        font-size: 42px;
+    }
+
+    .final-scrap-text p {
+        font-size: 17px;
+    }
+
+    .final-hearts {
+        bottom: 4%;
+    }
+
+    .scrapbook-ending {
+        margin-top: 65px;
+        padding-top: 45px;
+    }
+
+    .scrapbook-ending h3 {
+        font-size: 34px;
+    }
+
+    .scrapbook-ending p {
+        font-size: 18px;
+    }
+}
