@@ -23,11 +23,9 @@ body {
     overflow-x: hidden;
 }
 
-.background {
-    position: fixed;
-    inset: 0;
-    background: linear-gradient(180deg, #F8F5F1, #EFE6DC);
-    z-index: -1;
+button,
+input {
+    font-family: inherit;
 }
 
 
@@ -72,18 +70,25 @@ body {
     width: 320px;
 }
 
-input {
+.password-box input {
+    width: 100%;
     padding: 16px;
     border: none;
     border-radius: 15px;
     outline: none;
     font-size: 16px;
+    background: white;
+    color: #5A4637;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     text-align: center;
-    font-family: "Cormorant Garamond", serif;
 }
 
-button {
+.password-box input:focus {
+    box-shadow: 0 10px 30px rgba(139, 106, 85, 0.16);
+}
+
+.password-box button {
+    width: 100%;
     padding: 16px;
     border: none;
     border-radius: 15px;
@@ -92,12 +97,18 @@ button {
     font-size: 16px;
     cursor: pointer;
     transition: 0.3s;
-    font-family: "Cormorant Garamond", serif;
 }
 
-button:hover {
+.password-box button:hover {
     transform: translateY(-2px);
     opacity: 0.9;
+}
+
+.password-message {
+    min-height: 24px;
+    font-size: 17px;
+    color: #A06F6F;
+    transition: 0.3s ease;
 }
 
 
@@ -166,6 +177,7 @@ button:hover {
 ========================= */
 
 .hero {
+    position: relative;
     min-height: 100vh;
     width: 100%;
     display: flex;
@@ -174,7 +186,6 @@ button:hover {
     align-items: center;
     text-align: center;
     padding: 40px 20px;
-    position: relative;
 }
 
 .cover-photo {
@@ -220,6 +231,20 @@ button:hover {
 
 
 /* =========================
+   COMMON SECTIONS
+========================= */
+
+.story,
+.message,
+.little-things,
+.memories,
+.love-section,
+.final-section {
+    position: relative;
+}
+
+
+/* =========================
    OUR STORY
 ========================= */
 
@@ -232,12 +257,22 @@ button:hover {
     align-items: center;
     text-align: center;
     padding: 80px 30px;
-    position: relative;
 }
 
-.story h2 {
+.story h2,
+.message h2,
+.little-things h2,
+.memories > h2,
+.love-section > h2 {
     font-size: 58px;
     font-weight: 600;
+}
+
+.story h2,
+.message h2,
+.little-things h2,
+.memories > h2,
+.love-section > h2 {
     margin-bottom: 25px;
 }
 
@@ -263,13 +298,6 @@ button:hover {
     align-items: center;
     text-align: center;
     padding: 80px 30px;
-    position: relative;
-}
-
-.message h2 {
-    font-size: 58px;
-    font-weight: 600;
-    margin-bottom: 25px;
 }
 
 .message p {
@@ -294,13 +322,6 @@ button:hover {
     justify-content: center;
     align-items: center;
     text-align: center;
-    position: relative;
-}
-
-.little-things h2 {
-    font-size: 58px;
-    font-weight: 600;
-    margin-bottom: 20px;
 }
 
 .little-intro {
@@ -360,13 +381,6 @@ button:hover {
     justify-content: center;
     align-items: center;
     text-align: center;
-    position: relative;
-}
-
-.memories > h2 {
-    font-size: 58px;
-    font-weight: 600;
-    margin-bottom: 20px;
 }
 
 .memories-intro {
@@ -467,7 +481,6 @@ button:hover {
     align-items: center;
     text-align: center;
     overflow: hidden;
-    position: relative;
 }
 
 .love-section > h2 {
@@ -475,18 +488,16 @@ button:hover {
     max-width: 1000px;
     margin: 0 auto 20px;
     text-align: center;
-    font-size: 58px;
-    font-weight: 600;
 }
 
 .love-intro {
     width: 100%;
     max-width: 700px;
     margin: 0 auto 70px;
-    text-align: center;
     font-size: 23px;
     color: #8E7A6A;
     line-height: 1.8;
+    text-align: center;
 }
 
 .love-grid {
@@ -561,115 +572,76 @@ button:hover {
 
 
 /* =========================
-   MUSIC / PLAYLIST SECTION
+   STICKERS
 ========================= */
 
-.playlist-section {
-    min-height: 100vh;
-    width: 100%;
-    padding: 120px 30px;
+.sticker {
+    position: absolute;
+    z-index: 2;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center;
-    position: relative;
+    pointer-events: none;
 }
 
-.playlist-small-title {
-    font-size: 14px;
-    letter-spacing: 4px;
-    color: #A08A77;
-    margin-bottom: 15px;
+.sticker img {
+    display: block;
+    width: 105px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 7px 10px rgba(90, 70, 55, 0.10));
 }
 
-.playlist-section > h2 {
-    font-size: 58px;
-    font-weight: 600;
-    margin-bottom: 20px;
-}
-
-.playlist-intro {
-    width: 100%;
-    max-width: 700px;
-    font-size: 23px;
-    color: #8E7A6A;
-    line-height: 1.8;
-    margin-bottom: 55px;
-}
-
-.playlist-card {
-    width: 100%;
-    max-width: 600px;
-    padding: 55px 40px;
-    background: rgba(255, 255, 255, 0.48);
-    border-radius: 30px;
-    box-shadow: 0 15px 40px rgba(90, 70, 55, 0.1);
-    text-align: center;
-}
-
-.playlist-icon {
+.sticker span {
+    display: block;
     font-family: "Caveat", cursive;
-    font-size: 45px;
+    font-size: 17px;
     color: #8B6A55;
-    margin-bottom: 10px;
+    white-space: nowrap;
+    margin-top: -2px;
 }
 
-.playlist-label {
-    font-size: 15px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #A08A77;
+.sticker-hero {
+    right: 8%;
+    bottom: 13%;
+    transform: rotate(-7deg);
 }
 
-.playlist-card h3 {
-    font-size: 38px;
-    font-weight: 600;
-    margin: 15px 0;
+.sticker-story {
+    left: 8%;
+    top: 18%;
+    transform: rotate(7deg);
 }
 
-.playlist-text {
-    font-size: 20px;
-    color: #8E7A6A;
-    line-height: 1.7;
-    margin-bottom: 30px;
+.sticker-note {
+    right: 9%;
+    top: 20%;
+    transform: rotate(-7deg);
 }
 
-.music-button {
-    display: inline-block;
-    padding: 15px 30px;
-    border-radius: 30px;
-    background: #8B6A55;
-    color: white;
-    border: none;
-    font-size: 18px;
-    transition: 0.3s ease;
+.sticker-things {
+    left: 7%;
+    top: 12%;
+    transform: rotate(7deg);
 }
 
-.music-button:hover {
-    transform: translateY(-3px);
-    opacity: 0.9;
+.sticker-memory {
+    right: 7%;
+    top: 10%;
+    transform: rotate(-7deg);
 }
 
-.music-button.playing {
-    background: #6E5140;
+.sticker-love {
+    left: 7%;
+    top: 8%;
+    transform: rotate(7deg);
 }
 
-.playlist-note {
-    margin-top: 25px;
-    font-family: "Caveat", cursive;
-    font-size: 20px;
-    color: #A08A77;
-}
-
-.playlist-ending {
-    width: 100%;
-    max-width: 700px;
-    margin-top: 70px;
-    font-size: 22px;
-    color: #8E7A6A;
-    line-height: 1.8;
-    font-style: italic;
+.sticker-final {
+    right: 9%;
+    top: 15%;
+    transform: rotate(-7deg);
 }
 
 
@@ -686,7 +658,6 @@ button:hover {
     justify-content: center;
     align-items: center;
     text-align: center;
-    position: relative;
 }
 
 .final-small {
@@ -703,7 +674,6 @@ button:hover {
 }
 
 .final-text {
-    width: 100%;
     max-width: 650px;
     font-size: 25px;
     color: #8E7A6A;
@@ -725,101 +695,6 @@ button:hover {
 
 
 /* =========================
-   JOURNAL STICKERS
-========================= */
-
-.sticker {
-    position: absolute;
-    z-index: 2;
-    font-size: 45px;
-    text-align: center;
-    pointer-events: none;
-}
-
-.sticker span {
-    display: block;
-    font-family: "Caveat", cursive;
-    font-size: 17px;
-    color: #8B6A55;
-    white-space: nowrap;
-    margin-top: -5px;
-}
-
-.cat-sticker {
-    transform: rotate(7deg);
-}
-
-.panda-sticker {
-    transform: rotate(-7deg);
-}
-
-.sticker-hero {
-    right: 8%;
-    bottom: 15%;
-}
-
-.sticker-story {
-    left: 8%;
-    top: 18%;
-}
-
-.sticker-note {
-    right: 9%;
-    top: 20%;
-}
-
-.sticker-things {
-    left: 7%;
-    top: 12%;
-}
-
-.sticker-memory {
-    right: 7%;
-    top: 10%;
-}
-
-.sticker-love {
-    left: 7%;
-    top: 9%;
-}
-
-.sticker-playlist {
-    left: 8%;
-    top: 12%;
-}
-
-.sticker-final {
-    right: 9%;
-    top: 15%;
-}
-
-
-/* =========================
-   WRONG PASSWORD SHAKE
-========================= */
-
-.shake {
-    animation: shake 0.3s;
-}
-
-@keyframes shake {
-
-    0%,
-    100% {
-        transform: translateX(0);
-    }
-
-    25% {
-        transform: translateX(-8px);
-    }
-
-    75% {
-        transform: translateX(8px);
-    }
-}
-
-
-/* =========================
    MOBILE
 ========================= */
 
@@ -833,34 +708,17 @@ button:hover {
         font-size: 18px;
     }
 
-    .hero h1 {
-        font-size: 48px;
+    .password-box {
+        width: 280px;
     }
 
     .welcome-screen h2 {
         font-size: 42px;
     }
 
-    .story h2,
-    .message h2,
-    .little-things h2,
-    .memories > h2,
-    .love-section > h2,
-    .playlist-section > h2 {
-        font-size: 44px;
+    .hero {
+        padding: 35px 20px;
     }
-
-    .story p,
-    .message p {
-        font-size: 21px;
-    }
-
-    .password-box {
-        width: 280px;
-    }
-
-
-    /* HERO */
 
     .cover-photo {
         width: 240px;
@@ -869,16 +727,35 @@ button:hover {
         margin-bottom: 30px;
     }
 
+    .hero h1 {
+        font-size: 48px;
+    }
+
     .hero-text {
-        font-size: 20px;
+        font-size: 19px;
     }
 
     .scroll-down {
-        margin-top: 60px;
+        margin-top: 55px;
     }
 
+    .story,
+    .message {
+        padding: 80px 20px;
+    }
 
-    /* LITTLE THINGS */
+    .story h2,
+    .message h2,
+    .little-things h2,
+    .memories > h2,
+    .love-section > h2 {
+        font-size: 44px;
+    }
+
+    .story p,
+    .message p {
+        font-size: 21px;
+    }
 
     .little-things {
         padding: 80px 20px;
@@ -886,8 +763,7 @@ button:hover {
 
     .little-intro,
     .memories-intro,
-    .love-intro,
-    .playlist-intro {
+    .love-intro {
         font-size: 20px;
     }
 
@@ -907,9 +783,6 @@ button:hover {
     .thing p {
         font-size: 18px;
     }
-
-
-    /* MEMORIES */
 
     .memories {
         padding: 80px 20px;
@@ -935,11 +808,11 @@ button:hover {
     }
 
     .memory-photo.proposal-photo {
-        width: 100% !important;
+        width: 100%;
         max-width: 330px;
-        height: 300px !important;
-        object-fit: contain !important;
-        border-radius: 20px !important;
+        height: 300px;
+        object-fit: contain;
+        border-radius: 20px;
         padding: 8px;
     }
 
@@ -965,19 +838,33 @@ button:hover {
         margin-top: 80px;
     }
 
-
-    /* LOVE */
-
     .love-section {
+        width: 100%;
+        min-height: 100vh;
         padding: 80px 20px;
     }
 
+    .love-section > h2 {
+        width: 100%;
+        max-width: 100%;
+        font-size: 44px;
+        margin: 0 auto 20px;
+    }
+
+    .love-intro {
+        width: 100%;
+        font-size: 20px;
+        margin: 0 auto 50px;
+    }
+
     .love-grid {
+        width: 100%;
         grid-template-columns: 1fr;
         gap: 20px;
     }
 
     .love-card {
+        width: 100%;
         padding: 28px 22px;
     }
 
@@ -1003,40 +890,9 @@ button:hover {
         font-size: 19px;
     }
 
-
-    /* MUSIC */
-
-    .playlist-section {
-        padding: 80px 20px;
-    }
-
-    .playlist-card {
-        padding: 40px 25px;
-    }
-
-    .playlist-card h3 {
-        font-size: 31px;
-    }
-
-    .playlist-text {
-        font-size: 18px;
-    }
-
-    .music-button {
-        font-size: 17px;
-        padding: 14px 24px;
-    }
-
-    .playlist-ending {
-        font-size: 19px;
-        margin-top: 55px;
-    }
-
-
-    /* STICKERS */
-
-    .sticker {
-        font-size: 32px;
+    /* stickers on phone */
+    .sticker img {
+        width: 72px;
     }
 
     .sticker span {
@@ -1044,47 +900,39 @@ button:hover {
     }
 
     .sticker-hero {
-        right: 4%;
-        bottom: 8%;
+        right: 3%;
+        bottom: 7%;
     }
 
     .sticker-story {
-        left: 3%;
-        top: 10%;
+        left: 2%;
+        top: 9%;
     }
 
     .sticker-note {
-        right: 3%;
-        top: 12%;
+        right: 2%;
+        top: 10%;
     }
 
     .sticker-things {
-        left: 3%;
-        top: 7%;
-    }
-
-    .sticker-memory {
-        right: 3%;
+        left: 2%;
         top: 6%;
     }
 
-    .sticker-love {
-        left: 3%;
+    .sticker-memory {
+        right: 2%;
         top: 5%;
     }
 
-    .sticker-playlist {
-        left: 3%;
-        top: 5%;
+    .sticker-love {
+        left: 2%;
+        top: 4%;
     }
 
     .sticker-final {
-        right: 4%;
-        top: 8%;
+        right: 3%;
+        top: 7%;
     }
-
-
-    /* FINAL */
 
     .final-section {
         padding: 80px 20px;
@@ -1097,5 +945,4 @@ button:hover {
     .final-text {
         font-size: 21px;
     }
-
 }
