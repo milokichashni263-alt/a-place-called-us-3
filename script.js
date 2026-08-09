@@ -22,20 +22,16 @@ function unlock() {
 
     if (passwordInput.value === correctPassword) {
 
-        // Hide password page
         container.style.display = "none";
 
-        // Show welcome screen
         welcomeScreen.classList.add("show");
 
-        // Start background music
         if (backgroundMusic) {
             backgroundMusic.play().catch(function () {
                 console.log("Music could not autoplay.");
             });
         }
 
-        // Move to home page after welcome screen
         setTimeout(function () {
 
             welcomeScreen.classList.remove("show");
@@ -51,7 +47,6 @@ function unlock() {
 
     } else {
 
-        // Shake input
         passwordInput.animate(
             [
                 { transform: "translateX(-8px)" },
@@ -75,7 +70,9 @@ function unlock() {
 }
 
 
-// Attach password events safely
+// =========================
+// PASSWORD EVENTS
+// =========================
 
 if (unlockButton) {
     unlockButton.addEventListener("click", unlock);
@@ -83,9 +80,11 @@ if (unlockButton) {
 
 if (passwordInput) {
     passwordInput.addEventListener("keydown", function (e) {
+
         if (e.key === "Enter") {
             unlock();
         }
+
     });
 }
 
@@ -108,7 +107,7 @@ let currentQuestion = 0;
 
 
 // =========================
-// OPTION QUESTIONS
+// QUIZ OPTIONS
 // =========================
 
 document.querySelectorAll(".quiz-option").forEach(function (option) {
@@ -120,18 +119,12 @@ document.querySelectorAll(".quiz-option").forEach(function (option) {
 
         if (!question) return;
 
-
-        // Remove previous selection
         question.querySelectorAll(".quiz-option").forEach(function (item) {
             item.classList.remove("selected");
         });
 
-
-        // Select clicked answer
         option.classList.add("selected");
 
-
-        // Feedback
         const feedback =
             question.querySelector(".quiz-feedback");
 
@@ -139,7 +132,6 @@ document.querySelectorAll(".quiz-option").forEach(function (option) {
 
             const isQuestionFive =
                 question.dataset.question === "5";
-
 
             if (isQuestionFive) {
 
@@ -151,7 +143,6 @@ document.querySelectorAll(".quiz-option").forEach(function (option) {
                 const correct =
                     option.dataset.correct === "true";
 
-
                 if (correct) {
 
                     feedback.textContent =
@@ -161,6 +152,7 @@ document.querySelectorAll(".quiz-option").forEach(function (option) {
 
                     feedback.textContent =
                         "Hmm... we might have to discuss this one. 😭";
+
                 }
             }
         }
@@ -181,17 +173,13 @@ nextButtons.forEach(function (button) {
 
         if (!current) return;
 
-
-        // Check multiple choice question
         const hasOptions =
             current.querySelectorAll(".quiz-option").length > 0;
-
 
         if (hasOptions) {
 
             const hasSelected =
                 current.querySelector(".quiz-option.selected");
-
 
             if (!hasSelected) {
 
@@ -199,7 +187,6 @@ nextButtons.forEach(function (button) {
                     current.querySelector(".quiz-feedback");
 
                 if (feedback) {
-
                     feedback.textContent =
                         "You have to choose one first, Humpty. 😭";
                 }
@@ -209,11 +196,8 @@ nextButtons.forEach(function (button) {
         }
 
 
-        // Check written answer
-        // IMPORTANT: HTML uses .quiz-answer
         const answer =
             current.querySelector(".quiz-answer");
-
 
         if (answer) {
 
@@ -223,7 +207,6 @@ nextButtons.forEach(function (button) {
                     current.querySelector(".quiz-feedback");
 
                 if (feedback) {
-
                     feedback.textContent =
                         "Excuse me... answer the question. 👀";
                 }
@@ -233,22 +216,19 @@ nextButtons.forEach(function (button) {
         }
 
 
-        // Hide current question
         current.classList.remove("active");
 
-
-        // Move to next question
         currentQuestion++;
 
-
-        // Show next question
         if (quizQuestions[currentQuestion]) {
 
             quizQuestions[currentQuestion]
                 .classList.add("active");
+
         }
 
     });
+
 });
 
 
@@ -265,20 +245,15 @@ if (finishButton) {
 
         if (!current) return;
 
-
-        // HTML uses .quiz-answer
         const answer =
             current.querySelector(".quiz-answer");
 
-
-        // Make sure final answer isn't empty
         if (answer && answer.value.trim() === "") {
 
             const feedback =
                 current.querySelector(".quiz-feedback");
 
             if (feedback) {
-
                 feedback.textContent =
                     "You can't escape this one. Answer it. 😭";
             }
@@ -286,37 +261,47 @@ if (finishButton) {
             return;
         }
 
-
-        // Hide final question
         current.classList.remove("active");
 
-
-        // Show quiz result
         const result =
             document.querySelector(".quiz-result");
 
-
         if (result) {
-
             result.classList.add("show");
-
         }
 
     });
-}
-/* =====================================================
-   SCRAPBOOK PAGE FLIP
-===================================================== */
 
-const scrapbookPages = document.querySelectorAll(".scrap-page");
-const nextPageButton = document.getElementById("nextPage");
-const prevPageButton = document.getElementById("prevPage");
-const scrapbookCounter = document.getElementById("scrapbookCounter");
-const scrapbookDots = document.querySelectorAll(".book-dot");
+}
+
+
+// =====================================================
+// SCRAPBOOK PAGE FLIP
+// =====================================================
+
+const scrapbookPages =
+    document.querySelectorAll(".scrap-page");
+
+const nextPageButton =
+    document.getElementById("nextPage");
+
+const prevPageButton =
+    document.getElementById("prevPage");
+
+const scrapbookCounter =
+    document.getElementById("scrapbookCounter");
+
+const scrapbookDots =
+    document.querySelectorAll(".book-dot");
 
 let currentScrapPage = 0;
 
+
 function showScrapPage(index) {
+
+    if (!scrapbookPages.length) {
+        return;
+    }
 
     if (index < 0) {
         index = 0;
@@ -326,7 +311,8 @@ function showScrapPage(index) {
         index = scrapbookPages.length - 1;
     }
 
-    scrapbookPages.forEach((page, i) => {
+
+    scrapbookPages.forEach(function (page, i) {
 
         page.classList.toggle(
             "active-page",
@@ -335,7 +321,8 @@ function showScrapPage(index) {
 
     });
 
-    scrapbookDots.forEach((dot, i) => {
+
+    scrapbookDots.forEach(function (dot, i) {
 
         dot.classList.toggle(
             "active",
@@ -344,46 +331,81 @@ function showScrapPage(index) {
 
     });
 
-    scrapbookCounter.textContent =
-        String(index + 1).padStart(2, "0") +
-        " / " +
-        String(scrapbookPages.length).padStart(2, "0");
+
+    if (scrapbookCounter) {
+
+        scrapbookCounter.textContent =
+            String(index + 1).padStart(2, "0") +
+            " / " +
+            String(scrapbookPages.length).padStart(2, "0");
+
+    }
+
 
     currentScrapPage = index;
 
-    prevPageButton.disabled = index === 0;
-    nextPageButton.disabled =
-        index === scrapbookPages.length - 1;
+
+    if (prevPageButton) {
+        prevPageButton.disabled = index === 0;
+    }
+
+    if (nextPageButton) {
+        nextPageButton.disabled =
+            index === scrapbookPages.length - 1;
+    }
+
 }
 
 
-nextPageButton.addEventListener("click", () => {
+// =========================
+// SCRAPBOOK NEXT
+// =========================
 
-    if (currentScrapPage < scrapbookPages.length - 1) {
+if (nextPageButton) {
 
-        showScrapPage(currentScrapPage + 1);
+    nextPageButton.addEventListener("click", function () {
 
-    }
+        if (currentScrapPage < scrapbookPages.length - 1) {
 
-});
+            showScrapPage(
+                currentScrapPage + 1
+            );
 
+        }
 
-prevPageButton.addEventListener("click", () => {
+    });
 
-    if (currentScrapPage > 0) {
-
-        showScrapPage(currentScrapPage - 1);
-
-    }
-
-});
+}
 
 
-/* dots clickable */
+// =========================
+// SCRAPBOOK PREVIOUS
+// =========================
 
-scrapbookDots.forEach((dot, index) => {
+if (prevPageButton) {
 
-    dot.addEventListener("click", () => {
+    prevPageButton.addEventListener("click", function () {
+
+        if (currentScrapPage > 0) {
+
+            showScrapPage(
+                currentScrapPage - 1
+            );
+
+        }
+
+    });
+
+}
+
+
+// =========================
+// SCRAPBOOK DOTS
+// =========================
+
+scrapbookDots.forEach(function (dot, index) {
+
+    dot.addEventListener("click", function () {
 
         showScrapPage(index);
 
@@ -392,248 +414,42 @@ scrapbookDots.forEach((dot, index) => {
 });
 
 
-/* keyboard */
+// =========================
+// SCRAPBOOK KEYBOARD
+// =========================
 
-document.addEventListener("keydown", (event) => {
-
-    if (event.key === "ArrowRight") {
-
-        if (currentScrapPage < scrapbookPages.length - 1) {
-            showScrapPage(currentScrapPage + 1);
-        }
-
-    }
-
-    if (event.key === "ArrowLeft") {
-
-        if (currentScrapPage > 0) {
-            showScrapPage(currentScrapPage - 1);
-        }
-
-    }
-
-});
-
-
-/* =====================================================
-   SCRAPBOOK PAGE FLIP
-===================================================== */
-
-const scrapbookPages = document.querySelectorAll(".scrap-page");
-const nextPageButton = document.getElementById("nextPage");
-const prevPageButton = document.getElementById("prevPage");
-const scrapbookCounter = document.getElementById("scrapbookCounter");
-const scrapbookDots = document.querySelectorAll(".book-dot");
-
-let currentScrapPage = 0;
-
-function showScrapPage(index) {
-
-    if (index < 0) {
-        index = 0;
-    }
-
-    if (index >= scrapbookPages.length) {
-        index = scrapbookPages.length - 1;
-    }
-
-    scrapbookPages.forEach((page, i) => {
-
-        page.classList.toggle(
-            "active-page",
-            i === index
-        );
-
-    });
-
-    scrapbookDots.forEach((dot, i) => {
-
-        dot.classList.toggle(
-            "active",
-            i === index
-        );
-
-    });
-
-    scrapbookCounter.textContent =
-        String(index + 1).padStart(2, "0") +
-        " / " +
-        String(scrapbookPages.length).padStart(2, "0");
-
-    currentScrapPage = index;
-
-    prevPageButton.disabled = index === 0;
-    nextPageButton.disabled =
-        index === scrapbookPages.length - 1;
-}
-
-
-nextPageButton.addEventListener("click", () => {
-
-    if (currentScrapPage < scrapbookPages.length - 1) {
-
-        showScrapPage(currentScrapPage + 1);
-
-    }
-
-});
-
-
-prevPageButton.addEventListener("click", () => {
-
-    if (currentScrapPage > 0) {
-
-        showScrapPage(currentScrapPage - 1);
-
-    }
-
-});
-
-
-/* dots clickable */
-
-scrapbookDots.forEach((dot, index) => {
-
-    dot.addEventListener("click", () => {
-
-        showScrapPage(index);
-
-    });
-
-});
-
-
-/* keyboard */
-
-document.addEventListener("keydown", (event) => {
+document.addEventListener("keydown", function (event) {
 
     if (event.key === "ArrowRight") {
 
         if (currentScrapPage < scrapbookPages.length - 1) {
-            showScrapPage(currentScrapPage + 1);
+
+            showScrapPage(
+                currentScrapPage + 1
+            );
+
         }
 
     }
+
 
     if (event.key === "ArrowLeft") {
 
         if (currentScrapPage > 0) {
-            showScrapPage(currentScrapPage - 1);
+
+            showScrapPage(
+                currentScrapPage - 1
+            );
+
         }
 
     }
 
 });
 
-/* =====================================================
-   SCRAPBOOK PAGE FLIP
-===================================================== */
 
-const scrapbookPages = document.querySelectorAll(".scrap-page");
-const nextPageButton = document.getElementById("nextPage");
-const prevPageButton = document.getElementById("prevPage");
-const scrapbookCounter = document.getElementById("scrapbookCounter");
-const scrapbookDots = document.querySelectorAll(".book-dot");
-
-let currentScrapPage = 0;
-
-function showScrapPage(index) {
-
-    if (index < 0) {
-        index = 0;
-    }
-
-    if (index >= scrapbookPages.length) {
-        index = scrapbookPages.length - 1;
-    }
-
-    scrapbookPages.forEach((page, i) => {
-
-        page.classList.toggle(
-            "active-page",
-            i === index
-        );
-
-    });
-
-    scrapbookDots.forEach((dot, i) => {
-
-        dot.classList.toggle(
-            "active",
-            i === index
-        );
-
-    });
-
-    scrapbookCounter.textContent =
-        String(index + 1).padStart(2, "0") +
-        " / " +
-        String(scrapbookPages.length).padStart(2, "0");
-
-    currentScrapPage = index;
-
-    prevPageButton.disabled = index === 0;
-    nextPageButton.disabled =
-        index === scrapbookPages.length - 1;
-}
-
-
-nextPageButton.addEventListener("click", () => {
-
-    if (currentScrapPage < scrapbookPages.length - 1) {
-
-        showScrapPage(currentScrapPage + 1);
-
-    }
-
-});
-
-
-prevPageButton.addEventListener("click", () => {
-
-    if (currentScrapPage > 0) {
-
-        showScrapPage(currentScrapPage - 1);
-
-    }
-
-});
-
-
-/* dots clickable */
-
-scrapbookDots.forEach((dot, index) => {
-
-    dot.addEventListener("click", () => {
-
-        showScrapPage(index);
-
-    });
-
-});
-
-
-/* keyboard */
-
-document.addEventListener("keydown", (event) => {
-
-    if (event.key === "ArrowRight") {
-
-        if (currentScrapPage < scrapbookPages.length - 1) {
-            showScrapPage(currentScrapPage + 1);
-        }
-
-    }
-
-    if (event.key === "ArrowLeft") {
-
-        if (currentScrapPage > 0) {
-            showScrapPage(currentScrapPage - 1);
-        }
-
-    }
-
-});
-
+// =========================
+// START SCRAPBOOK
+// =========================
 
 showScrapPage(0);
