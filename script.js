@@ -304,3 +304,336 @@ if (finishButton) {
 
     });
 }
+/* =====================================================
+   SCRAPBOOK PAGE FLIP
+===================================================== */
+
+const scrapbookPages = document.querySelectorAll(".scrap-page");
+const nextPageButton = document.getElementById("nextPage");
+const prevPageButton = document.getElementById("prevPage");
+const scrapbookCounter = document.getElementById("scrapbookCounter");
+const scrapbookDots = document.querySelectorAll(".book-dot");
+
+let currentScrapPage = 0;
+
+function showScrapPage(index) {
+
+    if (index < 0) {
+        index = 0;
+    }
+
+    if (index >= scrapbookPages.length) {
+        index = scrapbookPages.length - 1;
+    }
+
+    scrapbookPages.forEach((page, i) => {
+
+        page.classList.toggle(
+            "active-page",
+            i === index
+        );
+
+    });
+
+    scrapbookDots.forEach((dot, i) => {
+
+        dot.classList.toggle(
+            "active",
+            i === index
+        );
+
+    });
+
+    scrapbookCounter.textContent =
+        String(index + 1).padStart(2, "0") +
+        " / " +
+        String(scrapbookPages.length).padStart(2, "0");
+
+    currentScrapPage = index;
+
+    prevPageButton.disabled = index === 0;
+    nextPageButton.disabled =
+        index === scrapbookPages.length - 1;
+}
+
+
+nextPageButton.addEventListener("click", () => {
+
+    if (currentScrapPage < scrapbookPages.length - 1) {
+
+        showScrapPage(currentScrapPage + 1);
+
+    }
+
+});
+
+
+prevPageButton.addEventListener("click", () => {
+
+    if (currentScrapPage > 0) {
+
+        showScrapPage(currentScrapPage - 1);
+
+    }
+
+});
+
+
+/* dots clickable */
+
+scrapbookDots.forEach((dot, index) => {
+
+    dot.addEventListener("click", () => {
+
+        showScrapPage(index);
+
+    });
+
+});
+
+
+/* keyboard */
+
+document.addEventListener("keydown", (event) => {
+
+    if (event.key === "ArrowRight") {
+
+        if (currentScrapPage < scrapbookPages.length - 1) {
+            showScrapPage(currentScrapPage + 1);
+        }
+
+    }
+
+    if (event.key === "ArrowLeft") {
+
+        if (currentScrapPage > 0) {
+            showScrapPage(currentScrapPage - 1);
+        }
+
+    }
+
+});
+
+
+/* =====================================================
+   SCRAPBOOK PAGE FLIP
+===================================================== */
+
+const scrapbookPages = document.querySelectorAll(".scrap-page");
+const nextPageButton = document.getElementById("nextPage");
+const prevPageButton = document.getElementById("prevPage");
+const scrapbookCounter = document.getElementById("scrapbookCounter");
+const scrapbookDots = document.querySelectorAll(".book-dot");
+
+let currentScrapPage = 0;
+
+function showScrapPage(index) {
+
+    if (index < 0) {
+        index = 0;
+    }
+
+    if (index >= scrapbookPages.length) {
+        index = scrapbookPages.length - 1;
+    }
+
+    scrapbookPages.forEach((page, i) => {
+
+        page.classList.toggle(
+            "active-page",
+            i === index
+        );
+
+    });
+
+    scrapbookDots.forEach((dot, i) => {
+
+        dot.classList.toggle(
+            "active",
+            i === index
+        );
+
+    });
+
+    scrapbookCounter.textContent =
+        String(index + 1).padStart(2, "0") +
+        " / " +
+        String(scrapbookPages.length).padStart(2, "0");
+
+    currentScrapPage = index;
+
+    prevPageButton.disabled = index === 0;
+    nextPageButton.disabled =
+        index === scrapbookPages.length - 1;
+}
+
+
+nextPageButton.addEventListener("click", () => {
+
+    if (currentScrapPage < scrapbookPages.length - 1) {
+
+        showScrapPage(currentScrapPage + 1);
+
+    }
+
+});
+
+
+prevPageButton.addEventListener("click", () => {
+
+    if (currentScrapPage > 0) {
+
+        showScrapPage(currentScrapPage - 1);
+
+    }
+
+});
+
+
+/* dots clickable */
+
+scrapbookDots.forEach((dot, index) => {
+
+    dot.addEventListener("click", () => {
+
+        showScrapPage(index);
+
+    });
+
+});
+
+
+/* keyboard */
+
+document.addEventListener("keydown", (event) => {
+
+    if (event.key === "ArrowRight") {
+
+        if (currentScrapPage < scrapbookPages.length - 1) {
+            showScrapPage(currentScrapPage + 1);
+        }
+
+    }
+
+    if (event.key === "ArrowLeft") {
+
+        if (currentScrapPage > 0) {
+            showScrapPage(currentScrapPage - 1);
+        }
+
+    }
+
+});
+
+/* =====================================================
+   SCRAPBOOK PAGE FLIP
+===================================================== */
+
+const scrapbookPages = document.querySelectorAll(".scrap-page");
+const nextPageButton = document.getElementById("nextPage");
+const prevPageButton = document.getElementById("prevPage");
+const scrapbookCounter = document.getElementById("scrapbookCounter");
+const scrapbookDots = document.querySelectorAll(".book-dot");
+
+let currentScrapPage = 0;
+
+function showScrapPage(index) {
+
+    if (index < 0) {
+        index = 0;
+    }
+
+    if (index >= scrapbookPages.length) {
+        index = scrapbookPages.length - 1;
+    }
+
+    scrapbookPages.forEach((page, i) => {
+
+        page.classList.toggle(
+            "active-page",
+            i === index
+        );
+
+    });
+
+    scrapbookDots.forEach((dot, i) => {
+
+        dot.classList.toggle(
+            "active",
+            i === index
+        );
+
+    });
+
+    scrapbookCounter.textContent =
+        String(index + 1).padStart(2, "0") +
+        " / " +
+        String(scrapbookPages.length).padStart(2, "0");
+
+    currentScrapPage = index;
+
+    prevPageButton.disabled = index === 0;
+    nextPageButton.disabled =
+        index === scrapbookPages.length - 1;
+}
+
+
+nextPageButton.addEventListener("click", () => {
+
+    if (currentScrapPage < scrapbookPages.length - 1) {
+
+        showScrapPage(currentScrapPage + 1);
+
+    }
+
+});
+
+
+prevPageButton.addEventListener("click", () => {
+
+    if (currentScrapPage > 0) {
+
+        showScrapPage(currentScrapPage - 1);
+
+    }
+
+});
+
+
+/* dots clickable */
+
+scrapbookDots.forEach((dot, index) => {
+
+    dot.addEventListener("click", () => {
+
+        showScrapPage(index);
+
+    });
+
+});
+
+
+/* keyboard */
+
+document.addEventListener("keydown", (event) => {
+
+    if (event.key === "ArrowRight") {
+
+        if (currentScrapPage < scrapbookPages.length - 1) {
+            showScrapPage(currentScrapPage + 1);
+        }
+
+    }
+
+    if (event.key === "ArrowLeft") {
+
+        if (currentScrapPage > 0) {
+            showScrapPage(currentScrapPage - 1);
+        }
+
+    }
+
+});
+
+
+showScrapPage(0);
