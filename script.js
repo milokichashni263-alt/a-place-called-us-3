@@ -1,3 +1,4 @@
+```javascript
 const passwordInput = document.getElementById("password");
 const unlockButton = document.getElementById("unlockButton");
 
@@ -9,6 +10,11 @@ const backgroundMusic = document.getElementById("backgroundMusic");
 
 const correctPassword = "081929";
 
+
+// =========================
+// PASSWORD UNLOCK
+// =========================
+
 unlockButton.addEventListener("click", unlock);
 
 passwordInput.addEventListener("keydown", function (e) {
@@ -16,6 +22,7 @@ passwordInput.addEventListener("keydown", function (e) {
         unlock();
     }
 });
+
 
 function unlock() {
 
@@ -73,29 +80,30 @@ function unlock() {
     }
 }
 
-/* =========================
-   QUIZ
-   HOW WELL DO YOU KNOW MALAI
-========================= */
+
+// =========================
+// QUIZ
+// HOW WELL DO YOU KNOW MALAI
+// =========================
 
 const quizQuestions = document.querySelectorAll(".quiz-question");
-
 const nextButtons = document.querySelectorAll(".next-question");
-
 const finishButton = document.querySelector(".finish-quiz");
 
 let currentQuestion = 0;
 
 
-/* =========================
-   OPTION QUESTIONS
-========================= */
+// =========================
+// OPTION QUESTIONS
+// =========================
 
 document.querySelectorAll(".quiz-option").forEach(function (option) {
 
     option.addEventListener("click", function () {
 
         const question = option.closest(".quiz-question");
+
+        if (!question) return;
 
         // Remove previous selection
         question.querySelectorAll(".quiz-option").forEach(function (item) {
@@ -104,7 +112,6 @@ document.querySelectorAll(".quiz-option").forEach(function (option) {
 
         // Select clicked answer
         option.classList.add("selected");
-
 
         const feedback = question.querySelector(".quiz-feedback");
 
@@ -132,21 +139,16 @@ document.querySelectorAll(".quiz-option").forEach(function (option) {
 
                     feedback.textContent =
                         "Hmm... we might have to discuss this one. 😭";
-
                 }
-
             }
-
         }
-
     });
-
 });
 
 
-/* =========================
-   NEXT BUTTONS
-========================= */
+// =========================
+// NEXT BUTTONS
+// =========================
 
 nextButtons.forEach(function (button) {
 
@@ -155,15 +157,14 @@ nextButtons.forEach(function (button) {
         const current =
             quizQuestions[currentQuestion];
 
-        const selected =
-            current.querySelector(".quiz-option");
-
-        const input =
-            current.querySelector(".quiz-input");
+        if (!current) return;
 
 
-        // For multiple choice questions
-        if (selected) {
+        // Check multiple choice question
+        const hasOptions =
+            current.querySelectorAll(".quiz-option").length > 0;
+
+        if (hasOptions) {
 
             const hasSelected =
                 current.querySelector(".quiz-option.selected");
@@ -177,17 +178,17 @@ nextButtons.forEach(function (button) {
 
                     feedback.textContent =
                         "You have to choose one first, Humpty. 😭";
-
                 }
 
                 return;
-
             }
-
         }
 
 
-        // For written answer questions
+        // Check written answer question
+        const input =
+            current.querySelector(".quiz-input");
+
         if (input) {
 
             if (input.value.trim() === "") {
@@ -199,13 +200,10 @@ nextButtons.forEach(function (button) {
 
                     feedback.textContent =
                         "Excuse me... answer the question. 👀";
-
                 }
 
                 return;
-
             }
-
         }
 
 
@@ -214,21 +212,19 @@ nextButtons.forEach(function (button) {
 
         currentQuestion++;
 
+
         if (quizQuestions[currentQuestion]) {
 
-            quizQuestions[currentQuestion]
-                .classList.add("active");
+            quizQuestions[currentQuestion].classList.add("active");
 
         }
-
     });
-
 });
 
 
-/* =========================
-   FINISH QUIZ
-========================= */
+// =========================
+// FINISH QUIZ
+// =========================
 
 if (finishButton) {
 
@@ -237,9 +233,12 @@ if (finishButton) {
         const current =
             quizQuestions[currentQuestion];
 
+        if (!current) return;
+
+
+        // Check written answer
         const input =
             current.querySelector(".quiz-input");
-
 
         if (input && input.value.trim() === "") {
 
@@ -250,17 +249,17 @@ if (finishButton) {
 
                 feedback.textContent =
                     "You can't escape this one. Answer it. 😭";
-
             }
 
             return;
-
         }
 
 
+        // Hide final question
         current.classList.remove("active");
 
 
+        // Show quiz result
         const result =
             document.querySelector(".quiz-result");
 
@@ -271,5 +270,5 @@ if (finishButton) {
         }
 
     });
-
 }
+```
