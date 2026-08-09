@@ -14,16 +14,11 @@ const correctPassword = "081929";
 // PASSWORD UNLOCK
 // =========================
 
-unlockButton.addEventListener("click", unlock);
-
-passwordInput.addEventListener("keydown", function (e) {
-    if (e.key === "Enter") {
-        unlock();
-    }
-});
-
-
 function unlock() {
+
+    if (!passwordInput || !container || !welcomeScreen || !homePage) {
+        return;
+    }
 
     if (passwordInput.value === correctPassword) {
 
@@ -80,14 +75,34 @@ function unlock() {
 }
 
 
+// Attach password events safely
+
+if (unlockButton) {
+    unlockButton.addEventListener("click", unlock);
+}
+
+if (passwordInput) {
+    passwordInput.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+            unlock();
+        }
+    });
+}
+
+
 // =========================
 // QUIZ
 // HOW WELL DO YOU KNOW MALAI
 // =========================
 
-const quizQuestions = document.querySelectorAll(".quiz-question");
-const nextButtons = document.querySelectorAll(".next-question");
-const finishButton = document.querySelector(".finish-quiz");
+const quizQuestions =
+    document.querySelectorAll(".quiz-question");
+
+const nextButtons =
+    document.querySelectorAll(".next-question");
+
+const finishButton =
+    document.querySelector(".finish-quiz");
 
 let currentQuestion = 0;
 
@@ -100,24 +115,31 @@ document.querySelectorAll(".quiz-option").forEach(function (option) {
 
     option.addEventListener("click", function () {
 
-        const question = option.closest(".quiz-question");
+        const question =
+            option.closest(".quiz-question");
 
         if (!question) return;
+
 
         // Remove previous selection
         question.querySelectorAll(".quiz-option").forEach(function (item) {
             item.classList.remove("selected");
         });
 
+
         // Select clicked answer
         option.classList.add("selected");
 
-        const feedback = question.querySelector(".quiz-feedback");
+
+        // Feedback
+        const feedback =
+            question.querySelector(".quiz-feedback");
 
         if (feedback) {
 
             const isQuestionFive =
                 question.dataset.question === "5";
+
 
             if (isQuestionFive) {
 
@@ -128,6 +150,7 @@ document.querySelectorAll(".quiz-option").forEach(function (option) {
 
                 const correct =
                     option.dataset.correct === "true";
+
 
                 if (correct) {
 
@@ -163,10 +186,12 @@ nextButtons.forEach(function (button) {
         const hasOptions =
             current.querySelectorAll(".quiz-option").length > 0;
 
+
         if (hasOptions) {
 
             const hasSelected =
                 current.querySelector(".quiz-option.selected");
+
 
             if (!hasSelected) {
 
@@ -184,13 +209,15 @@ nextButtons.forEach(function (button) {
         }
 
 
-        // Check written answer question
-        const input =
-            current.querySelector(".quiz-input");
+        // Check written answer
+        // IMPORTANT: HTML uses .quiz-answer
+        const answer =
+            current.querySelector(".quiz-answer");
 
-        if (input) {
 
-            if (input.value.trim() === "") {
+        if (answer) {
+
+            if (answer.value.trim() === "") {
 
                 const feedback =
                     current.querySelector(".quiz-feedback");
@@ -206,17 +233,21 @@ nextButtons.forEach(function (button) {
         }
 
 
-        // Move to next question
+        // Hide current question
         current.classList.remove("active");
 
+
+        // Move to next question
         currentQuestion++;
 
 
+        // Show next question
         if (quizQuestions[currentQuestion]) {
 
-            quizQuestions[currentQuestion].classList.add("active");
-
+            quizQuestions[currentQuestion]
+                .classList.add("active");
         }
+
     });
 });
 
@@ -235,11 +266,13 @@ if (finishButton) {
         if (!current) return;
 
 
-        // Check written answer
-        const input =
-            current.querySelector(".quiz-input");
+        // HTML uses .quiz-answer
+        const answer =
+            current.querySelector(".quiz-answer");
 
-        if (input && input.value.trim() === "") {
+
+        // Make sure final answer isn't empty
+        if (answer && answer.value.trim() === "") {
 
             const feedback =
                 current.querySelector(".quiz-feedback");
@@ -261,6 +294,7 @@ if (finishButton) {
         // Show quiz result
         const result =
             document.querySelector(".quiz-result");
+
 
         if (result) {
 
