@@ -7,17 +7,22 @@ const homePage = document.getElementById("homePage");
 
 const backgroundMusic = document.getElementById("backgroundMusic");
 const musicButton = document.getElementById("musicButton");
-const musicStatus = document.getElementById("musicStatus");
 
 const correctPassword = "081929";
 
 
+
 /* =========================
-   PASSWORD UNLOCK
+   UNLOCK BUTTON
 ========================= */
 
 unlockButton.addEventListener("click", unlock);
 
+
+
+/* =========================
+   ENTER KEY
+========================= */
 
 passwordInput.addEventListener("keydown", function (e) {
 
@@ -28,6 +33,11 @@ passwordInput.addEventListener("keydown", function (e) {
 });
 
 
+
+/* =========================
+   UNLOCK FUNCTION
+========================= */
+
 function unlock() {
 
     if (passwordInput.value === correctPassword) {
@@ -37,39 +47,37 @@ function unlock() {
         container.style.display = "none";
 
 
-        /* Start music */
-
-        backgroundMusic.volume = 0.35;
-
-        backgroundMusic.play()
-            .then(function () {
-
-                if (musicButton) {
-                    musicButton.textContent = "Ⅱ Pause Our Song";
-                }
-
-                if (musicStatus) {
-                    musicStatus.textContent = "playing softly for us ♡";
-                }
-
-            })
-            .catch(function () {
-
-                /*
-                    If browser blocks autoplay,
-                    the playlist button can still start it.
-                */
-
-                if (musicStatus) {
-                    musicStatus.textContent = "press play when you're ready ♡";
-                }
-
-            });
-
-
         /* Show welcome screen */
 
         welcomeScreen.classList.add("show");
+
+
+        /*
+            Start music immediately after
+            the user's button click.
+
+            Because this function is triggered
+            by the user's click, browsers are
+            more likely to allow the audio.
+        */
+
+        if (backgroundMusic) {
+
+            backgroundMusic.volume = 0.55;
+
+            backgroundMusic.play()
+                .then(function () {
+
+                    updateMusicButton(true);
+
+                })
+                .catch(function (error) {
+
+                    console.log("Music could not autoplay:", error);
+
+                });
+
+        }
 
 
         /* Move to home page */
@@ -79,6 +87,11 @@ function unlock() {
             welcomeScreen.classList.remove("show");
 
             homePage.classList.add("show");
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
 
         }, 2500);
 
@@ -104,6 +117,7 @@ function unlock() {
 
 
         passwordInput.value = "";
+
         passwordInput.placeholder = "Wrong password ♡";
 
     }
@@ -111,32 +125,29 @@ function unlock() {
 }
 
 
+
 /* =========================
-   PLAY / PAUSE MUSIC
+   MUSIC BUTTON
 ========================= */
 
 if (musicButton) {
 
     musicButton.addEventListener("click", function () {
 
+        if (!backgroundMusic) return;
+
+
         if (backgroundMusic.paused) {
 
             backgroundMusic.play()
                 .then(function () {
 
-                    musicButton.textContent = "Ⅱ Pause Our Song";
-
-                    if (musicStatus) {
-                        musicStatus.textContent = "playing softly for us ♡";
-                    }
+                    updateMusicButton(true);
 
                 })
-                .catch(function () {
+                .catch(function (error) {
 
-                    if (musicStatus) {
-                        musicStatus.textContent =
-                            "Couldn't play the song — check the file name ♡";
-                    }
+                    console.log("Music could not play:", error);
 
                 });
 
@@ -146,11 +157,7 @@ if (musicButton) {
 
             backgroundMusic.pause();
 
-            musicButton.textContent = "♫ Play Our Song";
-
-            if (musicStatus) {
-                musicStatus.textContent = "paused for now ♡";
-            }
+            updateMusicButton(false);
 
         }
 
@@ -159,29 +166,53 @@ if (musicButton) {
 }
 
 
+
 /* =========================
-   UPDATE BUTTON WHEN SONG ENDS
+   MUSIC BUTTON TEXT
 ========================= */
 
-backgroundMusic.addEventListener("pause", function () {
+function updateMusicButton(isPlaying) {
 
-    if (
-        backgroundMusic.currentTime > 0 &&
-        !backgroundMusic.ended &&
-        musicButton
-    ) {
+    if (!musicButton) return;
 
-        musicButton.textContent = "♫ Play Our Song";
+
+    if (isPlaying) {
+
+        musicButton.textContent = "❚❚ Pause our song";
+
+        musicButton.classList.add("playing");
 
     }
 
-});
+    else {
 
+        musicButton.textContent = "♫ Play our song";
 
-backgroundMusic.addEventListener("play", function () {
+        musicButton.classList.remove("playing");
 
-    if (musicButton) {
-        musicButton.textContent = "Ⅱ Pause Our Song";
     }
 
-});
+}
+
+
+
+/* =========================
+   MUSIC STATE
+========================= */
+
+if (backgroundMusic) {
+
+    backgroundMusic.addEventListener("play", function () {
+
+        updateMusicButton(true);
+
+    });
+
+
+    backgroundMusic.addEventListener("pause", function () {
+
+        updateMusicButton(false);
+
+    });
+
+}
