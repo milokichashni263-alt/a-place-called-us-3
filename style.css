@@ -1874,21 +1874,25 @@ input {
     }
 
 }
-/* =====================================================
+/* =========================================================
    SCRAPBOOK — 12 REASONS
-===================================================== */
+   ========================================================= */
 
 .scrapbook-section {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    padding: 130px 25px 120px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 120px 30px 100px;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.75), transparent 30%),
+        linear-gradient(180deg, #F8F5F1 0%, #F1E9DF 100%);
     text-align: center;
     overflow: hidden;
 }
+
+/* =========================
+   SCRAPBOOK INTRO
+   ========================= */
 
 .scrapbook-label {
     font-size: 13px;
@@ -1900,39 +1904,39 @@ input {
 .scrapbook-section > h2 {
     font-size: 64px;
     font-weight: 600;
-    line-height: 1.1;
-    margin-bottom: 22px;
+    line-height: 1.08;
+    color: #5A4637;
+    margin-bottom: 25px;
 }
 
 .scrapbook-intro {
-    max-width: 650px;
     font-size: 22px;
     color: #8E7A6A;
     line-height: 1.8;
-    margin-bottom: 55px;
+    margin-bottom: 70px;
 }
-
 
 /* =========================
    SCRAPBOOK STICKER
-========================= */
+   ========================= */
 
 .scrapbook-sticker {
     position: absolute;
     left: 7%;
     top: 7%;
     z-index: 5;
-    transform: rotate(-7deg);
     display: flex;
     flex-direction: column;
     align-items: center;
+    transform: rotate(-7deg);
+    pointer-events: none;
 }
 
 .scrapbook-sticker img {
-    width: 100px;
+    width: 105px;
     height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 7px 10px rgba(90, 70, 55, 0.12));
+    display: block;
+    filter: drop-shadow(0 8px 12px rgba(90,70,55,.12));
 }
 
 .scrapbook-sticker span {
@@ -1940,101 +1944,84 @@ input {
     font-size: 17px;
     color: #8B6A55;
     margin-top: -2px;
+    white-space: nowrap;
 }
 
-
-/* =========================
+/* =========================================================
    BOOK
-========================= */
+   ========================================================= */
 
 .scrapbook-book {
+    position: relative;
     width: 100%;
     max-width: 1050px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 25px;
 }
 
 .book-page-container {
     position: relative;
-    width: 100%;
-    max-width: 850px;
-    height: 570px;
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            rgba(255,255,255,0.82),
-            rgba(255,255,255,0.82)
-        ),
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 28px,
-            rgba(139,106,85,0.035) 29px
-        );
-
+    width: min(900px, 100%);
+    height: 620px;
+    background: #E9DED0;
     border-radius: 8px;
-
+    padding: 18px;
     box-shadow:
-        0 25px 60px rgba(90,70,55,0.16),
-        0 5px 15px rgba(90,70,55,0.08);
-
-    border: 1px solid rgba(139,106,85,0.12);
+        0 25px 60px rgba(90,70,55,.18),
+        0 5px 15px rgba(90,70,55,.08);
 }
-
 
 /* =========================
    INDIVIDUAL PAGE
-========================= */
+   ========================= */
 
 .scrap-page {
     position: absolute;
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
+    inset: 18px;
+    width: calc(100% - 36px);
+    height: calc(100% - 36px);
 
     display: none;
 
+    background:
+        radial-gradient(circle at 15% 15%, rgba(255,255,255,.65), transparent 25%),
+        radial-gradient(circle at 85% 80%, rgba(225,211,195,.35), transparent 30%),
+        #F8F2E8;
+
+    border: 1px solid rgba(139,106,85,.10);
+
     overflow: hidden;
 
-    background:
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(255,255,255,0.9),
-            transparent 35%
-        ),
-        #F8F3EA;
-
-    animation: scrapbookPageIn 0.45s ease;
+    box-shadow:
+        inset 0 0 45px rgba(139,106,85,.06);
 }
 
 .scrap-page.active-page {
     display: block;
+    animation: scrapbookPageIn .45s ease;
 }
 
 @keyframes scrapbookPageIn {
     from {
         opacity: 0;
-        transform: translateX(18px);
+        transform: scale(.985);
     }
 
     to {
         opacity: 1;
-        transform: translateX(0);
+        transform: scale(1);
     }
 }
 
-
 /* =========================
    PAGE NUMBER
-========================= */
+   ========================= */
 
 .page-number {
     position: absolute;
-    top: 22px;
+    top: 20px;
     right: 28px;
     z-index: 20;
 
@@ -2043,93 +2030,49 @@ input {
     color: #A08A77;
 }
 
-
-/* =========================
-   ARROWS
-========================= */
-
-.book-arrow {
-    flex-shrink: 0;
-
-    width: 52px;
-    height: 52px;
-
-    border: none;
-    border-radius: 50%;
-
-    background: rgba(255,255,255,0.8);
-    color: #8B6A55;
-
-    font-size: 38px;
-    line-height: 1;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 8px 25px rgba(90,70,55,0.12);
-
-    transition: 0.3s ease;
-}
-
-.book-arrow:hover {
-    transform: translateY(-3px) scale(1.05);
-    background: white;
-}
-
-.book-arrow:disabled {
-    opacity: 0.25;
-    cursor: default;
-    transform: none;
-}
-
-
-/* =========================
-   POLAROIDS
-========================= */
+/* =========================================================
+   GENERAL POLAROIDS
+   ========================================================= */
 
 .polaroid {
     position: absolute;
-
-    background: white;
-
+    background: #fffdf9;
     padding: 12px 12px 38px;
 
     box-shadow:
-        0 15px 30px rgba(90,70,55,0.16);
+        0 15px 30px rgba(90,70,55,.17);
 
     z-index: 4;
 }
 
 .polaroid img {
     display: block;
-
     width: 100%;
     height: 100%;
-
-    object-fit: contain;
-    background: #F3EEE7;
+    object-fit: cover;
 }
 
 .polaroid span {
     position: absolute;
-
-    bottom: 9px;
     left: 0;
     right: 0;
+    bottom: 9px;
+
+    text-align: center;
 
     font-family: "Caveat", cursive;
     font-size: 18px;
-    color: #6F594A;
+    color: #7B6555;
 }
 
 .polaroid-main {
-    width: 290px;
-    height: 360px;
+    width: 330px;
+    height: 410px;
 }
 
 .polaroid-small {
-    width: 190px;
-    height: 235px;
+    width: 220px;
+    height: 270px;
 }
 
 .rotate-left {
@@ -2140,271 +2083,232 @@ input {
     transform: rotate(5deg);
 }
 
-.lower-photo {
-    left: 18%;
-    top: 26%;
+.rotate-left:hover,
+.rotate-right:hover {
+    transform: rotate(0deg) translateY(-5px);
 }
 
+/* =========================================================
+   PAGE 01
+   ========================================================= */
 
-/* =========================
-   SCRAP NOTES
-========================= */
+.scrap-page:nth-child(1) .polaroid-main {
+    left: 12%;
+    top: 16%;
+}
+
+.scrap-page:nth-child(1) .mini-photo {
+    position: absolute;
+    width: 180px;
+    height: 150px;
+    padding: 8px;
+    background: white;
+    left: 7%;
+    bottom: 9%;
+    z-index: 3;
+    box-shadow: 0 12px 25px rgba(90,70,55,.15);
+}
+
+.mini-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 .scrap-note {
     position: absolute;
-
-    width: 280px;
-
-    padding: 25px 28px;
-
     background: #FFFDF8;
-
-    box-shadow:
-        0 12px 28px rgba(90,70,55,0.10);
-
-    text-align: left;
-
+    padding: 30px;
+    box-shadow: 0 15px 30px rgba(90,70,55,.12);
     z-index: 6;
 }
 
-.scrap-note::before {
-    content: "";
-
-    position: absolute;
-
-    width: 80px;
-    height: 22px;
-
-    top: -10px;
-    left: 50%;
-
-    transform: translateX(-50%) rotate(-2deg);
-
-    background: rgba(218,202,177,0.65);
-}
-
 .scrap-note h3 {
-    font-size: 30px;
+    font-size: 35px;
     font-weight: 600;
-    line-height: 1.2;
-    margin-bottom: 14px;
+    color: #5A4637;
+    line-height: 1.15;
+    margin-bottom: 18px;
 }
 
 .scrap-note p {
-    font-size: 18px;
+    font-size: 19px;
     color: #8E7A6A;
     line-height: 1.7;
 }
 
 .scrap-note > span {
     display: block;
-
-    margin-top: 15px;
+    margin-top: 20px;
 
     font-family: "Caveat", cursive;
-    font-size: 19px;
+    font-size: 20px;
     color: #8B6A55;
 }
 
-
-/* NOTE POSITIONS */
-
 .note-right {
-    right: 9%;
-    top: 28%;
-    transform: rotate(3deg);
+    width: 340px;
+    right: 12%;
+    top: 25%;
+    transform: rotate(4deg);
+}
+
+.scribble {
+    position: absolute;
+    right: 8%;
+    bottom: 10%;
+    font-family: "Caveat", cursive;
+    font-size: 30px;
+    color: #A08A77;
+    transform: rotate(-8deg);
+}
+
+/* =========================================================
+   TAPE
+   ========================================================= */
+
+.scrap-tape {
+    position: absolute;
+    width: 105px;
+    height: 30px;
+    background: rgba(214,198,177,.65);
+    z-index: 10;
+    transform: rotate(-5deg);
+}
+
+.tape-one {
+    left: 17%;
+    top: 11%;
+}
+
+/* =========================================================
+   PAGE 02
+   ========================================================= */
+
+.scrap-page:nth-child(2) .polaroid-small {
+    left: 9%;
+    top: 13%;
+}
+
+.scrap-page:nth-child(2) .lower-photo {
+    left: 24%;
+    top: 34%;
 }
 
 .note-top {
-    right: 10%;
-    top: 18%;
+    width: 330px;
+    right: 12%;
+    top: 17%;
     transform: rotate(-3deg);
 }
 
-.note-left {
-    left: 8%;
-    top: 28%;
-    transform: rotate(-3deg);
-}
-
-.note-right-bottom {
-    right: 9%;
-    bottom: 15%;
-    transform: rotate(3deg);
-}
-
-.center-note {
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%) rotate(-2deg);
-    text-align: center;
-}
-
-.center-note::before {
-    left: 50%;
-}
-
-
-/* =========================
-   MINI PHOTOS
-========================= */
-
-.mini-photo {
+.taped-note {
     position: absolute;
-
-    width: 170px;
-    height: 205px;
-
-    padding: 8px;
-
-    background: white;
-
-    box-shadow:
-        0 12px 25px rgba(90,70,55,0.14);
-
-    z-index: 3;
+    right: 13%;
+    bottom: 12%;
+    padding: 12px 25px;
+    background: #E9DCC9;
+    font-family: "Caveat", cursive;
+    font-size: 20px;
+    color: #8B6A55;
+    transform: rotate(4deg);
 }
 
-.mini-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    background: #F3EEE7;
-}
-
-
-/* =========================
-   PHOTO STACK
-========================= */
+/* =========================================================
+   PAGE 03
+   ========================================================= */
 
 .photo-stack {
     position: absolute;
-
-    left: 10%;
-    top: 15%;
-
-    width: 390px;
-    height: 410px;
+    left: 12%;
+    top: 17%;
+    width: 380px;
+    height: 400px;
 }
 
 .stack-photo {
     position: absolute;
-
-    width: 280px;
-    height: 330px;
-
+    width: 330px;
+    height: 360px;
     padding: 10px;
-
     background: white;
-
-    box-shadow:
-        0 15px 30px rgba(90,70,55,0.14);
+    box-shadow: 0 15px 30px rgba(90,70,55,.14);
 }
 
 .stack-photo img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    background: #F3EEE7;
+    object-fit: cover;
 }
 
 .stack-back {
-    left: 30px;
-    top: 20px;
     transform: rotate(-8deg);
+    left: 0;
+    top: 10px;
 }
 
 .stack-middle {
-    left: 60px;
-    top: 40px;
-    transform: rotate(4deg);
+    transform: rotate(5deg);
+    left: 25px;
+    top: 0;
 }
 
 .stack-front {
-    left: 45px;
-    top: 25px;
     transform: rotate(-2deg);
-    z-index: 5;
+    left: 15px;
+    top: 25px;
+    z-index: 3;
 }
 
-
-/* =========================
-   TAPED NOTE
-========================= */
-
-.taped-note {
-    position: absolute;
-
+.note-right-bottom {
+    width: 330px;
     right: 10%;
-    bottom: 18%;
-
-    padding: 15px 22px;
-
-    background: #FFF8D9;
-
-    font-family: "Caveat", cursive;
-    font-size: 20px;
-
-    transform: rotate(4deg);
-
-    box-shadow:
-        0 8px 18px rgba(90,70,55,0.08);
+    bottom: 15%;
+    transform: rotate(3deg);
 }
 
-.taped-note::before {
-    content: "";
-
+.little-star {
     position: absolute;
-
-    width: 70px;
-    height: 18px;
-
-    top: -9px;
-    left: 50%;
-
-    transform: translateX(-50%) rotate(-3deg);
-
-    background: rgba(218,202,177,0.7);
+    right: 8%;
+    top: 20%;
+    font-size: 35px;
+    color: #B39B86;
 }
 
+.star-two {
+    right: 45%;
+    top: 10%;
+    font-size: 22px;
+}
 
-/* =========================
-   SPOTIFY MEMORY
-========================= */
+/* =========================================================
+   PAGE 04 — SPOTIFY
+   ========================================================= */
 
 .spotify-memory {
     position: absolute;
-
     left: 50%;
     top: 50%;
-
-    transform: translate(-50%, -50%);
-
     width: 650px;
-
+    transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
     gap: 30px;
-
-    padding: 30px;
-
-    background: rgba(255,255,255,0.82);
-
-    box-shadow:
-        0 18px 40px rgba(90,70,55,0.12);
+    padding: 35px;
+    background: rgba(255,255,255,.72);
+    box-shadow: 0 20px 40px rgba(90,70,55,.12);
 }
 
 .spotify-photo {
-    width: 250px;
-    height: 250px;
+    width: 280px;
+    height: 280px;
     flex-shrink: 0;
 }
 
 .spotify-photo img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    background: #F3EEE7;
+    object-fit: cover;
 }
 
 .spotify-info {
@@ -2413,247 +2317,239 @@ input {
 }
 
 .spotify-mini {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 3px;
     color: #A08A77;
 }
 
 .spotify-info h3 {
-    font-size: 32px;
-    margin: 12px 0 8px;
+    font-size: 35px;
+    margin: 12px 0;
 }
 
 .spotify-info p {
     color: #8E7A6A;
-    font-size: 18px;
+    font-size: 19px;
 }
 
 .fake-progress {
     width: 100%;
     height: 3px;
-
-    background: rgba(139,106,85,0.18);
-
-    margin-top: 28px;
+    background: #DCCFC0;
+    margin: 25px 0 18px;
 }
 
 .fake-progress span {
     display: block;
-
-    width: 42%;
+    width: 62%;
     height: 100%;
-
     background: #8B6A55;
 }
 
 .fake-player {
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 28px;
-
-    margin-top: 20px;
-
+    gap: 35px;
     font-size: 20px;
     color: #8B6A55;
 }
 
 .fake-player strong {
-    font-size: 25px;
+    font-size: 28px;
 }
-
-
-/* =========================
-   CAPTION
-========================= */
 
 .scrap-caption {
     position: absolute;
-
-    bottom: 45px;
     left: 50%;
-
+    bottom: 10%;
+    width: 620px;
     transform: translateX(-50%);
-
-    width: 80%;
-
-    font-family: "Caveat", cursive;
-    font-size: 22px;
-    color: #8B6A55;
+    font-size: 20px;
+    color: #8E7A6A;
+    font-style: italic;
 }
 
+/* =========================================================
+   PAGE 05 — BRAIN CELL
+   ========================================================= */
 
-/* =========================
-   ARGUMENT COLLAGE
-========================= */
+.scrap-page:nth-child(5) .note-left {
+    left: 10%;
+    top: 21%;
+    width: 340px;
+    transform: rotate(-3deg);
+}
+
+.brain-photo {
+    right: 12%;
+    top: 19%;
+}
+
+.tiny-title {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #A08A77;
+    margin-bottom: 14px;
+}
+
+.handwritten {
+    display: block;
+    font-family: "Caveat", cursive;
+    font-size: 21px;
+    color: #8B6A55;
+    margin-top: 20px;
+    transform: rotate(-3deg);
+}
+
+.sticker-word {
+    position: absolute;
+    right: 8%;
+    top: 13%;
+    font-family: "Caveat", cursive;
+    font-size: 31px;
+    color: #A06F6F;
+    transform: rotate(-8deg);
+}
+
+/* =========================================================
+   PAGE 06
+   ========================================================= */
 
 .argument-collage {
     position: absolute;
-
     left: 50%;
-    top: 48%;
-
-    transform: translate(-50%, -50%);
-
-    width: 520px;
-    height: 360px;
+    top: 12%;
+    width: 500px;
+    height: 300px;
+    transform: translateX(-50%);
 }
 
 .mini-polaroid {
     position: absolute;
-
-    width: 190px;
-    height: 225px;
-
+    width: 230px;
+    height: 250px;
     padding: 9px;
-
     background: white;
-
-    box-shadow:
-        0 12px 25px rgba(90,70,55,0.15);
+    box-shadow: 0 12px 25px rgba(90,70,55,.15);
 }
 
 .mini-polaroid img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    background: #F3EEE7;
+    object-fit: cover;
 }
 
 .mini-one {
-    left: 30px;
-    top: 40px;
+    left: 0;
     transform: rotate(-8deg);
 }
 
 .mini-two {
-    left: 165px;
-    top: 15px;
-    transform: rotate(4deg);
+    left: 135px;
+    top: 20px;
+    transform: rotate(3deg);
     z-index: 2;
 }
 
 .mini-three {
-    right: 25px;
-    top: 50px;
-    transform: rotate(9deg);
-    z-index: 3;
+    right: 0;
+    transform: rotate(8deg);
+    z-index: 1;
 }
 
+.center-note {
+    width: 370px;
+    left: 50%;
+    bottom: 12%;
+    transform: translateX(-50%) rotate(-2deg);
+}
 
-/* =========================
-   BIG MEMORY FRAME
-========================= */
+/* =========================================================
+   PAGE 07
+   ========================================================= */
 
 .big-memory-frame {
     position: absolute;
-
-    left: 10%;
+    left: 9%;
     top: 12%;
-
-    width: 410px;
-    height: 450px;
-
-    padding: 18px;
-
+    width: 440px;
+    height: 470px;
+    padding: 15px;
     background: white;
-
-    box-shadow:
-        0 18px 38px rgba(90,70,55,0.15);
-
     transform: rotate(-3deg);
+    box-shadow: 0 18px 35px rgba(90,70,55,.15);
 }
 
 .big-memory-frame img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    background: #F3EEE7;
+    object-fit: cover;
 }
 
 .frame-tape {
     position: absolute;
-
-    width: 90px;
-    height: 25px;
-
-    top: -12px;
+    width: 110px;
+    height: 30px;
+    background: rgba(214,198,177,.7);
     left: 50%;
-
+    top: -15px;
     transform: translateX(-50%) rotate(-2deg);
-
-    background: rgba(218,202,177,0.7);
-
-    z-index: 4;
+    z-index: 3;
 }
 
 .side-note {
     position: absolute;
-
     right: 9%;
-    top: 25%;
-
-    width: 280px;
-
-    padding: 25px;
-
+    top: 27%;
+    width: 340px;
+    padding: 30px;
     background: #FFFDF8;
-
-    text-align: left;
-
-    transform: rotate(3deg);
-
-    box-shadow:
-        0 12px 25px rgba(90,70,55,0.10);
+    box-shadow: 0 15px 30px rgba(90,70,55,.12);
+    transform: rotate(4deg);
 }
 
 .side-note h3 {
-    font-size: 29px;
-    margin-bottom: 15px;
+    font-size: 34px;
+    margin-bottom: 18px;
 }
 
 .side-note p {
-    font-size: 18px;
+    font-size: 19px;
     color: #8E7A6A;
     line-height: 1.7;
 }
 
 .side-note span {
     display: block;
-
-    margin-top: 15px;
-
+    margin-top: 20px;
     font-family: "Caveat", cursive;
-    font-size: 20px;
+    font-size: 21px;
     color: #8B6A55;
 }
 
-
-/* =========================
-   MEMORY STRIP
-========================= */
+/* =========================================================
+   PAGE 08
+   ========================================================= */
 
 .memory-strip {
     position: absolute;
-
     left: 50%;
-    top: 18%;
-
+    top: 15%;
+    width: 760px;
     transform: translateX(-50%);
-
     display: flex;
+    justify-content: center;
     gap: 15px;
 }
 
 .memory-strip div {
-    width: 190px;
+    width: 230px;
     height: 270px;
-
     padding: 9px;
-
     background: white;
-
-    box-shadow:
-        0 12px 25px rgba(90,70,55,0.12);
+    box-shadow: 0 12px 25px rgba(90,70,55,.14);
 }
 
 .memory-strip div:nth-child(1) {
@@ -2661,7 +2557,7 @@ input {
 }
 
 .memory-strip div:nth-child(2) {
-    transform: translateY(-15px) rotate(1deg);
+    transform: translateY(15px);
 }
 
 .memory-strip div:nth-child(3) {
@@ -2671,352 +2567,254 @@ input {
 .memory-strip img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    background: #F3EEE7;
+    object-fit: cover;
 }
 
 .remember-note {
     position: absolute;
-
+    width: 390px;
     left: 50%;
-    bottom: 13%;
-
+    bottom: 9%;
     transform: translateX(-50%) rotate(-2deg);
-
-    width: 330px;
-
-    padding: 25px;
-
-    background: #FFF8D9;
-
-    box-shadow:
-        0 12px 25px rgba(90,70,55,0.10);
-
-    text-align: center;
+    padding: 25px 35px;
+    background: #FFFDF8;
+    box-shadow: 0 15px 30px rgba(90,70,55,.12);
 }
 
 .remember-note h3 {
-    font-size: 31px;
-    margin: 10px 0 12px;
+    font-size: 35px;
+    margin-bottom: 15px;
 }
 
 .remember-note p {
-    font-size: 18px;
+    font-size: 19px;
     color: #8E7A6A;
     line-height: 1.7;
 }
 
 .remember-note strong {
     display: block;
-
-    margin-top: 12px;
-
+    margin-top: 15px;
     font-family: "Caveat", cursive;
-    font-size: 22px;
     color: #8B6A55;
+    font-size: 22px;
 }
 
-
-/* =========================
-   GUDDA PAGE
-========================= */
+/* =========================================================
+   PAGE 09
+   ========================================================= */
 
 .gudda-photo {
     left: 12%;
-    top: 18%;
+    top: 17%;
 }
 
 .floating-photo {
     position: absolute;
-
-    right: 16%;
-    top: 13%;
-
+    left: 32%;
+    bottom: 9%;
     width: 170px;
-    height: 210px;
-
-    padding: 9px;
-
+    height: 140px;
+    padding: 8px;
     background: white;
-
-    box-shadow:
-        0 12px 25px rgba(90,70,55,0.12);
-
     transform: rotate(7deg);
+    box-shadow: 0 12px 25px rgba(90,70,55,.13);
 }
 
 .floating-photo img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    background: #F3EEE7;
+    object-fit: cover;
 }
 
 .gudda-note {
     position: absolute;
-
-    right: 8%;
-    bottom: 17%;
-
-    width: 300px;
-
-    padding: 28px;
-
+    right: 10%;
+    top: 27%;
+    width: 350px;
+    padding: 30px;
     background: #FFFDF8;
-
-    text-align: left;
-
+    box-shadow: 0 15px 30px rgba(90,70,55,.12);
     transform: rotate(-3deg);
-
-    box-shadow:
-        0 12px 25px rgba(90,70,55,0.10);
 }
 
 .gudda-note h3 {
-    font-size: 29px;
-    margin-bottom: 15px;
+    font-size: 34px;
+    margin-bottom: 18px;
 }
 
 .gudda-note p {
-    font-size: 18px;
+    font-size: 19px;
     color: #8E7A6A;
     line-height: 1.7;
 }
 
 .gudda-note span {
     display: block;
-
-    margin-top: 15px;
-
+    margin-top: 18px;
     font-family: "Caveat", cursive;
+    font-size: 21px;
     color: #8B6A55;
-    font-size: 20px;
 }
 
-
-/* =========================
-   PROTECTIVE PAGE
-========================= */
+/* =========================================================
+   PAGE 10
+   ========================================================= */
 
 .protective-layout {
     position: absolute;
-
-    inset: 0;
-
+    width: 780px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
-
     align-items: center;
-    justify-content: center;
-
-    gap: 60px;
+    gap: 45px;
 }
 
 .protective-photo {
-    width: 350px;
-    height: 420px;
-
+    width: 390px;
+    height: 440px;
     padding: 12px;
-
     background: white;
-
-    box-shadow:
-        0 18px 35px rgba(90,70,55,0.15);
-
     transform: rotate(-4deg);
+    box-shadow: 0 15px 30px rgba(90,70,55,.15);
 }
 
 .protective-photo img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    background: #F3EEE7;
+    object-fit: cover;
 }
 
 .protective-card {
-    width: 300px;
-
-    padding: 30px;
-
+    width: 330px;
+    padding: 35px;
     background: #FFFDF8;
-
-    text-align: left;
-
+    box-shadow: 0 15px 30px rgba(90,70,55,.12);
     transform: rotate(3deg);
-
-    box-shadow:
-        0 12px 25px rgba(90,70,55,0.10);
-}
-
-.tiny-title {
-    display: block;
-
-    font-size: 11px;
-    letter-spacing: 3px;
-
-    color: #A08A77;
-
-    margin-bottom: 12px;
 }
 
 .protective-card h3 {
-    font-size: 30px;
-    margin-bottom: 15px;
+    font-size: 34px;
+    margin-bottom: 18px;
 }
 
 .protective-card p {
-    font-size: 18px;
+    font-size: 19px;
     color: #8E7A6A;
     line-height: 1.7;
 }
 
 .protective-card > span:last-child {
     display: block;
-
-    margin-top: 15px;
-
+    margin-top: 18px;
     font-family: "Caveat", cursive;
     font-size: 21px;
     color: #8B6A55;
 }
 
-
-/* =========================
-   DUA PAGE
-========================= */
+/* =========================================================
+   PAGE 11
+   ========================================================= */
 
 .dua-page {
     position: absolute;
-
-    inset: 0;
-
+    width: 780px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
-
     align-items: center;
-    justify-content: center;
-
-    gap: 65px;
+    gap: 50px;
 }
 
 .dua-photo {
-    width: 350px;
-    height: 420px;
-
+    width: 390px;
+    height: 450px;
     padding: 12px;
-
     background: white;
-
-    box-shadow:
-        0 18px 35px rgba(90,70,55,0.15);
-
     transform: rotate(-3deg);
+    box-shadow: 0 15px 30px rgba(90,70,55,.15);
 }
 
 .dua-photo img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    background: #F3EEE7;
+    object-fit: cover;
 }
 
 .dua-text {
     width: 330px;
-
     text-align: left;
 }
 
 .dua-text h3 {
-    font-size: 35px;
-    line-height: 1.25;
-    margin-bottom: 20px;
+    font-size: 36px;
+    line-height: 1.15;
+    margin-bottom: 18px;
+}
+
+.dua-text p {
+    font-size: 20px;
+    color: #8E7A6A;
+    line-height: 1.8;
 }
 
 .little-line {
     width: 55px;
     height: 1px;
-
-    background: rgba(139,106,85,0.35);
-
-    margin-bottom: 20px;
+    background: rgba(139,106,85,.35);
+    margin-bottom: 22px;
 }
 
-.dua-text p {
-    font-size: 19px;
-    color: #8E7A6A;
-    line-height: 1.8;
-}
-
-.dua-text .handwritten {
-    display: block;
-    margin-top: 18px;
-}
-
-
-/* =========================
-   FINAL SCRAPBOOK PAGE
-========================= */
-
-.final-scrap-page {
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255,255,255,0.95),
-            #F5EEE4
-        );
-}
+/* =========================================================
+   PAGE 12
+   ========================================================= */
 
 .final-photo-polaroid {
     position: absolute;
-
-    left: 15%;
-    top: 17%;
-
-    width: 300px;
-    height: 390px;
-
-    padding: 12px 12px 42px;
-
+    left: 12%;
+    top: 14%;
+    width: 330px;
+    height: 410px;
+    padding: 12px 12px 40px;
     background: white;
-
-    box-shadow:
-        0 18px 35px rgba(90,70,55,0.16);
-
     transform: rotate(-4deg);
+    box-shadow: 0 15px 30px rgba(90,70,55,.15);
 }
 
 .final-photo-polaroid img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    background: #F3EEE7;
+    object-fit: cover;
 }
 
 .final-photo-polaroid span {
     position: absolute;
-
-    bottom: 10px;
     left: 0;
     right: 0;
-
+    bottom: 10px;
     font-family: "Caveat", cursive;
-    font-size: 20px;
+    font-size: 19px;
     color: #8B6A55;
 }
 
 .final-scrap-text {
     position: absolute;
-
-    right: 12%;
+    right: 10%;
     top: 22%;
-
-    width: 330px;
-
+    width: 360px;
+    padding: 35px;
     text-align: left;
+    background: #FFFDF8;
+    box-shadow: 0 15px 30px rgba(90,70,55,.12);
+    transform: rotate(3deg);
 }
 
 .final-scrap-text h3 {
-    font-size: 52px;
-    font-weight: 600;
-    margin: 10px 0 20px;
+    font-size: 48px;
+    margin-bottom: 18px;
 }
 
 .final-scrap-text p {
@@ -3025,106 +2823,102 @@ input {
     line-height: 1.8;
 }
 
-.final-scrap-text .handwritten {
-    display: block;
-    margin-top: 18px;
-}
-
 .final-hearts {
     position: absolute;
-
-    bottom: 12%;
-    left: 50%;
-
-    transform: translateX(-50%);
-
+    bottom: 10%;
+    right: 14%;
     font-size: 25px;
+    color: #A08A77;
+}
+
+/* =========================================================
+   BOOK ARROWS
+   ========================================================= */
+
+.book-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 54px;
+    height: 54px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.9);
     color: #8B6A55;
+
+    font-size: 38px;
+    line-height: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    box-shadow: 0 10px 25px rgba(90,70,55,.12);
+
+    z-index: 30;
+
+    transition: .3s ease;
 }
 
-
-/* =========================
-   SMALL DETAILS
-========================= */
-
-.scribble {
-    position: absolute;
-
-    right: 12%;
-    bottom: 12%;
-
-    font-family: "Caveat", cursive;
-    font-size: 28px;
-    color: #A08A77;
-
-    transform: rotate(-8deg);
+.book-arrow:hover {
+    transform: translateY(-50%) scale(1.08);
+    background: white;
 }
 
-.little-star {
-    position: absolute;
-
-    right: 15%;
-    top: 15%;
-
-    font-size: 30px;
-    color: #A08A77;
+.book-arrow:disabled {
+    opacity: .35;
+    cursor: default;
+    transform: translateY(-50%);
 }
 
-.star-two {
-    right: 8%;
-    top: 24%;
-    font-size: 20px;
+.book-prev {
+    left: -5px;
 }
 
-.sticker-word {
-    position: absolute;
-
-    right: 10%;
-    top: 12%;
-
-    font-family: "Caveat", cursive;
-    font-size: 27px;
-    color: #A06F6F;
-
-    transform: rotate(8deg);
+.book-next {
+    right: -5px;
 }
 
-
-/* =========================
+/* =========================================================
    BOOK CONTROLS
-========================= */
+   ========================================================= */
 
 .book-controls {
+    width: 100%;
+    max-width: 900px;
+    margin: 35px auto 0;
+
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 15px;
 
-    margin-top: 30px;
+    color: #A08A77;
 }
 
 #scrapbookCounter {
     font-family: "Caveat", cursive;
-    font-size: 22px;
-    color: #8B6A55;
+    font-size: 21px;
 }
 
 .book-dots {
     display: flex;
+    align-items: center;
     gap: 8px;
-    margin: 15px 0;
 }
 
 .book-dot {
-    width: 7px;
-    height: 7px;
-
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-
-    background: rgba(139,106,85,0.22);
-
+    background: #D4C5B5;
     cursor: pointer;
-
-    transition: 0.3s ease;
+    transition: .25s ease;
 }
 
 .book-dot.active {
@@ -3135,24 +2929,19 @@ input {
 
 .flip-hint {
     font-size: 15px;
-    color: #A08A77;
+    font-style: italic;
 }
 
-
-/* =========================
-   SCRAPBOOK ENDING
-========================= */
+/* =========================================================
+   ENDING
+   ========================================================= */
 
 .scrapbook-ending {
     width: 100%;
-    max-width: 700px;
-
-    margin-top: 90px;
-
-    padding-top: 60px;
-
-    border-top: 1px solid rgba(139,106,85,0.2);
-
+    max-width: 750px;
+    margin: 100px auto 0;
+    padding-top: 70px;
+    border-top: 1px solid rgba(139,106,85,.2);
     text-align: center;
 }
 
@@ -3164,8 +2953,9 @@ input {
 
 .scrapbook-ending h3 {
     font-size: 43px;
+    font-weight: 600;
     line-height: 1.3;
-    margin: 20px 0;
+    margin: 22px 0;
 }
 
 .scrapbook-ending p {
@@ -3176,167 +2966,164 @@ input {
 
 .scrapbook-ending strong {
     display: block;
-
     margin-top: 18px;
-
     font-family: "Caveat", cursive;
-    font-size: 26px;
+    font-size: 27px;
     color: #8B6A55;
 }
 
-
-/* =====================================================
-   SCRAPBOOK MOBILE
-===================================================== */
+/* =========================================================
+   MOBILE SCRAPBOOK
+   ========================================================= */
 
 @media (max-width: 700px) {
 
     .scrapbook-section {
-        padding: 90px 15px 90px;
+        padding: 90px 15px 80px;
     }
 
     .scrapbook-section > h2 {
-        font-size: 45px;
+        font-size: 46px;
     }
 
     .scrapbook-intro {
         font-size: 19px;
-        margin-bottom: 35px;
+        margin-bottom: 45px;
     }
 
     .scrapbook-sticker {
-        left: 2%;
-        top: 3%;
+        left: 3%;
+        top: 4%;
     }
 
     .scrapbook-sticker img {
-        width: 65px;
+        width: 70px;
     }
 
     .scrapbook-sticker span {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .scrapbook-book {
-        gap: 7px;
+        width: 100%;
     }
 
     .book-page-container {
-        height: 650px;
-        border-radius: 6px;
+        height: 620px;
+        width: 100%;
+        padding: 10px;
     }
 
-    .book-arrow {
-        width: 38px;
-        height: 38px;
-        font-size: 28px;
+    .scrap-page {
+        inset: 10px;
+        width: calc(100% - 20px);
+        height: calc(100% - 20px);
     }
 
     .page-number {
         top: 15px;
-        right: 15px;
+        right: 18px;
+        font-size: 17px;
+    }
+
+    .book-arrow {
+        width: 43px;
+        height: 43px;
+        font-size: 30px;
+    }
+
+    .book-prev {
+        left: -7px;
+    }
+
+    .book-next {
+        right: -7px;
+    }
+
+    /* Keep page 05 readable on phone */
+    .scrap-page:nth-child(5) .note-left {
+        left: 6%;
+        top: 12%;
+        width: 88%;
+        padding: 22px;
+        transform: rotate(-2deg);
+    }
+
+    .scrap-page:nth-child(5) .note-left h3 {
+        font-size: 30px;
+    }
+
+    .scrap-page:nth-child(5) .note-left p {
+        font-size: 17px;
+    }
+
+    .brain-photo {
+        width: 190px;
+        height: 240px;
+        right: 8%;
+        top: 50%;
+    }
+
+    .sticker-word {
+        right: 8%;
+        top: 7%;
+        font-size: 25px;
+    }
+
+    .scrap-note {
+        max-width: 88%;
+    }
+
+    .scrap-note h3 {
+        font-size: 29px;
+    }
+
+    .scrap-note p {
         font-size: 17px;
     }
 
     .polaroid-main {
-        width: 220px;
-        height: 285px;
+        width: 240px;
+        height: 300px;
     }
 
     .polaroid-small {
-        width: 125px;
-        height: 160px;
+        width: 160px;
+        height: 200px;
     }
 
-    .mini-photo {
-        width: 115px;
-        height: 145px;
+    .scrap-page:nth-child(1) .polaroid-main,
+    .scrap-page:nth-child(2) .polaroid-main,
+    .scrap-page:nth-child(9) .polaroid-main {
+        left: 7%;
+        top: 12%;
     }
 
-    .scrap-note,
-    .side-note,
+    .note-right,
+    .note-top,
+    .note-right-bottom,
     .gudda-note,
-    .protective-card {
-        width: 78%;
-        max-width: 290px;
-        padding: 20px;
-    }
-
-    .scrap-note h3,
-    .side-note h3,
-    .gudda-note h3 {
-        font-size: 25px;
-    }
-
-    .scrap-note p,
-    .side-note p,
-    .gudda-note p,
-    .protective-card p {
-        font-size: 16px;
-    }
-
-    .note-right {
+    .side-note {
         right: 5%;
-        top: 53%;
-    }
-
-    .note-top {
-        right: 5%;
-        top: 52%;
-    }
-
-    .note-left {
-        left: 5%;
-        top: 52%;
-    }
-
-    .note-right-bottom {
-        right: 5%;
-        bottom: 7%;
-    }
-
-    .lower-photo {
-        left: 8%;
-        top: 15%;
+        width: 82%;
+        top: auto;
+        bottom: 8%;
     }
 
     .photo-stack {
-        left: 50%;
-        top: 9%;
-        transform: translateX(-50%);
-        width: 280px;
-        height: 330px;
+        left: 5%;
+        top: 12%;
+        transform: scale(.72);
+        transform-origin: top left;
     }
 
-    .stack-photo {
-        width: 220px;
-        height: 270px;
-    }
-
-    .stack-back {
-        left: 20px;
-    }
-
-    .stack-middle {
-        left: 45px;
-    }
-
-    .stack-front {
-        left: 35px;
-    }
-
-    .taped-note {
-        right: 8%;
-        bottom: 8%;
-        font-size: 17px;
-    }
-
-    .spotify-memory {
-        width: 88%;
+    .spotify-memory,
+    .protective-layout,
+    .dua-page {
+        width: 90%;
         flex-direction: column;
-        gap: 18px;
-        padding: 20px;
-        top: 45%;
+        gap: 20px;
+        top: 50%;
     }
 
     .spotify-photo {
@@ -3345,7 +3132,6 @@ input {
     }
 
     .spotify-info {
-        width: 100%;
         text-align: center;
     }
 
@@ -3353,159 +3139,119 @@ input {
         font-size: 27px;
     }
 
-    .fake-player {
-        margin-top: 14px;
+    .spotify-info p {
+        font-size: 16px;
     }
 
     .scrap-caption {
-        bottom: 5%;
-        width: 88%;
-        font-size: 18px;
+        width: 85%;
+        font-size: 17px;
+        bottom: 6%;
     }
 
     .argument-collage {
-        width: 310px;
-        height: 280px;
-        top: 28%;
-    }
-
-    .mini-polaroid {
-        width: 125px;
-        height: 160px;
-    }
-
-    .mini-one {
-        left: 10px;
-    }
-
-    .mini-two {
-        left: 95px;
-    }
-
-    .mini-three {
-        right: 5px;
+        width: 90%;
+        transform: translateX(-50%) scale(.65);
+        transform-origin: top center;
     }
 
     .center-note {
-        top: 67%;
         width: 80%;
+        bottom: 7%;
     }
 
     .big-memory-frame {
-        left: 50%;
-        top: 9%;
-        transform: translateX(-50%) rotate(-3deg);
-        width: 260px;
-        height: 300px;
+        left: 5%;
+        top: 10%;
+        width: 55%;
+        height: 330px;
     }
 
     .side-note {
-        right: 50%;
-        top: 58%;
-        transform: translateX(50%) rotate(2deg);
+        width: 58%;
+        right: 4%;
+        bottom: 9%;
     }
 
     .memory-strip {
-        top: 10%;
-        gap: 7px;
+        width: 95%;
+        gap: 5px;
+        top: 13%;
     }
 
     .memory-strip div {
-        width: 100px;
-        height: 160px;
-        padding: 6px;
+        width: 31%;
+        height: 180px;
+        padding: 5px;
     }
 
     .remember-note {
-        bottom: 8%;
-        width: 80%;
-        padding: 18px;
+        width: 82%;
+        bottom: 7%;
+        padding: 20px;
     }
 
     .remember-note h3 {
-        font-size: 27px;
+        font-size: 29px;
     }
 
     .remember-note p {
         font-size: 16px;
     }
 
-    .gudda-photo {
-        left: 8%;
-        top: 15%;
-    }
-
     .floating-photo {
-        right: 7%;
-        top: 10%;
-        width: 110px;
-        height: 140px;
-    }
-
-    .gudda-note {
-        right: 50%;
-        bottom: 7%;
-        transform: translateX(50%) rotate(-2deg);
-    }
-
-    .protective-layout,
-    .dua-page {
-        flex-direction: column;
-        gap: 25px;
+        left: 6%;
+        bottom: 8%;
     }
 
     .protective-photo,
     .dua-photo {
-        width: 230px;
-        height: 270px;
+        width: 210px;
+        height: 250px;
     }
 
     .protective-card,
     .dua-text {
-        width: 80%;
-        max-width: 290px;
+        width: 85%;
+        text-align: center;
+        padding: 22px;
     }
 
+    .protective-card h3,
     .dua-text h3 {
         font-size: 29px;
     }
 
+    .protective-card p,
     .dua-text p {
         font-size: 17px;
     }
 
     .final-photo-polaroid {
-        left: 50%;
-        top: 8%;
-        transform: translateX(-50%) rotate(-3deg);
-        width: 220px;
-        height: 280px;
+        width: 230px;
+        height: 300px;
+        left: 5%;
+        top: 10%;
     }
 
     .final-scrap-text {
-        right: 50%;
-        top: 55%;
-        transform: translateX(50%);
-        width: 80%;
-        max-width: 290px;
-        text-align: center;
+        width: 55%;
+        right: 4%;
+        top: 28%;
+        padding: 22px;
     }
 
     .final-scrap-text h3 {
-        font-size: 42px;
+        font-size: 34px;
     }
 
     .final-scrap-text p {
-        font-size: 17px;
-    }
-
-    .final-hearts {
-        bottom: 4%;
+        font-size: 16px;
     }
 
     .scrapbook-ending {
-        margin-top: 65px;
-        padding-top: 45px;
+        margin-top: 70px;
+        padding: 50px 15px 0;
     }
 
     .scrapbook-ending h3 {
