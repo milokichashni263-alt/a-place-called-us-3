@@ -1866,3 +1866,465 @@ input {
     }
 
 }
+
+/* =========================
+   MAGAZINE — 12 REASONS
+========================= */
+
+.magazine-section {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    padding: 130px 30px 150px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.magazine-label {
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    color: #A08A77;
+
+    margin-bottom: 18px;
+}
+
+.magazine-section > h2 {
+    font-size: 64px;
+
+    font-weight: 600;
+
+    line-height: 1.15;
+
+    margin-bottom: 25px;
+}
+
+.magazine-intro {
+    max-width: 700px;
+
+    font-size: 22px;
+
+    color: #8E7A6A;
+
+    line-height: 1.8;
+
+    margin-bottom: 100px;
+}
+
+
+/* =========================
+   MAGAZINE PAGE
+========================= */
+
+.magazine-page {
+    width: 100%;
+    max-width: 1000px;
+
+    min-height: 520px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 90px;
+
+    margin-bottom: 120px;
+
+    padding: 50px 40px;
+
+    position: relative;
+}
+
+
+/* alternating layout */
+
+.magazine-page.reverse {
+    flex-direction: row-reverse;
+}
+
+
+/* =========================
+   PHOTOS
+========================= */
+
+.magazine-photo {
+    flex-shrink: 0;
+
+    background: #ffffff;
+
+    padding: 12px;
+
+    box-shadow:
+        0 15px 35px rgba(90, 70, 55, 0.14);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.magazine-photo:hover {
+    transform: rotate(0deg) translateY(-7px);
+
+    box-shadow:
+        0 22px 45px rgba(90, 70, 55, 0.18);
+}
+
+.magazine-photo img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* photo sizes */
+
+.photo-large {
+    width: 390px;
+    height: 480px;
+}
+
+.photo-medium {
+    width: 350px;
+    height: 420px;
+}
+
+.photo-small {
+    width: 300px;
+    height: 390px;
+}
+
+
+/* slight scrapbook rotations */
+
+.tilted-left {
+    transform: rotate(-4deg);
+}
+
+.tilted-right {
+    transform: rotate(4deg);
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+.magazine-text {
+    width: 100%;
+
+    max-width: 390px;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+
+/* number */
+
+.magazine-number {
+    display: block;
+
+    font-family: "Caveat", cursive;
+
+    font-size: 28px;
+
+    color: #A08A77;
+
+    margin-bottom: 10px;
+}
+
+
+/* heading */
+
+.magazine-text h3 {
+    font-size: 39px;
+
+    font-weight: 600;
+
+    line-height: 1.2;
+
+    margin-bottom: 18px;
+}
+
+
+/* little divider */
+
+.magazine-line {
+    width: 55px;
+
+    height: 1px;
+
+    background: rgba(139, 106, 85, 0.35);
+
+    margin-bottom: 22px;
+}
+
+.text-right .magazine-line {
+    margin-left: auto;
+}
+
+
+/* reason text */
+
+.magazine-text p {
+    font-size: 21px;
+
+    color: #8E7A6A;
+
+    line-height: 1.85;
+
+    margin-bottom: 25px;
+}
+
+
+/* handwritten caption */
+
+.handwritten {
+    display: inline-block;
+
+    font-family: "Caveat", cursive;
+
+    font-size: 21px;
+
+    color: #8B6A55;
+
+    transform: rotate(-3deg);
+}
+
+
+/* =========================
+   FINAL PAGE
+========================= */
+
+.final-magazine-page {
+    margin-top: 20px;
+
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+    border-top:
+        1px solid rgba(139, 106, 85, 0.20);
+
+    border-bottom:
+        1px solid rgba(139, 106, 85, 0.20);
+}
+
+
+/* =========================
+   ENDING
+========================= */
+
+.magazine-ending {
+    width: 100%;
+
+    max-width: 750px;
+
+    padding: 80px 40px 30px;
+
+    text-align: center;
+}
+
+.ending-number {
+    display: block;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    color: #A08A77;
+
+    margin-bottom: 25px;
+}
+
+.magazine-ending h3 {
+    font-size: 43px;
+
+    font-weight: 600;
+
+    line-height: 1.3;
+
+    margin-bottom: 25px;
+}
+
+.magazine-ending p {
+    font-size: 21px;
+
+    color: #8E7A6A;
+
+    line-height: 1.8;
+}
+
+.ending-heart {
+    font-size: 55px;
+
+    color: #8B6A55;
+
+    margin-top: 30px;
+}
+
+.ending-signoff {
+    display: block;
+
+    font-family: "Caveat", cursive;
+
+    font-size: 28px;
+
+    color: #8B6A55;
+
+    margin-top: 8px;
+}
+
+
+/* =========================
+   STICKER
+========================= */
+
+.magazine-sticker {
+    left: 6%;
+
+    top: 8%;
+
+    transform: rotate(7deg);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .magazine-section {
+        padding: 90px 20px 100px;
+    }
+
+
+    .magazine-section > h2 {
+        font-size: 46px;
+    }
+
+
+    .magazine-intro {
+        font-size: 19px;
+
+        margin-bottom: 60px;
+    }
+
+
+    .magazine-page,
+    .magazine-page.reverse {
+        flex-direction: column;
+
+        gap: 45px;
+
+        min-height: auto;
+
+        margin-bottom: 90px;
+
+        padding: 25px 10px;
+    }
+
+
+    .magazine-photo,
+    .photo-large,
+    .photo-medium,
+    .photo-small {
+        width: min(100%, 330px);
+
+        height: 390px;
+    }
+
+
+    .magazine-text,
+    .text-left,
+    .text-right {
+        max-width: 500px;
+
+        text-align: center;
+    }
+
+
+    .magazine-line {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .magazine-number {
+        font-size: 25px;
+    }
+
+
+    .magazine-text h3 {
+        font-size: 31px;
+    }
+
+
+    .magazine-text p {
+        font-size: 19px;
+
+        line-height: 1.75;
+    }
+
+
+    .tilted-left {
+        transform: rotate(-3deg);
+    }
+
+
+    .tilted-right {
+        transform: rotate(3deg);
+    }
+
+
+    .final-magazine-page {
+        padding-top: 55px;
+        padding-bottom: 55px;
+    }
+
+
+    .magazine-ending {
+        padding: 60px 15px 20px;
+    }
+
+
+    .magazine-ending h3 {
+        font-size: 34px;
+    }
+
+
+    .magazine-ending p {
+        font-size: 19px;
+    }
+
+
+    .magazine-sticker {
+        left: 2%;
+        top: 4%;
+    }
+
+}
