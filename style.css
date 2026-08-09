@@ -3487,3 +3487,52 @@ input {
     }
 
 }
+
+/* =========================================
+   PAGE 10 — HUMPTY ON LEFT
+========================================= */
+
+.protective-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 45px;
+}
+
+/* Humpty's photo stays on the LEFT */
+.humpty-protective-photo {
+    order: 1;
+    width: 280px;
+    height: 350px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* Text stays on the RIGHT */
+.protective-card {
+    order: 2;
+}
+
+/* Keep the full call screenshot,
+   but position Humpty's side in view */
+.humpty-protective-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 35%;
+}
+
+
+/* mobile */
+@media (max-width: 700px) {
+
+    .protective-layout {
+        gap: 18px;
+    }
+
+    .humpty-protective-photo {
+        width: 150px;
+        height: 220px;
+    }
+
+}
