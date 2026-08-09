@@ -1,4 +1,5 @@
 ```javascript
+alert("JS IS WORKING");
 const passwordInput = document.getElementById("password");
 const unlockButton = document.getElementById("unlockButton");
 
