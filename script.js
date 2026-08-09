@@ -7,6 +7,7 @@ const welcomeScreen = document.getElementById("welcomeScreen");
 const homePage = document.getElementById("homePage");
 const backgroundMusic = document.getElementById("backgroundMusic");
 
+
 const correctPassword = "081929";
 
 function unlock() {
