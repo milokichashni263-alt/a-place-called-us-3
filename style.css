@@ -3627,3 +3627,24 @@ input {
         border-radius: 22px;
     }
 }
+/* =========================
+   SCRAPBOOK — SHOW ONE PAGE ONLY
+========================= */
+
+.book-page-container {
+    position: relative;
+    width: 100%;
+    min-height: 620px;
+    overflow: hidden;
+}
+
+.scrap-page {
+    display: none !important;
+    position: relative;
+    width: 100%;
+    min-height: 620px;
+}
+
+.scrap-page.active-page {
+    display: block !important;
+}
