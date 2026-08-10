@@ -453,3 +453,15 @@ document.addEventListener("keydown", function (event) {
 // =========================
 
 showScrapPage(0);
+
+// Stop background music when the Spotify playlist is opened
+document.querySelectorAll(".spotify-button").forEach(button => {
+    button.addEventListener("click", function () {
+        const music = document.getElementById("backgroundMusic");
+
+        if (music) {
+            music.pause();
+            music.currentTime = 0;
+        }
+    });
+});
