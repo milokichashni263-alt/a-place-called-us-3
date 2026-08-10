@@ -3536,3 +3536,94 @@ input {
     }
 
 }
+
+/* =========================
+   SPOTIFY PLAYLIST
+========================= */
+
+.playlist-section {
+    min-height: 100vh;
+    padding: 140px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.playlist-label {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: #A08A77;
+    margin-bottom: 18px;
+}
+
+.playlist-section h2 {
+    font-size: 62px;
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.playlist-intro {
+    max-width: 650px;
+    font-size: 21px;
+    color: #8E7A6A;
+    line-height: 1.8;
+    margin-bottom: 55px;
+}
+
+.playlist-card {
+    width: 100%;
+    max-width: 700px;
+    padding: 18px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(139, 106, 85, 0.15);
+    border-radius: 28px;
+    box-shadow: 0 20px 50px rgba(90, 70, 55, 0.12);
+}
+
+.playlist-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 8px 18px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #8B6A55;
+}
+
+.playlist-card iframe {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-radius: 18px;
+}
+
+.playlist-note {
+    margin-top: 25px;
+    font-family: "Caveat", cursive;
+    font-size: 25px;
+    color: #8B6A55;
+    transform: rotate(-2deg);
+}
+
+@media (max-width: 700px) {
+
+    .playlist-section {
+        padding: 100px 18px;
+    }
+
+    .playlist-section h2 {
+        font-size: 44px;
+    }
+
+    .playlist-intro {
+        font-size: 18px;
+    }
+
+    .playlist-card {
+        padding: 12px;
+        border-radius: 22px;
+    }
+}
