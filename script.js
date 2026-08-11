@@ -465,3 +465,40 @@ document.querySelectorAll(".spotify-button").forEach(button => {
         }
     });
 });
+
+// ========================================
+// OPEN WHEN LETTERS
+// ========================================
+
+const openWhenCards = document.querySelectorAll(".open-when-card");
+const openWhenModal = document.getElementById("openWhenModal");
+const openWhenTitle = document.getElementById("openWhenTitle");
+const openWhenMessage = document.getElementById("openWhenMessage");
+const closeOpenWhen = document.getElementById("closeOpenWhen");
+
+openWhenCards.forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        openWhenTitle.textContent = card.dataset.title;
+        openWhenMessage.textContent = card.dataset.message;
+
+        openWhenModal.classList.add("show");
+
+    });
+
+});
+
+
+closeOpenWhen.addEventListener("click", () => {
+    openWhenModal.classList.remove("show");
+});
+
+
+openWhenModal.addEventListener("click", (e) => {
+
+    if (e.target === openWhenModal) {
+        openWhenModal.classList.remove("show");
+    }
+
+});
