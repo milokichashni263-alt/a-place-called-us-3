@@ -1,50 +1,108 @@
-const passwordInput = document.getElementById("password");
-const unlockButton = document.getElementById("unlockButton");
+document.addEventListener("DOMContentLoaded", function () {
 
-const container = document.querySelector(".container");
-const welcomeScreen = document.getElementById("welcomeScreen");
-const homePage = document.getElementById("homePage");
+    const passwordInput = document.getElementById("password");
+    const unlockButton = document.getElementById("unlockButton");
 
-const correctPassword = "081929";
+    const container = document.querySelector(".container");
+    const welcomeScreen = document.getElementById("welcomeScreen");
+    const homePage = document.getElementById("homePage");
 
-function unlock() {
+    const backgroundMusic =
+        document.getElementById("backgroundMusic");
 
-    const password = passwordInput.value.trim();
+    const correctPassword = "081929";
 
-    if (password === correctPassword) {
 
-        container.style.display = "none";
+    function unlock() {
 
-        welcomeScreen.classList.add("show");
+        if (!passwordInput) {
+            console.error("Password input not found");
+            return;
+        }
+
+        if (passwordInput.value.trim() !== correctPassword) {
+
+            passwordInput.value = "";
+            passwordInput.placeholder =
+                "Wrong password ♡ Try again";
+
+            setTimeout(function () {
+                passwordInput.placeholder =
+                    "Our little secret...";
+            }, 2000);
+
+            return;
+        }
+
+
+        /* PASSWORD PAGE OFF */
+
+        if (container) {
+            container.style.display = "none";
+        }
+
+
+        /* WELCOME SCREEN ON */
+
+        if (welcomeScreen) {
+            welcomeScreen.classList.add("show");
+        }
+
+
+        /* MUSIC */
+
+        if (backgroundMusic) {
+            backgroundMusic.play().catch(function () {
+                console.log("Music needs user interaction.");
+            });
+        }
+
+
+        /* HOME PAGE */
 
         setTimeout(function () {
 
-            welcomeScreen.classList.remove("show");
-            homePage.classList.add("show");
+            if (welcomeScreen) {
+                welcomeScreen.classList.remove("show");
+            }
 
-            window.scrollTo(0, 0);
+            if (homePage) {
+                homePage.classList.add("show");
+            }
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
 
         }, 2500);
 
-    } else {
-
-        passwordInput.value = "";
-        passwordInput.placeholder = "Wrong password ♡ Try again";
-
-        setTimeout(function () {
-            passwordInput.placeholder = "Our little secret...";
-        }, 2000);
-
     }
-}
 
-unlockButton.addEventListener("click", unlock);
 
-passwordInput.addEventListener("keydown", function(event) {
+    /* BUTTON */
 
-    if (event.key === "Enter") {
-        event.preventDefault();
-        unlock();
+    if (unlockButton) {
+        unlockButton.addEventListener("click", unlock);
+    }
+
+
+    /* ENTER KEY */
+
+    if (passwordInput) {
+
+        passwordInput.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    unlock();
+                }
+
+            }
+        );
+
     }
 
 });
