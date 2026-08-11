@@ -27,15 +27,10 @@ function unlock() {
     } else {
 
         passwordInput.value = "";
-
-        passwordInput.placeholder =
-            "Wrong password ♡ Try again";
+        passwordInput.placeholder = "Wrong password ♡ Try again";
 
         setTimeout(function () {
-
-            passwordInput.placeholder =
-                "Our little secret...";
-
+            passwordInput.placeholder = "Our little secret...";
         }, 2000);
 
     }
@@ -46,11 +41,8 @@ unlockButton.addEventListener("click", unlock);
 passwordInput.addEventListener("keydown", function(event) {
 
     if (event.key === "Enter") {
-
         event.preventDefault();
-
         unlock();
-
     }
 
 });
