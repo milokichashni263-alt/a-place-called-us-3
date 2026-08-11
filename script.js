@@ -16,44 +16,79 @@ const correctPassword = "081929";
 
 function unlock() {
 
-    if (!passwordInput || !container || !welcomeScreen || !homePage) {
-        console.error("Password elements not found.");
+    if (!passwordInput) {
+        console.error("Password input not found");
         return;
     }
 
+    if (!container) {
+        console.error("Container not found");
+        return;
+    }
+
+    if (!welcomeScreen) {
+        console.error("Welcome screen not found");
+        return;
+    }
+
+    if (!homePage) {
+        console.error("Home page not found");
+        return;
+    }
+
+
     const enteredPassword = passwordInput.value.trim();
+
+    console.log("Entered:", enteredPassword);
+
 
     if (enteredPassword === correctPassword) {
 
-        // Hide password page
+        console.log("PASSWORD CORRECT");
+
+
+        // Hide password screen
         container.style.display = "none";
+
 
         // Show welcome screen
         welcomeScreen.classList.add("show");
 
-        // Start music
+
+        // Try music
         if (backgroundMusic) {
+
             backgroundMusic.currentTime = 0;
 
-            backgroundMusic.play().catch(function (error) {
+            backgroundMusic.play().catch(function(error) {
                 console.log("Music autoplay blocked:", error);
             });
+
         }
 
-        // Open home page after welcome message
-        setTimeout(function () {
+
+        // Open home page
+        setTimeout(function() {
 
             welcomeScreen.classList.remove("show");
+
             homePage.classList.add("show");
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+            window.scrollTo(0, 0);
 
         }, 2500);
 
+
     } else {
+
+        console.log("PASSWORD WRONG");
+
+
+        passwordInput.value = "";
+
+        passwordInput.placeholder =
+            "Wrong password ♡ Try again";
+
 
         passwordInput.animate(
             [
@@ -68,32 +103,48 @@ function unlock() {
             }
         );
 
-        passwordInput.value = "";
-        passwordInput.placeholder = "Wrong password ♡ Try again";
 
-        setTimeout(function () {
-            passwordInput.placeholder = "Our little secret...";
+        setTimeout(function() {
+
+            passwordInput.placeholder =
+                "Our little secret...";
+
         }, 2000);
+
     }
+
 }
 
 
 // =========================
-// PASSWORD EVENTS
+// PASSWORD BUTTON
 // =========================
 
 if (unlockButton) {
+
     unlockButton.addEventListener("click", unlock);
+
 }
 
+
+// =========================
+// ENTER KEY
+// =========================
+
 if (passwordInput) {
-    passwordInput.addEventListener("keydown", function (event) {
+
+    passwordInput.addEventListener("keydown", function(event) {
 
         if (event.key === "Enter") {
+
+            event.preventDefault();
+
             unlock();
+
         }
 
     });
+
 }
 
 
@@ -101,41 +152,47 @@ if (passwordInput) {
 // QUIZ
 // =========================
 
-const quizQuestions = document.querySelectorAll(".quiz-question");
-const nextButtons = document.querySelectorAll(".next-question");
-const finishButton = document.querySelector(".finish-quiz");
+const quizQuestions =
+    document.querySelectorAll(".quiz-question");
+
+const nextButtons =
+    document.querySelectorAll(".next-question");
+
+const finishButton =
+    document.querySelector(".finish-quiz");
 
 let currentQuestion = 0;
 
 
-// =========================
-// QUIZ OPTIONS
-// =========================
+document.querySelectorAll(".quiz-option").forEach(function(option) {
 
-document.querySelectorAll(".quiz-option").forEach(function (option) {
+    option.addEventListener("click", function() {
 
-    option.addEventListener("click", function () {
+        const question =
+            option.closest(".quiz-question");
 
-        const question = option.closest(".quiz-question");
+        if (!question) return;
 
-        if (!question) {
-            return;
-        }
 
-        question.querySelectorAll(".quiz-option").forEach(function (item) {
-            item.classList.remove("selected");
-        });
+        question
+            .querySelectorAll(".quiz-option")
+            .forEach(function(item) {
+
+                item.classList.remove("selected");
+
+            });
+
 
         option.classList.add("selected");
 
-        const feedback = question.querySelector(".quiz-feedback");
+
+        const feedback =
+            question.querySelector(".quiz-feedback");
+
 
         if (feedback) {
 
-            const isQuestionFive =
-                question.dataset.question === "5";
-
-            if (isQuestionFive) {
+            if (question.dataset.question === "5") {
 
                 feedback.textContent =
                     "Interesting choice... 👀";
@@ -144,6 +201,7 @@ document.querySelectorAll(".quiz-option").forEach(function (option) {
 
                 const correct =
                     option.dataset.correct === "true";
+
 
                 if (correct) {
 
@@ -154,79 +212,89 @@ document.querySelectorAll(".quiz-option").forEach(function (option) {
 
                     feedback.textContent =
                         "Hmm... we might have to discuss this one. 😭";
+
                 }
+
             }
+
         }
+
     });
 
 });
 
 
-// =========================
-// NEXT QUESTION
-// =========================
+nextButtons.forEach(function(button) {
 
-nextButtons.forEach(function (button) {
-
-    button.addEventListener("click", function () {
+    button.addEventListener("click", function() {
 
         const current =
             quizQuestions[currentQuestion];
 
-        if (!current) {
-            return;
-        }
+        if (!current) return;
 
-        // Check multiple choice question
+
         const hasOptions =
             current.querySelectorAll(".quiz-option").length > 0;
+
 
         if (hasOptions) {
 
             const selected =
                 current.querySelector(".quiz-option.selected");
 
+
             if (!selected) {
 
                 const feedback =
                     current.querySelector(".quiz-feedback");
 
+
                 if (feedback) {
+
                     feedback.textContent =
                         "You have to choose one first, Humpty. 😭";
+
                 }
 
                 return;
+
             }
+
         }
 
-        // Check written answer
+
         const answer =
             current.querySelector(".quiz-answer");
+
 
         if (answer && answer.value.trim() === "") {
 
             const feedback =
                 current.querySelector(".quiz-feedback");
 
+
             if (feedback) {
+
                 feedback.textContent =
                     "Excuse me... answer the question. 👀";
+
             }
 
             return;
+
         }
 
-        // Hide current question
+
         current.classList.remove("active");
 
-        // Move forward
         currentQuestion++;
 
-        // Show next question
+
         if (quizQuestions[currentQuestion]) {
 
-            quizQuestions[currentQuestion].classList.add("active");
+            quizQuestions[currentQuestion]
+                .classList.add("active");
 
         }
 
@@ -235,44 +303,49 @@ nextButtons.forEach(function (button) {
 });
 
 
-// =========================
-// FINISH QUIZ
-// =========================
-
 if (finishButton) {
 
-    finishButton.addEventListener("click", function () {
+    finishButton.addEventListener("click", function() {
 
         const current =
             quizQuestions[currentQuestion];
 
-        if (!current) {
-            return;
-        }
+        if (!current) return;
+
 
         const answer =
             current.querySelector(".quiz-answer");
+
 
         if (answer && answer.value.trim() === "") {
 
             const feedback =
                 current.querySelector(".quiz-feedback");
 
+
             if (feedback) {
+
                 feedback.textContent =
                     "You can't escape this one. Answer it. 😭";
+
             }
 
             return;
+
         }
 
+
         current.classList.remove("active");
+
 
         const result =
             document.querySelector(".quiz-result");
 
+
         if (result) {
+
             result.classList.add("show");
+
         }
 
     });
@@ -280,9 +353,74 @@ if (finishButton) {
 }
 
 
-// =====================================================
+// =========================
+// OPEN WHEN LETTERS
+// =========================
+
+document.querySelectorAll(".open-letter").forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        const card =
+            button.closest(".open-card");
+
+        if (!card) return;
+
+
+        const content =
+            card.querySelector(".open-content");
+
+        if (!content) return;
+
+
+        const alreadyOpen =
+            content.classList.contains("letter-open");
+
+
+        document
+            .querySelectorAll(".open-content")
+            .forEach(function(item) {
+
+                item.classList.remove("letter-open");
+
+            });
+
+
+        document
+            .querySelectorAll(".open-letter")
+            .forEach(function(item) {
+
+                item.textContent = "Open ♡";
+
+            });
+
+
+        if (!alreadyOpen) {
+
+            content.classList.add("letter-open");
+
+            button.textContent = "Close ♡";
+
+        }
+
+    });
+
+});
+
+
+// =========================
+// SONG / SPOTIFY
+// =========================
+
+const spotifyLinks =
+    document.querySelectorAll(
+        'a[href*="spotify.com"], iframe[src*="spotify.com"]'
+    );
+
+
+// =========================
 // SCRAPBOOK
-// =====================================================
+// =========================
 
 const scrapbookPages =
     document.querySelectorAll(".scrap-page");
@@ -302,25 +440,24 @@ const scrapbookDots =
 let currentScrapPage = 0;
 
 
-// =========================
-// SHOW SCRAPBOOK PAGE
-// =========================
-
 function showScrapPage(index) {
 
     if (scrapbookPages.length === 0) {
         return;
     }
 
+
     if (index < 0) {
         index = 0;
     }
+
 
     if (index >= scrapbookPages.length) {
         index = scrapbookPages.length - 1;
     }
 
-    scrapbookPages.forEach(function (page, i) {
+
+    scrapbookPages.forEach(function(page, i) {
 
         page.classList.toggle(
             "active-page",
@@ -329,7 +466,8 @@ function showScrapPage(index) {
 
     });
 
-    scrapbookDots.forEach(function (dot, i) {
+
+    scrapbookDots.forEach(function(dot, i) {
 
         dot.classList.toggle(
             "active",
@@ -337,6 +475,7 @@ function showScrapPage(index) {
         );
 
     });
+
 
     if (scrapbookCounter) {
 
@@ -347,67 +486,53 @@ function showScrapPage(index) {
 
     }
 
+
     currentScrapPage = index;
 
+
     if (prevPageButton) {
-        prevPageButton.disabled = index === 0;
+
+        prevPageButton.disabled =
+            index === 0;
+
     }
+
 
     if (nextPageButton) {
+
         nextPageButton.disabled =
             index === scrapbookPages.length - 1;
+
     }
+
 }
 
-
-// =========================
-// NEXT PAGE
-// =========================
 
 if (nextPageButton) {
 
-    nextPageButton.addEventListener("click", function () {
+    nextPageButton.addEventListener("click", function() {
 
-        if (
-            currentScrapPage <
-            scrapbookPages.length - 1
-        ) {
-
-            showScrapPage(currentScrapPage + 1);
-
-        }
+        showScrapPage(currentScrapPage + 1);
 
     });
 
 }
 
-
-// =========================
-// PREVIOUS PAGE
-// =========================
 
 if (prevPageButton) {
 
-    prevPageButton.addEventListener("click", function () {
+    prevPageButton.addEventListener("click", function() {
 
-        if (currentScrapPage > 0) {
-
-            showScrapPage(currentScrapPage - 1);
-
-        }
+        showScrapPage(currentScrapPage - 1);
 
     });
 
 }
 
 
-// =========================
-// SCRAPBOOK DOTS
-// =========================
+scrapbookDots.forEach(function(dot, index) {
 
-scrapbookDots.forEach(function (dot, index) {
-
-    dot.addEventListener("click", function () {
+    dot.addEventListener("click", function() {
 
         showScrapPage(index);
 
@@ -416,89 +541,22 @@ scrapbookDots.forEach(function (dot, index) {
 });
 
 
-// =========================
-// KEYBOARD CONTROLS
-// =========================
-
-document.addEventListener("keydown", function (event) {
+document.addEventListener("keydown", function(event) {
 
     if (event.key === "ArrowRight") {
 
-        if (
-            currentScrapPage <
-            scrapbookPages.length - 1
-        ) {
-
-            showScrapPage(currentScrapPage + 1);
-
-        }
+        showScrapPage(currentScrapPage + 1);
 
     }
+
 
     if (event.key === "ArrowLeft") {
 
-        if (currentScrapPage > 0) {
-
-            showScrapPage(currentScrapPage - 1);
-
-        }
+        showScrapPage(currentScrapPage - 1);
 
     }
 
 });
 
-
-// =========================
-// START SCRAPBOOK
-// =========================
 
 showScrapPage(0);
-
-// Stop background music when the Spotify playlist is opened
-document.querySelectorAll(".spotify-button").forEach(button => {
-    button.addEventListener("click", function () {
-        const music = document.getElementById("backgroundMusic");
-
-        if (music) {
-            music.pause();
-            music.currentTime = 0;
-        }
-    });
-});
-
-// ========================================
-// OPEN WHEN LETTERS
-// ========================================
-
-const openWhenCards = document.querySelectorAll(".open-when-card");
-const openWhenModal = document.getElementById("openWhenModal");
-const openWhenTitle = document.getElementById("openWhenTitle");
-const openWhenMessage = document.getElementById("openWhenMessage");
-const closeOpenWhen = document.getElementById("closeOpenWhen");
-
-openWhenCards.forEach(card => {
-
-    card.addEventListener("click", () => {
-
-        openWhenTitle.textContent = card.dataset.title;
-        openWhenMessage.textContent = card.dataset.message;
-
-        openWhenModal.classList.add("show");
-
-    });
-
-});
-
-
-closeOpenWhen.addEventListener("click", () => {
-    openWhenModal.classList.remove("show");
-});
-
-
-openWhenModal.addEventListener("click", (e) => {
-
-    if (e.target === openWhenModal) {
-        openWhenModal.classList.remove("show");
-    }
-
-});
