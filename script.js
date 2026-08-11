@@ -1,107 +1,55 @@
-document.addEventListener("DOMContentLoaded", function () {
+const passwordInput = document.getElementById("password");
+const unlockButton = document.getElementById("unlockButton");
 
-    const passwordInput = document.getElementById("password");
-    const unlockButton = document.getElementById("unlockButton");
+const container = document.querySelector(".container");
+const welcomeScreen = document.getElementById("welcomeScreen");
+const homePage = document.getElementById("homePage");
 
-    const container = document.querySelector(".container");
-    const welcomeScreen = document.getElementById("welcomeScreen");
-    const homePage = document.getElementById("homePage");
+const correctPassword = "081929";
 
-    const backgroundMusic =
-        document.getElementById("backgroundMusic");
+function unlock() {
 
-    const correctPassword = "081929";
+    if (passwordInput.value.trim() === correctPassword) {
 
+        container.style.display = "none";
 
-    function unlock() {
-
-        if (!passwordInput) {
-            console.error("Password input not found");
-            return;
-        }
-
-        if (passwordInput.value.trim() !== correctPassword) {
-
-            passwordInput.value = "";
-            passwordInput.placeholder =
-                "Wrong password ♡ Try again";
-
-            setTimeout(function () {
-                passwordInput.placeholder =
-                    "Our little secret...";
-            }, 2000);
-
-            return;
-        }
-
-
-        /* PASSWORD PAGE OFF */
-
-        if (container) {
-            container.style.display = "none";
-        }
-
-
-        /* WELCOME SCREEN ON */
-
-        if (welcomeScreen) {
-            welcomeScreen.classList.add("show");
-        }
-
-
-        /* MUSIC */
-
-        if (backgroundMusic) {
-            backgroundMusic.play().catch(function () {
-                console.log("Music needs user interaction.");
-            });
-        }
-
-
-        /* HOME PAGE */
+        welcomeScreen.classList.add("show");
 
         setTimeout(function () {
 
-            if (welcomeScreen) {
-                welcomeScreen.classList.remove("show");
-            }
+            welcomeScreen.classList.remove("show");
+            homePage.classList.add("show");
 
-            if (homePage) {
-                homePage.classList.add("show");
-            }
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+            window.scrollTo(0, 0);
 
         }, 2500);
 
+    } else {
+
+        passwordInput.value = "";
+
+        passwordInput.placeholder =
+            "Wrong password ♡ Try again";
+
+        setTimeout(function () {
+
+            passwordInput.placeholder =
+                "Our little secret...";
+
+        }, 2000);
+
     }
+}
 
+unlockButton.addEventListener("click", unlock);
 
-    /* BUTTON */
+passwordInput.addEventListener("keydown", function(event) {
 
-    if (unlockButton) {
-        unlockButton.addEventListener("click", unlock);
-    }
+    if (event.key === "Enter") {
 
+        event.preventDefault();
 
-    /* ENTER KEY */
-
-    if (passwordInput) {
-
-        passwordInput.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (event.key === "Enter") {
-                    event.preventDefault();
-                    unlock();
-                }
-
-            }
-        );
+        unlock();
 
     }
 
