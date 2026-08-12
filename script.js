@@ -103,102 +103,120 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    /* =========================
-       SCRAPBOOK
-    ========================= */
+   // =====================================================
+// SCRAPBOOK PAGE FLIP
+// =====================================================
 
-    const pages =
+document.addEventListener("DOMContentLoaded", function () {
+
+    const scrapbookPages =
         document.querySelectorAll(".scrap-page");
 
-    const nextButton =
+    const nextPageButton =
         document.getElementById("nextPage");
 
-    const prevButton =
+    const prevPageButton =
         document.getElementById("prevPage");
 
-    const counter =
+    const scrapbookCounter =
         document.getElementById("scrapbookCounter");
 
-    const dots =
+    const scrapbookDots =
         document.querySelectorAll(".book-dot");
 
-    let currentPage = 0;
+    let currentScrapPage = 0;
 
 
-    function showPage(index) {
+    function showScrapPage(index) {
 
-        if (!pages.length) {
-            console.log("Scrapbook pages not found.");
+        if (!scrapbookPages.length) {
+            console.log("No scrapbook pages found.");
             return;
         }
 
+        // Keep page number within limits
         if (index < 0) {
             index = 0;
         }
 
-        if (index >= pages.length) {
-            index = pages.length - 1;
+        if (index >= scrapbookPages.length) {
+            index = scrapbookPages.length - 1;
         }
 
 
-        pages.forEach(function (page, i) {
-
-            page.classList.remove("active-page");
+        // Show only selected page
+        scrapbookPages.forEach(function (page, i) {
 
             if (i === index) {
                 page.classList.add("active-page");
+            } else {
+                page.classList.remove("active-page");
             }
 
         });
 
 
-        dots.forEach(function (dot, i) {
+        // Update counter
+        if (scrapbookCounter) {
 
-            dot.classList.remove("active");
-
-            if (i === index) {
-                dot.classList.add("active");
-            }
-
-        });
-
-
-        currentPage = index;
-
-
-        if (counter) {
-
-            counter.textContent =
+            scrapbookCounter.textContent =
                 String(index + 1).padStart(2, "0") +
                 " / " +
-                String(pages.length).padStart(2, "0");
+                String(scrapbookPages.length).padStart(2, "0");
 
         }
 
 
-        if (prevButton) {
-            prevButton.disabled = index === 0;
+        // Update dots
+        scrapbookDots.forEach(function (dot, i) {
+
+            dot.classList.toggle(
+                "active",
+                i === index
+            );
+
+        });
+
+
+        // Disable arrows at beginning/end
+        if (prevPageButton) {
+            prevPageButton.disabled = index === 0;
         }
 
-        if (nextButton) {
-            nextButton.disabled =
-                index === pages.length - 1;
+        if (nextPageButton) {
+            nextPageButton.disabled =
+                index === scrapbookPages.length - 1;
         }
+
+
+        currentScrapPage = index;
 
     }
 
 
-    /* NEXT */
+    // =========================
+    // NEXT
+    // =========================
 
-    if (nextButton) {
+    if (nextPageButton) {
 
-        nextButton.addEventListener(
+        nextPageButton.addEventListener(
             "click",
             function (event) {
 
                 event.preventDefault();
+                event.stopPropagation();
 
-                showPage(currentPage + 1);
+                if (
+                    currentScrapPage <
+                    scrapbookPages.length - 1
+                ) {
+
+                    showScrapPage(
+                        currentScrapPage + 1
+                    );
+
+                }
 
             }
         );
@@ -206,17 +224,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* PREVIOUS */
+    // =========================
+    // PREVIOUS
+    // =========================
 
-    if (prevButton) {
+    if (prevPageButton) {
 
-        prevButton.addEventListener(
+        prevPageButton.addEventListener(
             "click",
             function (event) {
 
                 event.preventDefault();
+                event.stopPropagation();
 
-                showPage(currentPage - 1);
+                if (currentScrapPage > 0) {
+
+                    showScrapPage(
+                        currentScrapPage - 1
+                    );
+
+                }
 
             }
         );
@@ -224,9 +251,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* DOTS */
+    // =========================
+    // DOTS
+    // =========================
 
-    dots.forEach(function (dot, index) {
+    scrapbookDots.forEach(function (dot, index) {
 
         dot.addEventListener(
             "click",
@@ -234,7 +263,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 event.preventDefault();
 
-                showPage(index);
+                showScrapPage(index);
 
             }
         );
@@ -242,7 +271,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    /* KEYBOARD */
+    // =========================
+    // KEYBOARD
+    // =========================
 
     document.addEventListener(
         "keydown",
@@ -257,20 +288,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             if (event.key === "ArrowRight") {
-                showPage(currentPage + 1);
+
+                if (
+                    currentScrapPage <
+                    scrapbookPages.length - 1
+                ) {
+
+                    showScrapPage(
+                        currentScrapPage + 1
+                    );
+
+                }
+
             }
 
 
             if (event.key === "ArrowLeft") {
-                showPage(currentPage - 1);
+
+                if (currentScrapPage > 0) {
+
+                    showScrapPage(
+                        currentScrapPage - 1
+                    );
+
+                }
+
             }
 
         }
     );
 
 
-    /* START */
+    // =========================
+    // INITIAL PAGE
+    // =========================
 
-    showPage(0);
+    showScrapPage(0);
 
 });
