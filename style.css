@@ -4554,339 +4554,218 @@ input {
     margin-top: 18px !important;
 }
 
-/* =========================================
-   FINAL CLOSING — FULL SCREEN
-========================================= */
+/* =========================
+   FINAL CLOSING SCREEN
+========================= */
 
 .closing-screen {
-    position: relative !important;
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 
-    width: 100vw !important;
-    min-width: 100vw !important;
-    max-width: none !important;
+    background: #000;
 
-    min-height: 100vh !important;
-    height: 100vh !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    margin-left: calc(50% - 50vw) !important;
-    margin-right: calc(50% - 50vw) !important;
+.closing-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.58);
+    z-index: 5;
+}
 
-    padding: 0 !important;
+.closing-content {
+    position: relative;
+    z-index: 10;
 
-    overflow: hidden !important;
+    width: 100%;
+    max-width: 1000px;
+    padding: 40px 25px;
 
-    background: #000 !important;
+    text-align: center;
+    color: white;
 
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-    box-sizing: border-box !important;
+.closing-small {
+    font-size: 14px;
+    letter-spacing: 5px;
+    margin-bottom: 18px;
+}
+
+.closing-content h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 42px;
+    font-weight: 500;
+    margin: 0 0 15px;
+}
+
+.closing-heart {
+    font-size: 38px;
+    margin: 5px 0 15px;
+}
+
+.closing-content h1 {
+    font-family: "Caveat", cursive;
+    font-size: clamp(80px, 11vw, 170px);
+    line-height: 0.9;
+    margin: 0 0 35px;
+    color: white;
+}
+
+.closing-content p {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 21px;
+    line-height: 1.6;
+    margin: 0 0 30px;
+}
+
+.closing-signoff {
+    font-family: "Caveat", cursive;
+    font-size: 27px;
 }
 
 
-/* =========================================
-   PHOTO COLLAGE
-========================================= */
+/* =========================
+   CLOSING PHOTOS
+========================= */
 
 .closing-photo {
-    position: absolute !important;
-
-    overflow: hidden !important;
-
-    border: 6px solid rgba(255,255,255,0.12) !important;
-
-    box-sizing: border-box !important;
-
-    opacity: 0.48 !important;
-
-    z-index: 1 !important;
+    position: absolute;
+    z-index: 2;
+    overflow: hidden;
+    opacity: 0.55;
+    border: 6px solid rgba(255,255,255,0.12);
 }
 
 .closing-photo img {
-    width: 100% !important;
-    height: 100% !important;
-
-    object-fit: cover !important;
-
-    display: block !important;
-
-    filter: brightness(0.65) !important;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 
-/* LEFT TOP */
+/* photo positions */
 
 .collage-one {
-    width: 230px !important;
-    height: 300px !important;
-
-    top: 7% !important;
-    left: 7% !important;
-
-    transform: rotate(-11deg) !important;
+    width: 260px;
+    height: 330px;
+    left: 5%;
+    top: 8%;
+    transform: rotate(-9deg);
 }
-
-
-/* RIGHT TOP */
 
 .collage-two {
-    width: 250px !important;
-    height: 300px !important;
-
-    top: 9% !important;
-    right: 7% !important;
-
-    transform: rotate(9deg) !important;
+    width: 250px;
+    height: 320px;
+    right: 5%;
+    top: 8%;
+    transform: rotate(8deg);
 }
-
-
-/* LEFT MIDDLE */
 
 .collage-three {
-    width: 250px !important;
-    height: 280px !important;
-
-    top: 42% !important;
-    left: 3% !important;
-
-    transform: rotate(-5deg) !important;
+    width: 240px;
+    height: 300px;
+    left: 3%;
+    bottom: 5%;
+    transform: rotate(-4deg);
 }
-
-
-/* RIGHT MIDDLE */
 
 .collage-four {
-    width: 250px !important;
-    height: 300px !important;
-
-    top: 40% !important;
-    right: 3% !important;
-
-    transform: rotate(7deg) !important;
+    width: 230px;
+    height: 290px;
+    left: 25%;
+    bottom: -5%;
+    transform: rotate(5deg);
 }
-
-
-/* BOTTOM LEFT */
 
 .collage-five {
-    width: 230px !important;
-    height: 280px !important;
-
-    bottom: -5% !important;
-    left: 18% !important;
-
-    transform: rotate(-4deg) !important;
+    width: 230px;
+    height: 290px;
+    right: 24%;
+    bottom: -5%;
+    transform: rotate(-6deg);
 }
-
-
-/* BOTTOM CENTER */
 
 .collage-six {
-    width: 260px !important;
-    height: 300px !important;
-
-    bottom: -8% !important;
-    left: 42% !important;
-
-    transform: rotate(3deg) !important;
+    width: 240px;
+    height: 300px;
+    right: 3%;
+    bottom: 6%;
+    transform: rotate(5deg);
 }
-
-
-/* BOTTOM RIGHT */
 
 .collage-seven {
-    width: 230px !important;
-    height: 290px !important;
-
-    bottom: -4% !important;
-    right: 15% !important;
-
-    transform: rotate(6deg) !important;
+    width: 250px;
+    height: 310px;
+    left: 42%;
+    top: 8%;
+    transform: rotate(-2deg);
 }
 
 
-/* =========================================
-   DARK OVERLAY
-========================================= */
-
-.closing-overlay {
-    position: absolute !important;
-
-    inset: 0 !important;
-
-    width: 100% !important;
-    height: 100% !important;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(0,0,0,0.30),
-            rgba(0,0,0,0.82)
-        ) !important;
-
-    z-index: 5 !important;
-
-    pointer-events: none !important;
-}
-
-
-/* =========================================
-   CLOSING TEXT
-========================================= */
-
-.closing-content {
-    position: relative !important;
-
-    z-index: 10 !important;
-
-    width: min(900px, 90vw) !important;
-
-    text-align: center !important;
-
-    color: white !important;
-
-    margin: 0 auto !important;
-}
-
-
-/* small heading */
-
-.closing-small {
-    display: block !important;
-
-    margin-bottom: 18px !important;
-
-    font-size: 13px !important;
-
-    letter-spacing: 6px !important;
-
-    color: rgba(255,255,255,0.75) !important;
-}
-
-
-/* Our Little Place */
-
-.closing-content h2 {
-    margin: 0 !important;
-
-    font-family: "Cormorant Garamond", serif !important;
-
-    font-size: clamp(32px, 4vw, 58px) !important;
-
-    font-weight: 500 !important;
-
-    color: white !important;
-}
-
-
-/* heart */
-
-.closing-heart {
-    margin: 18px 0 !important;
-
-    font-size: 35px !important;
-
-    color: white !important;
-}
-
-
-/* I LOVE YOU */
-
-.closing-content h1 {
-    margin: 10px 0 30px !important;
-
-    font-family: "Caveat", cursive !important;
-
-    font-size: clamp(85px, 12vw, 180px) !important;
-
-    line-height: 0.85 !important;
-
-    font-weight: 700 !important;
-
-    color: white !important;
-
-    white-space: nowrap !important;
-}
-
-
-/* paragraph */
-
-.closing-content p {
-    margin: 0 auto 28px !important;
-
-    max-width: 650px !important;
-
-    font-family: "Cormorant Garamond", serif !important;
-
-    font-size: clamp(18px, 2vw, 25px) !important;
-
-    line-height: 1.5 !important;
-
-    color: rgba(255,255,255,0.9) !important;
-}
-
-
-/* signoff */
-
-.closing-signoff {
-    font-family: "Caveat", cursive !important;
-
-    font-size: 28px !important;
-
-    color: white !important;
-}
-
-
-/* =========================================
+/* =========================
    MOBILE
-========================================= */
+========================= */
 
 @media (max-width: 700px) {
 
     .closing-screen {
-        min-height: 100svh !important;
-        height: 100svh !important;
+        min-height: 100svh;
+        height: 100svh;
     }
 
     .closing-content {
-        width: 90vw !important;
-    }
-
-    .closing-content h1 {
-        font-size: 70px !important;
-        white-space: normal !important;
-    }
-
-    .closing-small {
-        font-size: 10px !important;
-        letter-spacing: 4px !important;
+        padding: 30px 18px;
     }
 
     .closing-content h2 {
-        font-size: 35px !important;
+        font-size: 32px;
+    }
+
+    .closing-content h1 {
+        font-size: clamp(65px, 18vw, 105px);
     }
 
     .closing-content p {
-        font-size: 17px !important;
+        font-size: 18px;
+    }
+
+    .closing-small {
+        font-size: 11px;
+        letter-spacing: 3px;
+    }
+
+    .closing-photo {
+        opacity: 0.4;
     }
 
     .collage-one,
     .collage-two {
-        width: 150px !important;
-        height: 200px !important;
+        width: 150px;
+        height: 190px;
     }
 
     .collage-three,
-    .collage-four {
-        width: 140px !important;
-        height: 190px !important;
-    }
-
+    .collage-four,
     .collage-five,
     .collage-six,
     .collage-seven {
-        width: 140px !important;
-        height: 180px !important;
+        width: 140px;
+        height: 180px;
     }
 }
