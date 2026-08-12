@@ -4553,3 +4553,340 @@ input {
     text-align: center !important;
     margin-top: 18px !important;
 }
+
+/* =========================================
+   FINAL CLOSING — FULL SCREEN
+========================================= */
+
+.closing-screen {
+    position: relative !important;
+
+    width: 100vw !important;
+    min-width: 100vw !important;
+    max-width: none !important;
+
+    min-height: 100vh !important;
+    height: 100vh !important;
+
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+
+    padding: 0 !important;
+
+    overflow: hidden !important;
+
+    background: #000 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* =========================================
+   PHOTO COLLAGE
+========================================= */
+
+.closing-photo {
+    position: absolute !important;
+
+    overflow: hidden !important;
+
+    border: 6px solid rgba(255,255,255,0.12) !important;
+
+    box-sizing: border-box !important;
+
+    opacity: 0.48 !important;
+
+    z-index: 1 !important;
+}
+
+.closing-photo img {
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: cover !important;
+
+    display: block !important;
+
+    filter: brightness(0.65) !important;
+}
+
+
+/* LEFT TOP */
+
+.collage-one {
+    width: 230px !important;
+    height: 300px !important;
+
+    top: 7% !important;
+    left: 7% !important;
+
+    transform: rotate(-11deg) !important;
+}
+
+
+/* RIGHT TOP */
+
+.collage-two {
+    width: 250px !important;
+    height: 300px !important;
+
+    top: 9% !important;
+    right: 7% !important;
+
+    transform: rotate(9deg) !important;
+}
+
+
+/* LEFT MIDDLE */
+
+.collage-three {
+    width: 250px !important;
+    height: 280px !important;
+
+    top: 42% !important;
+    left: 3% !important;
+
+    transform: rotate(-5deg) !important;
+}
+
+
+/* RIGHT MIDDLE */
+
+.collage-four {
+    width: 250px !important;
+    height: 300px !important;
+
+    top: 40% !important;
+    right: 3% !important;
+
+    transform: rotate(7deg) !important;
+}
+
+
+/* BOTTOM LEFT */
+
+.collage-five {
+    width: 230px !important;
+    height: 280px !important;
+
+    bottom: -5% !important;
+    left: 18% !important;
+
+    transform: rotate(-4deg) !important;
+}
+
+
+/* BOTTOM CENTER */
+
+.collage-six {
+    width: 260px !important;
+    height: 300px !important;
+
+    bottom: -8% !important;
+    left: 42% !important;
+
+    transform: rotate(3deg) !important;
+}
+
+
+/* BOTTOM RIGHT */
+
+.collage-seven {
+    width: 230px !important;
+    height: 290px !important;
+
+    bottom: -4% !important;
+    right: 15% !important;
+
+    transform: rotate(6deg) !important;
+}
+
+
+/* =========================================
+   DARK OVERLAY
+========================================= */
+
+.closing-overlay {
+    position: absolute !important;
+
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0,0,0,0.30),
+            rgba(0,0,0,0.82)
+        ) !important;
+
+    z-index: 5 !important;
+
+    pointer-events: none !important;
+}
+
+
+/* =========================================
+   CLOSING TEXT
+========================================= */
+
+.closing-content {
+    position: relative !important;
+
+    z-index: 10 !important;
+
+    width: min(900px, 90vw) !important;
+
+    text-align: center !important;
+
+    color: white !important;
+
+    margin: 0 auto !important;
+}
+
+
+/* small heading */
+
+.closing-small {
+    display: block !important;
+
+    margin-bottom: 18px !important;
+
+    font-size: 13px !important;
+
+    letter-spacing: 6px !important;
+
+    color: rgba(255,255,255,0.75) !important;
+}
+
+
+/* Our Little Place */
+
+.closing-content h2 {
+    margin: 0 !important;
+
+    font-family: "Cormorant Garamond", serif !important;
+
+    font-size: clamp(32px, 4vw, 58px) !important;
+
+    font-weight: 500 !important;
+
+    color: white !important;
+}
+
+
+/* heart */
+
+.closing-heart {
+    margin: 18px 0 !important;
+
+    font-size: 35px !important;
+
+    color: white !important;
+}
+
+
+/* I LOVE YOU */
+
+.closing-content h1 {
+    margin: 10px 0 30px !important;
+
+    font-family: "Caveat", cursive !important;
+
+    font-size: clamp(85px, 12vw, 180px) !important;
+
+    line-height: 0.85 !important;
+
+    font-weight: 700 !important;
+
+    color: white !important;
+
+    white-space: nowrap !important;
+}
+
+
+/* paragraph */
+
+.closing-content p {
+    margin: 0 auto 28px !important;
+
+    max-width: 650px !important;
+
+    font-family: "Cormorant Garamond", serif !important;
+
+    font-size: clamp(18px, 2vw, 25px) !important;
+
+    line-height: 1.5 !important;
+
+    color: rgba(255,255,255,0.9) !important;
+}
+
+
+/* signoff */
+
+.closing-signoff {
+    font-family: "Caveat", cursive !important;
+
+    font-size: 28px !important;
+
+    color: white !important;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .closing-screen {
+        min-height: 100svh !important;
+        height: 100svh !important;
+    }
+
+    .closing-content {
+        width: 90vw !important;
+    }
+
+    .closing-content h1 {
+        font-size: 70px !important;
+        white-space: normal !important;
+    }
+
+    .closing-small {
+        font-size: 10px !important;
+        letter-spacing: 4px !important;
+    }
+
+    .closing-content h2 {
+        font-size: 35px !important;
+    }
+
+    .closing-content p {
+        font-size: 17px !important;
+    }
+
+    .collage-one,
+    .collage-two {
+        width: 150px !important;
+        height: 200px !important;
+    }
+
+    .collage-three,
+    .collage-four {
+        width: 140px !important;
+        height: 190px !important;
+    }
+
+    .collage-five,
+    .collage-six,
+    .collage-seven {
+        width: 140px !important;
+        height: 180px !important;
+    }
+}
