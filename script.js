@@ -608,3 +608,31 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
 });
+/* =====================================================
+   THE END → FINAL SCREEN
+===================================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const theEndButton =
+        document.getElementById("theEndButton");
+
+    const finalScreen =
+        document.getElementById("finalScreen");
+
+
+    if (!theEndButton || !finalScreen) {
+        console.log("The End elements not found.");
+        return;
+    }
+
+
+    theEndButton.addEventListener("click", function () {
+
+        finalScreen.classList.add("show");
+
+        document.body.style.overflow = "hidden";
+
+    });
+
+});
