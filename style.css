@@ -4554,218 +4554,533 @@ input {
     margin-top: 18px !important;
 }
 
-/* =========================
-   FINAL CLOSING SCREEN
-========================= */
+/* =====================================================
+   THE END BUTTON SECTION
+===================================================== */
 
-.closing-screen {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+.the-end-section {
+    width: 100% !important;
+    min-height: 100vh !important;
 
-    background: #000;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    position: relative !important;
 
-.closing-overlay {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.58);
-    z-index: 5;
-}
+    box-sizing: border-box !important;
 
-.closing-content {
-    position: relative;
-    z-index: 10;
+    background: #F8F5F1 !important;
 
-    width: 100%;
-    max-width: 1000px;
-    padding: 40px 25px;
+    padding: 80px 20px !important;
 
-    text-align: center;
-    color: white;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.closing-small {
-    font-size: 14px;
-    letter-spacing: 5px;
-    margin-bottom: 18px;
-}
-
-.closing-content h2 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 42px;
-    font-weight: 500;
-    margin: 0 0 15px;
-}
-
-.closing-heart {
-    font-size: 38px;
-    margin: 5px 0 15px;
-}
-
-.closing-content h1 {
-    font-family: "Caveat", cursive;
-    font-size: clamp(80px, 11vw, 170px);
-    line-height: 0.9;
-    margin: 0 0 35px;
-    color: white;
-}
-
-.closing-content p {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 21px;
-    line-height: 1.6;
-    margin: 0 0 30px;
-}
-
-.closing-signoff {
-    font-family: "Caveat", cursive;
-    font-size: 27px;
+    text-align: center !important;
 }
 
 
-/* =========================
-   CLOSING PHOTOS
-========================= */
+.the-end-content {
+    max-width: 700px !important;
 
-.closing-photo {
-    position: absolute;
-    z-index: 2;
-    overflow: hidden;
-    opacity: 0.55;
-    border: 6px solid rgba(255,255,255,0.12);
-}
+    margin: 0 auto !important;
 
-.closing-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+    text-align: center !important;
 }
 
 
-/* photo positions */
+.the-end-small {
+    display: block !important;
 
-.collage-one {
-    width: 260px;
-    height: 330px;
-    left: 5%;
-    top: 8%;
-    transform: rotate(-9deg);
-}
+    font-family: "Cormorant Garamond", serif !important;
 
-.collage-two {
-    width: 250px;
-    height: 320px;
-    right: 5%;
-    top: 8%;
-    transform: rotate(8deg);
-}
+    font-size: 13px !important;
 
-.collage-three {
-    width: 240px;
-    height: 300px;
-    left: 3%;
-    bottom: 5%;
-    transform: rotate(-4deg);
-}
+    letter-spacing: 5px !important;
 
-.collage-four {
-    width: 230px;
-    height: 290px;
-    left: 25%;
-    bottom: -5%;
-    transform: rotate(5deg);
-}
+    color: #9c8775 !important;
 
-.collage-five {
-    width: 230px;
-    height: 290px;
-    right: 24%;
-    bottom: -5%;
-    transform: rotate(-6deg);
-}
-
-.collage-six {
-    width: 240px;
-    height: 300px;
-    right: 3%;
-    bottom: 6%;
-    transform: rotate(5deg);
-}
-
-.collage-seven {
-    width: 250px;
-    height: 310px;
-    left: 42%;
-    top: 8%;
-    transform: rotate(-2deg);
+    margin-bottom: 20px !important;
 }
 
 
-/* =========================
+.the-end-content h2 {
+    font-family: "Cormorant Garamond", serif !important;
+
+    font-size: clamp(40px, 5vw, 65px) !important;
+
+    font-weight: 500 !important;
+
+    color: #5A4637 !important;
+
+    margin: 0 0 20px !important;
+}
+
+
+.the-end-content p {
+    font-family: "Cormorant Garamond", serif !important;
+
+    font-size: 21px !important;
+
+    line-height: 1.6 !important;
+
+    color: #7b6757 !important;
+
+    margin-bottom: 35px !important;
+}
+
+
+.the-end-button {
+    border: 1px solid #a58c78 !important;
+
+    background: transparent !important;
+
+    color: #5A4637 !important;
+
+    font-family: "Caveat", cursive !important;
+
+    font-size: 25px !important;
+
+    padding: 12px 35px !important;
+
+    border-radius: 40px !important;
+
+    cursor: pointer !important;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease !important;
+}
+
+
+.the-end-button:hover {
+    background: #5A4637 !important;
+
+    color: white !important;
+
+    transform: translateY(-3px) !important;
+}
+
+
+/* =====================================================
+   FINAL FULL SCREEN
+===================================================== */
+
+.final-screen {
+
+    position: fixed !important;
+
+    inset: 0 !important;
+
+    width: 100vw !important;
+
+    height: 100vh !important;
+
+    min-height: 100vh !important;
+
+    overflow: hidden !important;
+
+    background: #000 !important;
+
+    z-index: 99999 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    opacity: 0 !important;
+
+    visibility: hidden !important;
+
+    pointer-events: none !important;
+
+    transition:
+        opacity 1.5s ease,
+        visibility 1.5s ease !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* WHEN OPEN */
+
+.final-screen.show {
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    pointer-events: auto !important;
+}
+
+
+/* =====================================================
+   PHOTOS
+===================================================== */
+
+.final-photo {
+
+    position: absolute !important;
+
+    overflow: hidden !important;
+
+    border: 5px solid rgba(255,255,255,0.12) !important;
+
+    opacity: 0 !important;
+
+    transition:
+        opacity 2s ease,
+        transform 2s ease !important;
+}
+
+
+.final-screen.show .final-photo {
+
+    opacity: 0.45 !important;
+}
+
+
+.final-photo img {
+
+    width: 100% !important;
+
+    height: 100% !important;
+
+    display: block !important;
+
+    object-fit: cover !important;
+
+    filter: brightness(0.55) !important;
+}
+
+
+/* PHOTO POSITIONS */
+
+.final-photo-1 {
+
+    width: 230px !important;
+    height: 300px !important;
+
+    top: 5% !important;
+    left: 6% !important;
+
+    transform: rotate(-10deg) scale(0.9) !important;
+}
+
+
+.final-screen.show .final-photo-1 {
+    transform: rotate(-10deg) scale(1) !important;
+}
+
+
+.final-photo-2 {
+
+    width: 250px !important;
+    height: 310px !important;
+
+    top: 7% !important;
+    right: 6% !important;
+
+    transform: rotate(9deg) scale(0.9) !important;
+}
+
+
+.final-screen.show .final-photo-2 {
+    transform: rotate(9deg) scale(1) !important;
+}
+
+
+.final-photo-3 {
+
+    width: 250px !important;
+    height: 280px !important;
+
+    top: 43% !important;
+    left: 2% !important;
+
+    transform: rotate(-5deg) scale(0.9) !important;
+}
+
+
+.final-screen.show .final-photo-3 {
+    transform: rotate(-5deg) scale(1) !important;
+}
+
+
+.final-photo-4 {
+
+    width: 250px !important;
+    height: 300px !important;
+
+    top: 40% !important;
+    right: 2% !important;
+
+    transform: rotate(7deg) scale(0.9) !important;
+}
+
+
+.final-screen.show .final-photo-4 {
+    transform: rotate(7deg) scale(1) !important;
+}
+
+
+.final-photo-5 {
+
+    width: 220px !important;
+    height: 280px !important;
+
+    bottom: -7% !important;
+    left: 17% !important;
+
+    transform: rotate(-5deg) scale(0.9) !important;
+}
+
+
+.final-screen.show .final-photo-5 {
+    transform: rotate(-5deg) scale(1) !important;
+}
+
+
+.final-photo-6 {
+
+    width: 250px !important;
+    height: 300px !important;
+
+    bottom: -10% !important;
+    left: 42% !important;
+
+    transform: rotate(3deg) scale(0.9) !important;
+}
+
+
+.final-screen.show .final-photo-6 {
+    transform: rotate(3deg) scale(1) !important;
+}
+
+
+.final-photo-7 {
+
+    width: 220px !important;
+    height: 285px !important;
+
+    bottom: -5% !important;
+    right: 15% !important;
+
+    transform: rotate(6deg) scale(0.9) !important;
+}
+
+
+.final-screen.show .final-photo-7 {
+    transform: rotate(6deg) scale(1) !important;
+}
+
+
+/* =====================================================
+   DARK OVERLAY
+===================================================== */
+
+.final-dark {
+
+    position: absolute !important;
+
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0,0,0,0.25),
+            rgba(0,0,0,0.85)
+        ) !important;
+
+    z-index: 5 !important;
+
+    pointer-events: none !important;
+}
+
+
+/* =====================================================
+   FINAL TEXT
+===================================================== */
+
+.final-content {
+
+    position: relative !important;
+
+    z-index: 10 !important;
+
+    width: min(900px, 90vw) !important;
+
+    margin: 0 auto !important;
+
+    text-align: center !important;
+
+    color: white !important;
+
+    opacity: 0 !important;
+
+    transform: translateY(25px) !important;
+
+    transition:
+        opacity 2s ease 0.7s,
+        transform 2s ease 0.7s !important;
+}
+
+
+.final-screen.show .final-content {
+
+    opacity: 1 !important;
+
+    transform: translateY(0) !important;
+}
+
+
+.final-small {
+
+    display: block !important;
+
+    font-family: "Cormorant Garamond", serif !important;
+
+    font-size: 13px !important;
+
+    letter-spacing: 6px !important;
+
+    color: rgba(255,255,255,0.7) !important;
+
+    margin-bottom: 18px !important;
+}
+
+
+.final-content h2 {
+
+    margin: 0 !important;
+
+    font-family: "Cormorant Garamond", serif !important;
+
+    font-size: clamp(35px, 5vw, 65px) !important;
+
+    font-weight: 500 !important;
+
+    color: white !important;
+}
+
+
+.final-heart {
+
+    margin: 15px 0 !important;
+
+    font-size: 35px !important;
+
+    color: white !important;
+}
+
+
+.final-content h1 {
+
+    margin: 5px 0 30px !important;
+
+    font-family: "Caveat", cursive !important;
+
+    font-size: clamp(85px, 12vw, 180px) !important;
+
+    line-height: 0.85 !important;
+
+    font-weight: 700 !important;
+
+    color: white !important;
+
+    white-space: nowrap !important;
+}
+
+
+.final-content p {
+
+    max-width: 650px !important;
+
+    margin: 0 auto 25px !important;
+
+    font-family: "Cormorant Garamond", serif !important;
+
+    font-size: clamp(18px, 2vw, 25px) !important;
+
+    line-height: 1.5 !important;
+
+    color: rgba(255,255,255,0.9) !important;
+}
+
+
+.final-signoff {
+
+    font-family: "Caveat", cursive !important;
+
+    font-size: 28px !important;
+
+    color: white !important;
+}
+
+
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
 @media (max-width: 700px) {
 
-    .closing-screen {
-        min-height: 100svh;
-        height: 100svh;
+    .the-end-section {
+        min-height: 100svh !important;
     }
 
-    .closing-content {
-        padding: 30px 18px;
+
+    .final-content {
+        width: 90vw !important;
     }
 
-    .closing-content h2 {
-        font-size: 32px;
+
+    .final-content h1 {
+        font-size: 72px !important;
+
+        white-space: normal !important;
     }
 
-    .closing-content h1 {
-        font-size: clamp(65px, 18vw, 105px);
+
+    .final-content h2 {
+        font-size: 38px !important;
     }
 
-    .closing-content p {
-        font-size: 18px;
+
+    .final-content p {
+        font-size: 17px !important;
     }
 
-    .closing-small {
-        font-size: 11px;
-        letter-spacing: 3px;
+
+    .final-small {
+        font-size: 10px !important;
+
+        letter-spacing: 4px !important;
     }
 
-    .closing-photo {
-        opacity: 0.4;
+
+    .final-photo-1,
+    .final-photo-2 {
+        width: 145px !important;
+        height: 195px !important;
     }
 
-    .collage-one,
-    .collage-two {
-        width: 150px;
-        height: 190px;
+
+    .final-photo-3,
+    .final-photo-4 {
+        width: 135px !important;
+        height: 185px !important;
     }
 
-    .collage-three,
-    .collage-four,
-    .collage-five,
-    .collage-six,
-    .collage-seven {
-        width: 140px;
-        height: 180px;
+
+    .final-photo-5,
+    .final-photo-6,
+    .final-photo-7 {
+        width: 135px !important;
+        height: 175px !important;
     }
+
 }
