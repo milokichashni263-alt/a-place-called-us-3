@@ -1,5 +1,8 @@
-
 document.addEventListener("DOMContentLoaded", function () {
+
+    /* =========================
+       PASSWORD
+    ========================= */
 
     const passwordInput = document.getElementById("password");
     const unlockButton = document.getElementById("unlockButton");
@@ -14,37 +17,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const correctPassword = "081929";
 
 
-    // =========================
-    // PASSWORD UNLOCK
-    // =========================
-
     function unlock() {
 
-        if (!passwordInput) {
-            console.error("Password input not found");
-            return;
-        }
+        if (!passwordInput) return;
 
         if (passwordInput.value.trim() === correctPassword) {
 
-            // Hide password page
             if (container) {
                 container.style.display = "none";
             }
 
-            // Show welcome
             if (welcomeScreen) {
                 welcomeScreen.classList.add("show");
             }
 
-            // Start music
             if (backgroundMusic) {
-                backgroundMusic.play().catch(function () {
-                    console.log("Music autoplay was blocked.");
-                });
+                backgroundMusic.play().catch(function () {});
             }
 
-            // Open website
             setTimeout(function () {
 
                 if (welcomeScreen) {
@@ -64,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         } else {
 
-            // Wrong password
             passwordInput.value = "";
 
             passwordInput.placeholder =
@@ -84,34 +73,17 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             setTimeout(function () {
-
                 passwordInput.placeholder =
                     "Our little secret...";
-
             }, 2000);
-
         }
-
     }
 
-
-    // =========================
-    // UNLOCK BUTTON
-    // =========================
 
     if (unlockButton) {
-
-        unlockButton.addEventListener(
-            "click",
-            unlock
-        );
-
+        unlockButton.addEventListener("click", unlock);
     }
 
-
-    // =========================
-    // ENTER KEY
-    // =========================
 
     if (passwordInput) {
 
@@ -120,11 +92,8 @@ document.addEventListener("DOMContentLoaded", function () {
             function (event) {
 
                 if (event.key === "Enter") {
-
                     event.preventDefault();
-
                     unlock();
-
                 }
 
             }
@@ -133,209 +102,175 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-});
 
-// =====================================================
-// SCRAPBOOK PAGE FLIP
-// =====================================================
+    /* =========================
+       SCRAPBOOK
+    ========================= */
 
-const scrapbookPages = document.querySelectorAll(".scrap-page");
-const nextPageButton = document.getElementById("nextPage");
-const prevPageButton = document.getElementById("prevPage");
-const scrapbookCounter = document.getElementById("scrapbookCounter");
-const scrapbookDots = document.querySelectorAll(".book-dot");
+    const pages =
+        document.querySelectorAll(".scrap-page");
 
-let currentScrapPage = 0;
+    const nextButton =
+        document.getElementById("nextPage");
 
+    const prevButton =
+        document.getElementById("prevPage");
 
-// =========================
-// SHOW SCRAPBOOK PAGE
-// =========================
+    const counter =
+        document.getElementById("scrapbookCounter");
 
-function showScrapPage(index) {
+    const dots =
+        document.querySelectorAll(".book-dot");
 
-    if (!scrapbookPages.length) {
-        console.log("No scrapbook pages found.");
-        return;
-    }
-
-    // Keep index within limits
-    if (index < 0) {
-        index = 0;
-    }
-
-    if (index >= scrapbookPages.length) {
-        index = scrapbookPages.length - 1;
-    }
+    let currentPage = 0;
 
 
-    // Hide/show pages
-    scrapbookPages.forEach(function (page, i) {
+    function showPage(index) {
 
-        if (i === index) {
-            page.classList.add("active-page");
-        } else {
+        if (!pages.length) {
+            console.log("Scrapbook pages not found.");
+            return;
+        }
+
+        if (index < 0) {
+            index = 0;
+        }
+
+        if (index >= pages.length) {
+            index = pages.length - 1;
+        }
+
+
+        pages.forEach(function (page, i) {
+
             page.classList.remove("active-page");
-        }
 
-    });
+            if (i === index) {
+                page.classList.add("active-page");
+            }
+
+        });
 
 
-    // Update dots
-    scrapbookDots.forEach(function (dot, i) {
+        dots.forEach(function (dot, i) {
 
-        if (i === index) {
-            dot.classList.add("active");
-        } else {
             dot.classList.remove("active");
+
+            if (i === index) {
+                dot.classList.add("active");
+            }
+
+        });
+
+
+        currentPage = index;
+
+
+        if (counter) {
+
+            counter.textContent =
+                String(index + 1).padStart(2, "0") +
+                " / " +
+                String(pages.length).padStart(2, "0");
+
         }
 
-    });
 
+        if (prevButton) {
+            prevButton.disabled = index === 0;
+        }
 
-    // Update counter
-    if (scrapbookCounter) {
-
-        scrapbookCounter.textContent =
-            String(index + 1).padStart(2, "0") +
-            " / " +
-            String(scrapbookPages.length).padStart(2, "0");
+        if (nextButton) {
+            nextButton.disabled =
+                index === pages.length - 1;
+        }
 
     }
 
 
-    currentScrapPage = index;
+    /* NEXT */
 
+    if (nextButton) {
 
-    // Previous button
-    if (prevPageButton) {
-        prevPageButton.disabled = index === 0;
+        nextButton.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                showPage(currentPage + 1);
+
+            }
+        );
+
     }
 
 
-    // Next button
-    if (nextPageButton) {
-        nextPageButton.disabled =
-            index === scrapbookPages.length - 1;
+    /* PREVIOUS */
+
+    if (prevButton) {
+
+        prevButton.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                showPage(currentPage - 1);
+
+            }
+        );
+
     }
 
-}
+
+    /* DOTS */
+
+    dots.forEach(function (dot, index) {
+
+        dot.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                showPage(index);
+
+            }
+        );
+
+    });
 
 
-// =========================
-// NEXT PAGE
-// =========================
+    /* KEYBOARD */
 
-if (nextPageButton) {
+    document.addEventListener(
+        "keydown",
+        function (event) {
 
-    nextPageButton.addEventListener("click", function (event) {
+            if (
+                event.target.tagName === "INPUT" ||
+                event.target.tagName === "TEXTAREA"
+            ) {
+                return;
+            }
 
-        event.preventDefault();
 
-        if (
-            currentScrapPage <
-            scrapbookPages.length - 1
-        ) {
+            if (event.key === "ArrowRight") {
+                showPage(currentPage + 1);
+            }
 
-            showScrapPage(
-                currentScrapPage + 1
-            );
+
+            if (event.key === "ArrowLeft") {
+                showPage(currentPage - 1);
+            }
 
         }
-
-    });
-
-}
+    );
 
 
-// =========================
-// PREVIOUS PAGE
-// =========================
+    /* START */
 
-if (prevPageButton) {
-
-    prevPageButton.addEventListener("click", function (event) {
-
-        event.preventDefault();
-
-        if (currentScrapPage > 0) {
-
-            showScrapPage(
-                currentScrapPage - 1
-            );
-
-        }
-
-    });
-
-}
-
-
-// =========================
-// SCRAPBOOK DOTS
-// =========================
-
-scrapbookDots.forEach(function (dot, index) {
-
-    dot.addEventListener("click", function (event) {
-
-        event.preventDefault();
-
-        showScrapPage(index);
-
-    });
+    showPage(0);
 
 });
-
-
-// =========================
-// KEYBOARD CONTROLS
-// =========================
-
-document.addEventListener("keydown", function (event) {
-
-    // Don't interfere while typing
-    if (
-        event.target.tagName === "INPUT" ||
-        event.target.tagName === "TEXTAREA"
-    ) {
-        return;
-    }
-
-
-    if (event.key === "ArrowRight") {
-
-        if (
-            currentScrapPage <
-            scrapbookPages.length - 1
-        ) {
-
-            showScrapPage(
-                currentScrapPage + 1
-            );
-
-        }
-
-    }
-
-
-    if (event.key === "ArrowLeft") {
-
-        if (currentScrapPage > 0) {
-
-            showScrapPage(
-                currentScrapPage - 1
-            );
-
-        }
-
-    }
-
-});
-
-
-// =========================
-// START AT PAGE 1
-// =========================
-
-showScrapPage(0);
