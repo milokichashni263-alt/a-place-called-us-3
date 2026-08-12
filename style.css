@@ -4095,22 +4095,15 @@ input {
 }
 
 /* =========================================
-   OPEN WHEN — ENVELOPE STYLE
+   OPEN WHEN — REAL ENVELOPE DESIGN
 ========================================= */
 
-.open-when-section {
-    position: relative;
-    padding: 120px 30px;
-    text-align: center;
-}
-
 .open-when-grid {
-    width: 100%;
-    max-width: 1050px;
-    margin: 60px auto 0;
+    width: min(1000px, 92%);
+    margin: 55px auto 0;
 
     display: grid;
-    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 45px;
 }
 
@@ -4119,48 +4112,74 @@ input {
 
 .open-when-card {
     position: relative;
+    min-height: 285px;
 
-    min-height: 270px;
     padding: 0;
+    border: none;
+    border-radius: 6px;
 
-    background: #eee2d2;
-    border-radius: 8px;
-
-    box-shadow:
-        0 15px 35px rgba(90, 70, 55, 0.13);
+    background: #e8d8c6;
+    box-shadow: 0 14px 30px rgba(75, 55, 42, 0.14);
 
     overflow: hidden;
-
     cursor: pointer;
+
+    font-family: "Cormorant Garamond", serif;
 
     transition:
         transform 0.35s ease,
         box-shadow 0.35s ease;
 }
 
-.open-when-card:hover {
-    transform: translateY(-8px) rotate(-1deg);
 
-    box-shadow:
-        0 22px 45px rgba(90, 70, 55, 0.18);
+/* little hover */
+
+.open-when-card:hover {
+    transform: translateY(-7px) rotate(-1deg);
+    box-shadow: 0 20px 38px rgba(75, 55, 42, 0.20);
+}
+
+
+/* ENVELOPE BACK */
+
+.open-when-card::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            145deg,
+            transparent 49%,
+            #d7c3ad 50%,
+            transparent 51%
+        );
+
+    opacity: 0.7;
+
+    pointer-events: none;
 }
 
 
 /* ENVELOPE FLAP */
 
-.open-when-card::before {
-    content: "";
-
+.open-when-envelope {
     position: absolute;
-    z-index: 3;
 
     top: 0;
     left: 0;
 
     width: 100%;
-    height: 135px;
+    height: 145px;
 
-    background: #e3d2be;
+    z-index: 4;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #dfcbb6;
 
     clip-path: polygon(
         0 0,
@@ -4168,43 +4187,9 @@ input {
         50% 100%
     );
 
-    transform-origin: top;
+    color: #8c7160;
 
-    transition:
-        transform 0.65s ease,
-        opacity 0.4s ease;
-}
-
-
-/* LITTLE ENVELOPE SEAL */
-
-.open-when-card::after {
-    content: "♡";
-
-    position: absolute;
-    z-index: 5;
-
-    top: 103px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 42px;
-    height: 42px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: #a98e78;
-    color: white;
-
-    font-family: "Cormorant Garamond", serif;
-    font-size: 22px;
-
-    box-shadow: 0 5px 15px rgba(90,70,55,0.15);
+    font-size: 30px;
 
     transition:
         transform 0.5s ease,
@@ -4212,129 +4197,123 @@ input {
 }
 
 
-/* CONTENT INSIDE ENVELOPE */
+/* NUMBER */
 
-.open-when-card > * {
-    position: relative;
-    z-index: 2;
+.open-when-number {
+    position: absolute;
+
+    top: 18px;
+    left: 22px;
+
+    z-index: 6;
+
+    font-size: 12px;
+    letter-spacing: 2px;
+
+    color: #9a806d;
 }
 
 
-/* TITLE ON ENVELOPE */
+/* TITLE */
 
 .open-when-card h3 {
     position: absolute;
 
-    left: 20px;
-    right: 20px;
-    bottom: 35px;
+    z-index: 5;
+
+    left: 30px;
+    right: 30px;
+    bottom: 52px;
 
     margin: 0;
 
-    font-family: "Caveat", cursive;
-    font-size: 32px;
-    font-weight: 700;
-
     color: #604b3d;
+
+    font-family: "Caveat", cursive;
+    font-size: 30px;
+    line-height: 1.1;
+
+    text-align: center;
 }
 
 
-/* SMALL "OPEN WHEN" LABEL */
+/* HINT */
 
-.open-when-card .open-when-label {
+.open-when-hint {
     position: absolute;
+
+    z-index: 6;
 
     left: 0;
     right: 0;
-    bottom: 12px;
+    bottom: 20px;
 
-    font-size: 11px;
-    letter-spacing: 3px;
+    font-size: 12px;
+    letter-spacing: 2px;
     text-transform: uppercase;
 
-    color: #9a8573;
+    color: #9a806d;
 }
 
 
-/* LETTER CONTENT */
+/* LITTLE HEART SEAL */
 
-.open-when-card .open-when-content {
+.open-when-envelope::after {
+    content: "♡";
+
     position: absolute;
 
-    inset: 20px;
+    top: 108px;
+    left: 50%;
 
-    padding: 35px 25px 25px;
+    transform: translateX(-50%);
 
-    background: #faf6ef;
+    width: 42px;
+    height: 42px;
 
-    border-radius: 5px;
+    border-radius: 50%;
 
-    opacity: 0;
-    transform: translateY(25px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    overflow-y: auto;
+    background: #a98b76;
+    color: #fff;
 
-    transition:
-        opacity 0.45s ease 0.15s,
-        transform 0.55s ease 0.1s;
+    font-size: 22px;
+
+    box-shadow: 0 5px 12px rgba(70, 50, 40, 0.15);
 }
 
 
-/* OPEN STATE */
+/* =========================================
+   OPENING ANIMATION
+========================================= */
 
-.open-when-card.open::before {
+.open-when-card.opening .open-when-envelope {
     transform: rotateX(180deg);
     opacity: 0;
 }
 
-.open-when-card.open::after {
-    opacity: 0;
-    transform: translateX(-50%) scale(0.7);
-}
 
-.open-when-card.open .open-when-content {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-/* CONTENT TEXT */
-
-.open-when-card .open-when-content h3 {
-    position: static;
-
-    margin-bottom: 18px;
-
-    font-family: "Caveat", cursive;
-    font-size: 30px;
-}
-
-.open-when-card .open-when-content p {
-    position: static;
-
-    font-family: "Cormorant Garamond", serif;
-    font-size: 18px;
-    line-height: 1.75;
-
-    color: #766354;
-}
-
-
-/* MOBILE */
+/* =========================================
+   MOBILE
+========================================= */
 
 @media (max-width: 700px) {
 
-    .open-when-section {
-        padding: 90px 20px;
-    }
-
     .open-when-grid {
         grid-template-columns: 1fr;
+        width: 92%;
         gap: 30px;
     }
 
     .open-when-card {
-        min-height: 250px;
+        min-height: 270px;
+    }
+
+    .open-when-card h3 {
+        font-size: 27px;
     }
 
 }
