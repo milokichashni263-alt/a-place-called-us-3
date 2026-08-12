@@ -4482,3 +4482,42 @@ input {
     }
 
 }
+
+/* =================================
+   FORCE WIDER OPEN WHEN CARDS
+================================= */
+
+.open-when-section .open-when-grid {
+    width: 1100px !important;
+    max-width: 92vw !important;
+
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+
+    gap: 40px !important;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.open-when-section .open-when-card {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+
+    min-height: 285px !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* Laptop / smaller screen */
+
+@media (max-width: 800px) {
+
+    .open-when-section .open-when-grid {
+        width: 92vw !important;
+        grid-template-columns: 1fr !important;
+    }
+
+}
