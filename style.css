@@ -3785,32 +3785,197 @@ input {
     opacity: .75;
 }
 
+/* =========================
+   OPEN WHEN — WIDER ENVELOPES
+========================= */
+
 .open-when-grid {
-    max-width: 1050px;
-    margin: auto;
+    width: min(1100px, 92%);
+    margin: 45px auto 0;
+
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 42px;
 }
 
 .open-when-card {
+    width: 100%;
+    min-height: 285px;
+
+    padding: 35px 38px 30px;
+
+    border: none;
+    border-radius: 8px;
+
     position: relative;
-    min-height: 260px;
-    padding: 35px 25px;
-    border: 1px solid rgba(90,70,55,.15);
-    border-radius: 18px;
-    background: #fffdf9;
-    color: #5a4637;
+    overflow: hidden;
+
+    background: #eadbc8;
+    color: #6f5140;
+
     cursor: pointer;
-    transition: .3s ease;
-    font-family: inherit;
+
+    box-shadow:
+        0 15px 30px rgba(91, 65, 48, 0.10);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .open-when-card:hover {
-    transform: translateY(-7px) rotate(-1deg);
-    box-shadow: 0 18px 40px rgba(70,50,40,.12);
+    transform: translateY(-7px);
+    box-shadow:
+        0 22px 38px rgba(91, 65, 48, 0.16);
 }
 
+
+/* ENVELOPE FLAP */
+
+.open-when-card::before {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 115px;
+
+    background: #dfccb5;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+
+    z-index: 0;
+}
+
+
+/* diagonal envelope fold */
+
+.open-when-card::after {
+    content: "";
+
+    position: absolute;
+
+    left: -10%;
+    top: 115px;
+
+    width: 120%;
+    height: 1px;
+
+    background: rgba(111, 81, 64, 0.12);
+
+    transform: rotate(-32deg);
+
+    z-index: 0;
+}
+
+
+/* NUMBER */
+
+.open-when-number {
+    position: absolute;
+
+    top: 14px;
+    left: 20px;
+
+    font-size: 10px;
+    letter-spacing: 4px;
+
+    color: rgba(111, 81, 64, 0.35);
+
+    z-index: 2;
+}
+
+
+/* HEART */
+
+.open-when-envelope {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    margin: 45px auto 20px;
+
+    border-radius: 50%;
+
+    background: #ad8c76;
+    color: white;
+
+    font-size: 19px;
+
+    z-index: 3;
+}
+
+
+/* TITLE */
+
+.open-when-card h3 {
+    position: relative;
+
+    max-width: 340px;
+
+    margin: 0 auto;
+
+    font-family: "Caveat", cursive;
+    font-size: 30px;
+    line-height: 1.15;
+    font-weight: 700;
+
+    text-align: center;
+
+    color: #654838;
+
+    z-index: 2;
+}
+
+
+/* OPEN THIS */
+
+.open-when-hint {
+    display: block;
+
+    margin-top: 22px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 13px;
+    letter-spacing: 2px;
+
+    color: #a88b77;
+
+    z-index: 2;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .open-when-grid {
+        width: 90%;
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .open-when-card {
+        min-height: 270px;
+        padding: 30px 25px;
+    }
+
+    .open-when-card h3 {
+        font-size: 28px;
+    }
+}
 .open-when-number {
     position: absolute;
     top: 18px;
