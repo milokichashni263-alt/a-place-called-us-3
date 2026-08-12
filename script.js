@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    /* =========================
+    /* =====================================================
        PASSWORD
-    ========================= */
+    ===================================================== */
 
     const passwordInput = document.getElementById("password");
     const unlockButton = document.getElementById("unlockButton");
@@ -73,8 +73,10 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             setTimeout(function () {
+
                 passwordInput.placeholder =
                     "Our little secret...";
+
             }, 2000);
         }
     }
@@ -92,8 +94,11 @@ document.addEventListener("DOMContentLoaded", function () {
             function (event) {
 
                 if (event.key === "Enter") {
+
                     event.preventDefault();
+
                     unlock();
+
                 }
 
             }
@@ -103,11 +108,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-   // =====================================================
-// SCRAPBOOK PAGE FLIP
-// =====================================================
-
-document.addEventListener("DOMContentLoaded", function () {
+    /* =====================================================
+       SCRAPBOOK
+    ===================================================== */
 
     const scrapbookPages =
         document.querySelectorAll(".scrap-page");
@@ -129,12 +132,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function showScrapPage(index) {
 
-        if (!scrapbookPages.length) {
-            console.log("No scrapbook pages found.");
-            return;
-        }
+        if (!scrapbookPages.length) return;
 
-        // Keep page number within limits
         if (index < 0) {
             index = 0;
         }
@@ -144,19 +143,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        // Show only selected page
         scrapbookPages.forEach(function (page, i) {
 
-            if (i === index) {
-                page.classList.add("active-page");
-            } else {
-                page.classList.remove("active-page");
-            }
+            page.classList.toggle(
+                "active-page",
+                i === index
+            );
 
         });
 
 
-        // Update counter
         if (scrapbookCounter) {
 
             scrapbookCounter.textContent =
@@ -167,7 +163,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        // Update dots
         scrapbookDots.forEach(function (dot, i) {
 
             dot.classList.toggle(
@@ -178,7 +173,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 
-        // Disable arrows at beginning/end
         if (prevPageButton) {
             prevPageButton.disabled = index === 0;
         }
@@ -190,13 +184,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         currentScrapPage = index;
-
     }
 
-
-    // =========================
-    // NEXT
-    // =========================
 
     if (nextPageButton) {
 
@@ -205,7 +194,6 @@ document.addEventListener("DOMContentLoaded", function () {
             function (event) {
 
                 event.preventDefault();
-                event.stopPropagation();
 
                 if (
                     currentScrapPage <
@@ -224,10 +212,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // =========================
-    // PREVIOUS
-    // =========================
-
     if (prevPageButton) {
 
         prevPageButton.addEventListener(
@@ -235,7 +219,6 @@ document.addEventListener("DOMContentLoaded", function () {
             function (event) {
 
                 event.preventDefault();
-                event.stopPropagation();
 
                 if (currentScrapPage > 0) {
 
@@ -250,10 +233,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
-    // =========================
-    // DOTS
-    // =========================
 
     scrapbookDots.forEach(function (dot, index) {
 
@@ -271,9 +250,319 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    // =========================
-    // KEYBOARD
-    // =========================
+    showScrapPage(0);
+
+
+
+    /* =====================================================
+       QUIZ
+    ===================================================== */
+
+    const quizQuestions =
+        document.querySelectorAll(".quiz-question");
+
+    const quizOptions =
+        document.querySelectorAll(".quiz-option");
+
+    const nextQuestions =
+        document.querySelectorAll(".next-question");
+
+    const finishQuiz =
+        document.querySelector(".finish-quiz");
+
+    const quizResult =
+        document.querySelector(".quiz-result");
+
+    let currentQuestion = 0;
+
+
+    function showQuestion(index) {
+
+        if (!quizQuestions.length) return;
+
+        quizQuestions.forEach(function (question, i) {
+
+            question.classList.toggle(
+                "active",
+                i === index
+            );
+
+        });
+
+        currentQuestion = index;
+    }
+
+
+    /* OPTIONS */
+
+    quizOptions.forEach(function (option) {
+
+        option.addEventListener(
+            "click",
+            function () {
+
+                const question =
+                    option.closest(".quiz-question");
+
+                if (!question) return;
+
+
+                const feedback =
+                    question.querySelector(".quiz-feedback");
+
+
+                const allOptions =
+                    question.querySelectorAll(".quiz-option");
+
+
+                // Stop changing answer after selection
+                allOptions.forEach(function (button) {
+
+                    button.disabled = true;
+
+                });
+
+
+                const answer =
+                    option.dataset.correct;
+
+
+                if (answer === "true") {
+
+                    option.classList.add("correct");
+
+                    if (feedback) {
+                        feedback.textContent =
+                            "I knew you'd know this one 😭🤍";
+                    }
+
+                } else if (answer === "false") {
+
+                    option.classList.add("wrong");
+
+                    if (feedback) {
+                        feedback.textContent =
+                            "WRONGGG 😭 come here, we need to talk.";
+                    }
+
+
+                    // Show correct answer
+                    allOptions.forEach(function (button) {
+
+                        if (
+                            button.dataset.correct === "true"
+                        ) {
+
+                            button.classList.add("correct");
+
+                        }
+
+                    });
+
+                } else {
+
+                    // For "depends" question
+
+                    option.classList.add("correct");
+
+                    if (feedback) {
+                        feedback.textContent =
+                            "Honestly... depends on the day 😭";
+                    }
+
+                }
+
+            }
+        );
+
+    });
+
+
+
+    /* NEXT QUESTION */
+
+    nextQuestions.forEach(function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                if (
+                    currentQuestion <
+                    quizQuestions.length - 1
+                ) {
+
+                    showQuestion(
+                        currentQuestion + 1
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+
+
+    /* FINISH QUIZ */
+
+    if (finishQuiz) {
+
+        finishQuiz.addEventListener(
+            "click",
+            function () {
+
+                if (quizQuestions.length) {
+
+                    quizQuestions.forEach(function (question) {
+
+                        question.classList.remove("active");
+
+                    });
+
+                }
+
+                if (quizResult) {
+
+                    quizResult.classList.add("active");
+
+                    quizResult.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* Start quiz on Question 1 */
+
+    showQuestion(0);
+
+
+
+    /* =====================================================
+       OPEN WHEN LETTERS
+    ===================================================== */
+
+    const openWhenCards =
+        document.querySelectorAll(".open-when-card");
+
+    const openWhenModal =
+        document.getElementById("openWhenModal");
+
+    const openWhenTitle =
+        document.getElementById("openWhenTitle");
+
+    const openWhenMessage =
+        document.getElementById("openWhenMessage");
+
+    const closeOpenWhen =
+        document.getElementById("closeOpenWhen");
+
+
+    openWhenCards.forEach(function (card) {
+
+        card.addEventListener(
+            "click",
+            function () {
+
+                if (!openWhenModal) return;
+
+                const title =
+                    card.dataset.title || "Open when...";
+
+                const message =
+                    card.dataset.message || "";
+
+
+                if (openWhenTitle) {
+                    openWhenTitle.textContent = title;
+                }
+
+                if (openWhenMessage) {
+                    openWhenMessage.textContent = message;
+                }
+
+
+                openWhenModal.classList.add("show");
+
+            }
+        );
+
+    });
+
+
+    if (closeOpenWhen) {
+
+        closeOpenWhen.addEventListener(
+            "click",
+            function () {
+
+                if (openWhenModal) {
+                    openWhenModal.classList.remove("show");
+                }
+
+            }
+        );
+
+    }
+
+
+    if (openWhenModal) {
+
+        openWhenModal.addEventListener(
+            "click",
+            function (event) {
+
+                if (event.target === openWhenModal) {
+
+                    openWhenModal.classList.remove("show");
+
+                }
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       SPOTIFY / BACKGROUND MUSIC
+    ===================================================== */
+
+    const spotifyButton =
+        document.querySelector(".spotify-button");
+
+
+    if (spotifyButton) {
+
+        spotifyButton.addEventListener(
+            "click",
+            function () {
+
+                if (backgroundMusic) {
+
+                    backgroundMusic.pause();
+
+                }
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       KEYBOARD SCRAPBOOK CONTROLS
+    ===================================================== */
 
     document.addEventListener(
         "keydown",
@@ -317,12 +606,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
     );
-
-
-    // =========================
-    // INITIAL PAGE
-    // =========================
-
-    showScrapPage(0);
 
 });
