@@ -4521,3 +4521,35 @@ input {
     }
 
 }
+
+/* CENTER OPEN WHEN CONTENT */
+
+.open-when-section .open-when-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.open-when-section .open-when-number {
+    left: 20px !important;
+    top: 14px !important;
+}
+
+.open-when-section .open-when-envelope {
+    margin: 25px auto 18px !important;
+}
+
+.open-when-section .open-when-card h3 {
+    width: 100% !important;
+    max-width: 500px !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+}
+
+.open-when-section .open-when-hint {
+    width: 100% !important;
+    text-align: center !important;
+    margin-top: 18px !important;
+}
